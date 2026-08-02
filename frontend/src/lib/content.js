@@ -32,31 +32,31 @@ export const PILLARS = [
     n: "01",
     title: "Faith",
     desc: "Leading young hearts closer to Christ through discipleship, prayer, and scripture — the foundation everything else is built upon.",
-    image: "https://images.unsplash.com/photo-1489568685157-ec3bcd451894",
+    image: "/img/faith.webp",
   },
   {
     n: "02",
     title: "Family",
     desc: "Building healthy relationships and a sense of belonging, so no young person walks through hardship alone.",
-    image: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc",
+    image: "/img/family.webp",
   },
   {
     n: "03",
     title: "Finance",
     desc: "Practical, biblical stewardship — budgeting, saving, and generosity that break cycles and build a stable future.",
-    image: "https://images.unsplash.com/photo-1628717341663-0007b0ee2597",
+    image: "/img/finance.webp",
   },
   {
     n: "04",
     title: "Fitness",
     desc: "Caring for the body and mind God gave them — discipline, health, and resilience for the whole person.",
-    image: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6",
+    image: "/img/fitness.webp",
   },
   {
     n: "05",
     title: "Future",
     desc: "Casting vision for what's ahead — education, calling, and a life built on purpose rather than survival.",
-    image: "https://images.unsplash.com/photo-1514369118554-e20d93546b30",
+    image: "/img/future.webp",
   },
 ];
 
@@ -134,16 +134,16 @@ export const MANIFESTO = [
   "You are enough in Christ",
 ];
 
-// Hero background (full-width, soft sunlight)
-export const HERO_BG = "https://images.unsplash.com/photo-1441974231531-c6227db76b6e";
-export const STAINED_GLASS = "https://images.unsplash.com/photo-1517373062-f3b2f3f98ada";
+// Hero background (full-width) — real event photo of a child holding his Bible
+export const HERO_BG = "/img/hero.webp";
+export const STAINED_GLASS = "/img/faith.webp";
 export const IMAGES = {
-  heroFaith: "https://images.unsplash.com/photo-1489568685157-ec3bcd451894",
-  stainedGlass: "https://images.unsplash.com/photo-1517373062-f3b2f3f98ada",
-  mentorship: "https://images.unsplash.com/photo-1571260899304-425eee4c7efc",
-  youthStudying: "https://images.unsplash.com/photo-1514369118554-e20d93546b30",
-  youthPortrait: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6",
-  volunteering: "https://images.unsplash.com/photo-1628717341663-0007b0ee2597",
-  kidsSun: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9",
-  sportsMentor: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e",
+  heroFaith: "/img/faith.webp",
+  stainedGlass: "/img/faith.webp",
+  mentorship: "/img/impact.webp",
+  youthStudying: "/img/finance.webp",
+  youthPortrait: "/img/future.webp",
+  volunteering: "/img/serve.webp",
+  kidsSun: "/img/about.webp",
+  sportsMentor: "/img/mission.webp",
 };

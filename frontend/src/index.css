@@ -11,7 +11,7 @@
         --card-foreground: 40 13% 9%;
         --popover: 0 0% 100%;
         --popover-foreground: 40 13% 9%;
-        --primary: 42 78% 56%;
+        --primary: 44 100% 48%;
         --primary-foreground: 0 0% 100%;
         --secondary: 209 39% 72%;
         --secondary-foreground: 40 13% 9%;
@@ -23,7 +23,7 @@
         --destructive-foreground: 0 0% 98%;
         --border: 40 20% 90%;
         --input: 40 20% 90%;
-        --ring: 42 78% 56%;
+        --ring: 44 100% 48%;
         --radius: 0.5rem;
     }
 }
@@ -44,7 +44,7 @@
         font-family: 'Playfair Display', serif;
     }
     ::selection {
-        background: #E6B038;
+        background: #F6B300;
         color: #fff;
     }
 }
@@ -53,7 +53,19 @@
 ::-webkit-scrollbar { width: 9px; }
 ::-webkit-scrollbar-track { background: #FDFBF7; }
 ::-webkit-scrollbar-thumb { background: #EAE6DF; border-radius: 0; }
-::-webkit-scrollbar-thumb:hover { background: #E6B038; }
+::-webkit-scrollbar-thumb:hover { background: #F6B300; }
+
+/* Shiny "godly" gold — subtle metallic sheen + glow on gold accents/buttons.
+   Only sets background-image + shadow so hover:bg-* color changes still work. */
+.bg-gold {
+    background-image: linear-gradient(135deg, #FFD24D 0%, #F6B300 46%, #E39A00 100%);
+    box-shadow: 0 8px 22px -8px rgba(246, 179, 0, 0.6);
+    text-shadow: 0 1px 1px rgba(120, 80, 0, 0.28);
+}
+.bg-gold:hover {
+    background-image: none;
+    text-shadow: none;
+}
 
 /* Marquee font */
 .marquee-item {
@@ -78,7 +90,7 @@
 
 /* Soft radial light glows */
 .light-glow {
-    background: radial-gradient(circle at 50% 0%, rgba(230, 176, 56, 0.12), transparent 60%);
+    background: radial-gradient(circle at 50% 0%, rgba(246, 179, 0, 0.13), transparent 60%);
 }
 
 /* Arched image mask */

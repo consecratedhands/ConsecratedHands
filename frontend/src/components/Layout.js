@@ -54,9 +54,9 @@ function Nav() {
         scrolled ? "glass border-b border-line/50 shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20 md:h-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-24 md:h-28">
         <Link to="/" data-testid="logo-link" className="flex items-center group">
-          <img src={ORG.logo} alt={`${ORG.name} logo`} className="h-14 md:h-16 w-auto object-contain" />
+          <img src={ORG.logo} alt={`${ORG.name} logo`} className="h-20 md:h-24 w-auto object-contain" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7">
@@ -126,7 +126,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <div className="md:col-span-5">
-            <img src={ORG.logo} alt={ORG.name} className="h-16 w-auto object-contain mb-6 brightness-110" />
+            <img src={ORG.logo} alt={ORG.name} className="h-28 md:h-32 w-auto object-contain mb-6 brightness-110" />
             <h3 className="font-heading text-2xl md:text-3xl font-normal leading-tight text-cream max-w-sm">
               Guiding young people toward a purposeful path in Christ.
             </h3>

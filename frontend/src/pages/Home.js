@@ -16,9 +16,9 @@ function Hero() {
   return (
     <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0">
-        <img src={HERO_BG} alt="Soft sunlight breaking through the trees" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/70 to-cream/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-cream/60 to-transparent" />
+        <img src={HERO_BG} alt="A smiling child holding his Bible at a Consecrated Hands event" className="w-full h-full object-cover object-center" />
+        <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/60 to-cream/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-cream/50 to-transparent" />
       </motion.div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-28">
