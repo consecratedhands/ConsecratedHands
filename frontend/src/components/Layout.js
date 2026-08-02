@@ -172,7 +172,7 @@ function Footer() {
                 </li>
               ))}
               <li>
-                <a href={`mailto:${ORG.email}`} className="hover:text-gold transition-colors break-all">{ORG.email}</a>
+                <a href={`mailto:${ORG.email}`} className="hover:text-gold transition-colors whitespace-nowrap">{ORG.email}</a>
               </li>
             </ul>
           </div>

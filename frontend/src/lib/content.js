@@ -97,9 +97,9 @@ export const TESTIMONIALS = [
 ];
 
 export const EVENTS = [
-  { date: "Aug 01", title: "Back to School Drive", location: "New Orleans, LA", tag: "Family" },
-  { date: "Nov 22", title: "Thanksgiving Drive", location: "Community Center", tag: "Family" },
-  { date: "Dec 20", title: "Christmas Giveaway", location: "New Orleans, LA", tag: "Future" },
+  { date: "Aug 01", title: "Back to School Drive", location: "Zemurray Park, Hammond, LA", tag: "Family" },
+  { date: "Nov 22", title: "Thanksgiving Drive", location: "Zemurray Park, Hammond, LA", tag: "Family" },
+  { date: "Dec 20", title: "Christmas Giveaway", location: "Zemurray Park, Hammond, LA", tag: "Future" },
 ];
 
 export const FAQ = [
