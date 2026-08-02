@@ -16,7 +16,7 @@ function Hero() {
   return (
     <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0">
-        <img src={HERO_BG} alt="A smiling child holding his Bible at a Consecrated Hands event" className="w-full h-full object-cover object-center" />
+        <img src={HERO_BG} alt="A smiling child holding his Bible at a Consecrated Hands event" className="w-full h-full object-cover object-[50%_22%]" />
         <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/60 to-cream/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-cream/50 to-transparent" />
       </motion.div>
@@ -88,7 +88,7 @@ function TruthSection() {
   return (
     <section className="relative py-24 md:py-36 bg-charcoal text-cream overflow-hidden">
       <div className="absolute inset-0">
-        <img src={PILLARS[0].image} alt="Faith cards handed out in backpacks" className="w-full h-full object-cover" />
+        <img src={PILLARS[0].image} alt="Faith cards handed out in backpacks" className="w-full h-full object-cover rotate-180" />
         <div className="absolute inset-0 bg-charcoal/30" />
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 text-center flex flex-col items-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)]">

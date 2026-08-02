@@ -1,0 +1,34 @@
+{
+  "summary": "Frontend-only visual regression verification for two Home page image fixes on Consecrated Hands site. Both fixes confirmed working on desktop (1920x1080) and mobile (390x844). No layout regression observed.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verifications": [
+    {
+      "fix": "Hero background image object-position 50% 22%",
+      "location": "/app/frontend/src/pages/Home.js line 19",
+      "computed_style": "object-position: 50% 22%, object-fit: cover",
+      "visual_result": "PASS - Child's head and face fully visible on both desktop and mobile. Headline 'Consecrated to guide the ones who need it most.' remains readable over the gradient overlay.",
+      "screenshots": ["/app/.screenshots/hero_desktop.png", "/app/.screenshots/hero_mobile.png"]
+    },
+    {
+      "fix": "Truth section faith-cards image rotate-180",
+      "location": "/app/frontend/src/pages/Home.js line 91",
+      "computed_style": "transform: matrix(-1, 0, 0, -1, 0, 0)  (i.e., 180deg rotation applied)",
+      "visual_result": "PASS - Faith cards now upright and readable: 'FIVE THINGS GOD WANTS YOU TO REMEMBER IN TRYING TIMES', 'YOU CAME TO MIND', and Scripture verse card are all right-side up. White headline 'We show them the lies — and we tell them the Truth.' plus body copy and Psalm 139:13-14 verse remain legible with drop-shadow over the bg-charcoal/30 overlay on both desktop and mobile.",
+      "screenshots": ["/app/.screenshots/truth_desktop.png", "/app/.screenshots/truth_mobile.png"]
+    }
+  ],
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Home hero uses object-[50%_22%] positioning; Truth section uses rotate-180 on faith-cards img with bg-charcoal/30 overlay + drop-shadow on text. Both verified visually on desktop and mobile. Site uses Lenis smooth scroll - use element.scrollIntoView() to reach Truth section reliably in playwright tests."
+}
