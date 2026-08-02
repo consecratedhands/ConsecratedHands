@@ -1,0 +1,25 @@
+{
+  "summary": "Verified MaskedLines descender-clipping CSS fix (pb-[0.35em] -mb-[0.22em]) across all 6 hero pages on desktop (1920x800) and mobile (390x844). Descenders (p, y, g) render fully; no overlap with lines below.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/.screenshots/prayer_desktop.jpg",
+    "/app/.screenshots/prayer_mobile.jpg",
+    "/app/.screenshots/home_desktop.jpg",
+    "/app/.screenshots/donate_desktop.jpg",
+    "/app/.screenshots/mentorship_mobile.jpg"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "MaskedLines fix verified. Confirmed on /prayer (Let us pray with you. — p and y fully visible), /, /contact, /volunteer, /donate, /mentorship on both desktop 1920x800 and mobile 390x844. Computed styles verified: padding-bottom=25.2px, margin-bottom=-15.84px on desktop (0.35em/0.22em of 72px), and 16.8px/-10.56px on mobile (0.35em/0.22em of 48px). No visual regression — hero paragraph text sits comfortably below headings without overlap.",
+  "rca of the issue": "Original bug: MaskedLines wrapped each line in `block overflow-hidden` for slide-up reveal animation, but overflow-hidden clipped letter descenders (p, y, g) at the line's baseline-derived box. Fix: added pb-[0.35em] to expand the clip region below the baseline, and -mb-[0.22em] to visually preserve tight line spacing. Confirmed working."
+}

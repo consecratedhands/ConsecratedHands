@@ -21,7 +21,7 @@ export const Reveal = ({ children, delay = 0, y = 40, className = "", ...rest })
 export const MaskedLines = ({ lines, className = "", delay = 0 }) => (
   <span className={className}>
     {lines.map((line, i) => (
-      <span key={i} className="block overflow-hidden">
+      <span key={i} className="block overflow-hidden pb-[0.35em] -mb-[0.22em]">
         <motion.span
           className="block"
           initial={{ y: "110%" }}
