@@ -70,9 +70,11 @@ export default function Volunteer() {
                 <p className="text-stone leading-relaxed mb-6">Reach out anytime — we’d love to talk through how you can be part of the work.</p>
                 <div className="space-y-3">
                   {ORG.contacts.map((c) => (
-                    <p key={c.name} className="text-ink">
-                      {c.name} · <a href={`tel:${c.phone.replace(/-/g, "")}`} className="text-gold hover:underline">{c.phone}</a>
-                    </p>
+                    <div key={c.name} className="text-ink">
+                    <p className="font-medium">{c.name}</p>
+                    <p className="text-stone text-sm">{c.title}</p>
+                    <a href={`tel:${c.phone.replace(/-/g, "")}`} className="text-gold hover:underline">{c.phone}</a>
+                  </div>
                   ))}
                   <a href={`mailto:${ORG.email}`} className="block text-gold hover:underline break-all">{ORG.email}</a>
                 </div>

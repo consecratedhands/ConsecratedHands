@@ -6,9 +6,9 @@ export const ORG = {
   mission:
     "Consecrated Hands is a Christ-centered mentorship program that guides young people spiritually, educationally, and financially as they overcome life's hardships. We help them grow closer to Christ, build confidence, develop practical life skills, and discover a healthier, more purposeful path forward.",
   contacts: [
-  { name: "Justin Mata", phone: "504-539-1771" },
-  { name: "Storm Leigh", phone: "504-657-6618" },
-  ],
+  { name: "Justin Mata", title: "Co-Founder & Executive Director", phone: "504-539-1771" },
+  { name: "Storm Leigh", title: "Co-Founder & Executive Director", phone: "504-657-6618" },
+],
   email: "ConsecratedHands@Gmail.com",
   socials: [
     { label: "Facebook", href: "https://facebook.com", icon: "facebook" },

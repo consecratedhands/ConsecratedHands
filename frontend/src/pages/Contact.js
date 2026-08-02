@@ -45,6 +45,7 @@ export default function Contact() {
                       <Phone size={18} className="text-gold mt-1 shrink-0" />
                       <div>
                         <p className="text-ink font-medium">{c.name}</p>
+                    <p className="text-stone text-sm mb-1">{c.title}</p>
                         <a href={`tel:${c.phone.replace(/-/g, "")}`} className="text-stone hover:text-gold transition-colors">{c.phone}</a>
                       </div>
                     </div>
