@@ -19,6 +19,7 @@ const SOCIAL_ICON = { facebook: Facebook, instagram: Instagram, youtube: Youtube
 
 function useLenis() {
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
     const lenis = new Lenis({ duration: 1.1, smoothWheel: true });
     let raf;
     const loop = (t) => {
@@ -51,12 +52,12 @@ function Nav() {
     <header
       data-testid="site-header"
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        scrolled ? "glass border-b border-line/50 shadow-sm" : "bg-transparent"
+        (scrolled || open) ? "glass border-b border-line/50 shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-32 md:h-40">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-24 md:h-32">
         <Link to="/" data-testid="logo-link" className="flex items-center group">
-          <img src={ORG.logo} alt={`${ORG.name} logo`} className="h-28 md:h-36 w-auto object-contain" />
+          <img src={ORG.logo} alt={`${ORG.name} logo`} className="h-20 md:h-28 w-auto object-contain" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7">
@@ -85,9 +86,11 @@ function Nav() {
 
         <button
           data-testid="mobile-menu-toggle"
-          className="lg:hidden text-ink"
+          className="lg:hidden text-ink p-2 rounded-full hover:bg-white/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
           onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
         >
           {open ? <X size={26} /> : <Menu size={26} />}
         </button>
@@ -96,14 +99,15 @@ function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:hidden glass border-b border-line overflow-hidden"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            id="mobile-menu"
+            className="lg:hidden fixed inset-x-0 top-24 bottom-0 bg-cream/98 backdrop-blur-xl border-t border-line overflow-y-auto shadow-xl"
             data-testid="mobile-menu"
           >
-            <div className="px-6 py-6 flex flex-col gap-5">
+            <div className="px-6 py-10 flex flex-col gap-6">
               {NAV.map((n) => (
                 <NavLink key={n.to} to={n.to} className="text-lg font-semibold text-ink">
                   {n.label}
@@ -126,7 +130,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <div className="md:col-span-5">
-            <img src={ORG.logo} alt={ORG.name} className="h-40 md:h-44 w-auto object-contain mb-6 brightness-110" />
+            <img src={ORG.logo} alt={ORG.name} className="h-32 md:h-40 w-auto object-contain mb-6 brightness-110" />
             <h3 className="font-heading text-2xl md:text-3xl font-normal leading-tight text-cream max-w-sm">
               Guiding young people toward a purposeful path in Christ.
             </h3>
@@ -167,19 +171,20 @@ function Footer() {
             <ul className="space-y-3 text-cream/70">
               {ORG.contacts.map((c) => (
                 <li key={c.name}>
-                  {c.name}<br />
+                  <span className="text-cream font-medium">{c.name}</span><br />
+                  <span className="text-sm text-cream/50">{c.title}</span><br />
                   <a href={`tel:${c.phone.replace(/-/g, "")}`} className="hover:text-gold transition-colors">{c.phone}</a>
                 </li>
               ))}
               <li>
-                <a href={`mailto:${ORG.email}`} className="hover:text-gold transition-colors whitespace-nowrap">{ORG.email}</a>
+                <a href={`mailto:${ORG.email}`} className="hover:text-gold transition-colors break-all">{ORG.email}</a>
               </li>
             </ul>
           </div>
         </div>
         <div className="border-t border-cream/15 mt-16 pt-8 flex flex-col md:flex-row justify-between gap-4 text-sm text-cream/50">
           <p>© {new Date().getFullYear()} {ORG.name}. A Christ-centered nonprofit.</p>
-          <p>{ORG.ein} · Donations may be tax-deductible.</p>
+          <p>EIN {ORG.ein} · {ORG.taxStatus}. Donations may be tax-deductible as allowed by law.</p>
         </div>
       </div>
     </footer>
@@ -194,7 +199,7 @@ function FloatingDonate() {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 1.2, duration: 0.6 }}
-      className="fixed bottom-6 right-6 z-40"
+      className="hidden md:block fixed bottom-6 right-6 z-40"
     >
       <Link
         to="/donate"
@@ -214,9 +219,10 @@ export default function Layout({ children }) {
     window.scrollTo(0, 0);
   }, [loc.pathname]);
   return (
-    <div className="min-h-screen flex flex-col bg-cream">
+    <div className="min-h-[100svh] flex flex-col bg-cream">
+      <a href="#main-content" className="skip-link">Skip to main content</a>
       <Nav />
-      <main className="flex-1">{children}</main>
+      <main id="main-content" className="flex-1">{children}</main>
       <Footer />
       <FloatingDonate />
     </div>

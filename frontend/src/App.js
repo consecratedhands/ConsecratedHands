@@ -11,6 +11,7 @@ import Donate from "./pages/Donate";
 import Prayer from "./pages/Prayer";
 import Contact from "./pages/Contact";
 import DonationSuccess from "./pages/DonationSuccess";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -26,8 +27,10 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/donation/success" element={<DonationSuccess />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
+
       <Toaster position="top-center" richColors />
     </BrowserRouter>
   );

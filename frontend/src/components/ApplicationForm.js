@@ -2,8 +2,10 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import { ArrowRight, Loader2 } from "lucide-react";
+import { ORG } from "../lib/content";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API_BASE = (process.env.REACT_APP_BACKEND_URL || "").replace(/\/$/, "");
+const API = API_BASE ? `${API_BASE}/api` : "";
 
 const ALL_INTERESTS = [
   { key: "volunteer", label: "Volunteer" },
@@ -36,6 +38,26 @@ export default function ApplicationForm({
       toast.error("Please fill in your name, email, and message.");
       return;
     }
+    if (!API) {
+      const selectedInterest =
+        ALL_INTERESTS.find((item) => item.key === form.interest)?.label || form.interest;
+
+      const subject = `${selectedInterest} inquiry from ${form.name}`;
+      const body = [
+        `Name: ${form.name}`,
+        `Email: ${form.email}`,
+        `Phone: ${form.phone || "Not provided"}`,
+        `Interest: ${selectedInterest}`,
+        "",
+        form.message,
+      ].join("\n");
+
+      toast.success("Your email app is opening so you can send your message.");
+      window.location.href =
+        `mailto:${ORG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return;
+    }
+
     setLoading(true);
     try {
       const { data } = await axios.post(`${API}/contact`, form);

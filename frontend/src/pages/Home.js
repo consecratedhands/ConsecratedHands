@@ -14,14 +14,14 @@ function Hero() {
   const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.2]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
+    <section ref={ref} className="relative min-h-[100svh] flex items-center overflow-hidden">
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0">
         <img src={HERO_BG} alt="A smiling child holding his Bible at a Consecrated Hands event" className="w-full h-full object-cover object-[50%_22%]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/60 to-cream/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/85 md:via-cream/60 to-cream/35 md:to-cream/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-cream/50 to-transparent" />
       </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-28">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-24 md:pt-32">
         <div className="max-w-3xl">
           <motion.p
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 1 }}

@@ -4,8 +4,10 @@ import { toast } from "sonner";
 import { HandHeart, Loader2, Check } from "lucide-react";
 import Seo from "../components/Seo";
 import { Reveal, MaskedLines } from "../components/Reveal";
+import { ORG } from "../lib/content";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API_BASE = (process.env.REACT_APP_BACKEND_URL || "").replace(/\/$/, "");
+const API = API_BASE ? `${API_BASE}/api` : "";
 
 const inputCls =
   "w-full bg-transparent border-b border-line py-4 text-ink placeholder:text-stone/50 focus:outline-none focus:border-gold transition-colors duration-300";
@@ -24,6 +26,22 @@ export default function Prayer() {
       toast.error("Please share your prayer request.");
       return;
     }
+    if (!API) {
+      const subject = "Prayer request submitted through ConsecratedHands.com";
+      const body = [
+        `Name: ${form.name || "Anonymous"}`,
+        `Email: ${form.email || "Not provided"}`,
+        `May be shared anonymously: ${form.is_public ? "Yes" : "No"}`,
+        "",
+        form.request,
+      ].join("\n");
+
+      toast.success("Your email app is opening so you can send the prayer request.");
+      window.location.href =
+        `mailto:${ORG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      return;
+    }
+
     setLoading(true);
     try {
       const { data } = await axios.post(`${API}/prayer`, form);

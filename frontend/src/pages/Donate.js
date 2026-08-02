@@ -5,8 +5,10 @@ import { toast } from "sonner";
 import { Lock, Heart, Loader2, ShieldCheck } from "lucide-react";
 import Seo from "../components/Seo";
 import { Reveal, MaskedLines } from "../components/Reveal";
+import { ORG } from "../lib/content";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API_BASE = (process.env.REACT_APP_BACKEND_URL || "").replace(/\/$/, "");
+const API = API_BASE ? `${API_BASE}/api` : "";
 const SUGGESTED = [25, 50, 100, 250, 500, 1000];
 
 export default function Donate() {
@@ -24,6 +26,11 @@ export default function Donate() {
   const chosenAmount = custom ? parseFloat(custom) : amount;
 
   const donate = async () => {
+    if (ORG.donationUrl) {
+      window.location.assign(ORG.donationUrl);
+      return;
+    }
+
     if (!donor.name || !donor.email) {
       toast.error("Please enter your name and email.");
       return;
@@ -32,6 +39,11 @@ export default function Donate() {
       toast.error("Please choose a donation amount of at least $1.");
       return;
     }
+    if (!API) {
+      toast.error(`Online giving is being connected. Please contact us at ${ORG.email}.`);
+      return;
+    }
+
     setLoading(true);
     try {
       const { data } = await axios.post(`${API}/donations/checkout`, {
@@ -146,9 +158,19 @@ export default function Donate() {
                 {loading ? <><Loader2 size={18} className="animate-spin" /> Redirecting to secure checkout…</> : <><Heart size={18} /> Give {chosenAmount ? `$${chosenAmount}` : ""} {frequency === "monthly" ? "monthly" : "now"}</>}
               </button>
 
-              <div className="flex items-center justify-center gap-2 mt-5 text-sm text-stone">
-                <Lock size={14} /> Secure payment processed by Stripe
-              </div>
+              {ORG.donationUrl || API ? (
+                <div className="flex items-center justify-center gap-2 mt-5 text-sm text-stone">
+                  <Lock size={14} /> Secure payment processed by Stripe
+                </div>
+              ) : (
+                <div className="mt-5 rounded-2xl bg-sky-soft border border-line px-5 py-4 text-center text-sm text-stone">
+                  Online giving is currently being connected. Please contact{" "}
+                  <a href={`mailto:${ORG.email}`} className="text-gold font-medium hover:underline">
+                    {ORG.email}
+                  </a>{" "}
+                  for giving information.
+                </div>
+              )}
             </div>
           </Reveal>
 

@@ -1,8 +1,10 @@
 // Central content file — edit copy here to update the site easily.
 export const ORG = {
   name: "Consecrated Hands",
-  logo: "https://customer-assets-m6fa6gv7.emergentagent.net/job_purposeful-youth/artifacts/3fe6fjka_EAB2D691-1B93-4C4A-9717-DB5ECD85266D.PNG",
-  ein: "Pending 501(c)(3) status",
+  logo: "/img/logo.png",
+  ein: "33-4903145",
+  taxStatus: "Federally recognized 501(c)(3) public charity",
+  donationUrl: process.env.REACT_APP_STRIPE_PAYMENT_LINK || "",
   mission:
     "Consecrated Hands is a Christ-centered mentorship program that guides young people spiritually, educationally, and financially as they overcome life's hardships. We help them grow closer to Christ, build confidence, develop practical life skills, and discover a healthier, more purposeful path forward.",
   contacts: [
@@ -10,11 +12,7 @@ export const ORG = {
   { name: "Storm Leigh", title: "Co-Founder & Executive Director", phone: "504-657-6618" },
 ],
   email: "ConsecratedHands@Gmail.com",
-  socials: [
-    { label: "Facebook", href: "https://facebook.com", icon: "facebook" },
-    { label: "Instagram", href: "https://instagram.com", icon: "instagram" },
-    { label: "YouTube", href: "https://youtube.com", icon: "youtube" },
-  ],
+  socials: [],
 };
 
 // The Truth message — core to the ministry's voice.
@@ -68,39 +66,11 @@ export const VALUES = [
 ];
 
 // Animated impact counters
-export const IMPACT = [
-  { value: 250, suffix: "+", label: "Youth Mentored" },
-  { value: 4800, suffix: "+", label: "Volunteer Hours" },
-  { value: 120, suffix: "+", label: "Families Served" },
-  { value: 36, suffix: "", label: "Community Events" },
-];
+export const IMPACT = [];
 
-export const TESTIMONIALS = [
-  {
-    quote:
-      "Consecrated Hands didn't just help me get my grades up — they helped me believe I was worth something. For the first time, I felt seen.",
-    name: "Marcus",
-    role: "Mentee, age 16",
-  },
-  {
-    quote:
-      "As a mentor, I came to give. I left every week having received far more. Watching these kids discover their worth in Christ changes you.",
-    name: "Danielle",
-    role: "Volunteer Mentor",
-  },
-  {
-    quote:
-      "They walked with our whole family. The finance and faith guidance gave my son a foundation I never had growing up.",
-    name: "Teresa",
-    role: "Parent",
-  },
-];
+export const TESTIMONIALS = [];
 
-export const EVENTS = [
-  { date: "Aug 01", title: "Back to School Drive", location: "Zemurray Park, Hammond, LA", tag: "Family" },
-  { date: "Nov 22", title: "Thanksgiving Drive", location: "New Orleans, LA", tag: "Family" },
-  { date: "Dec 20", title: "Christmas Giveaway", location: "New Orleans, LA", tag: "Future" },
-];
+export const EVENTS = [];
 
 export const FAQ = [
   {
@@ -109,7 +79,7 @@ export const FAQ = [
   },
   {
     q: "Is my donation tax-deductible?",
-    a: "Consecrated Hands is a Christ-centered 501(c)(3) nonprofit. Contributions may be tax-deductible to the fullest extent allowed by law, and a receipt is emailed to you upon completion of your gift.",
+    a: "Consecrated Hands is a Christ-centered 501(c)(3) nonprofit. Contributions may be tax-deductible to the fullest extent allowed by law, and your payment processor will provide a receipt when online giving is enabled.",
   },
   {
     q: "How do I become a mentor?",
