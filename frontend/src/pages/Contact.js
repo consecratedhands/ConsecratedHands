@@ -53,7 +53,7 @@ export default function Contact() {
                     <Mail size={18} className="text-gold mt-1 shrink-0" />
                     <div>
                       <p className="text-ink font-medium">Email</p>
-                      <a href={`mailto:${ORG.email}`} className="text-stone hover:text-gold transition-colors break-all">{ORG.email}</a>
+                      <a href={`mailto:${ORG.email}`} className="text-stone hover:text-gold transition-colors text-sm whitespace-nowrap">{ORG.email}</a>
                     </div>
                   </div>
                 </div>
