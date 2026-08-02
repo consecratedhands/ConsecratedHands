@@ -1,0 +1,157 @@
+{
+  "theme": "light",
+  "design_concept": {
+    "direction": "Awwwards Site-of-the-Day level quality, elegant, faith-centered minimalist direction",
+    "emotion": "Hopeful, trustworthy, premium, editorial grace",
+    "core_principles": [
+      "Typographic hierarchy over graphic decoration",
+      "Massive, deliberate whitespace (generous pacing)",
+      "Motion as storytelling (slow, purposeful reveals, no sudden flashes)",
+      "High-craft photography treatments (spotlights, cropped aspect ratios, tight clipping)",
+      "Real, authentic human connection over abstract digital art"
+    ]
+  },
+  "colors": {
+    "background": "#FDFBF7",
+    "surface": "#FFFFFF",
+    "primary": "#E6B038",
+    "secondary": "#9BB8D3",
+    "text_primary": "#1A1814",
+    "text_secondary": "#6B665E",
+    "border": "#EAE6DF",
+    "accent_dark": "#2C2A26",
+    "error": "#D9534F",
+    "success": "#4CAF50"
+  },
+  "typography": {
+    "heading_font": "Cormorant Garamond",
+    "body_font": "Manrope",
+    "accent_font": "Cormorant Garamond",
+    "import_url": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Manrope:wght@300;400;500;600&display=swap",
+    "h1": "text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-[1.1]",
+    "h2": "text-3xl md:text-4xl lg:text-5xl font-light tracking-tight leading-[1.2]",
+    "h3": "text-xl md:text-2xl lg:text-3xl font-normal leading-snug",
+    "body_large": "text-lg md:text-xl font-light leading-relaxed",
+    "body": "text-base font-normal leading-relaxed text-text_secondary",
+    "caption": "text-sm font-medium tracking-widest uppercase",
+    "manifesto_number": "text-4xl md:text-5xl font-light italic text-primary"
+  },
+  "layouts": {
+    "container": "max-w-7xl mx-auto px-6 md:px-12",
+    "spacing": {
+      "section_y": "py-24 md:py-32 lg:py-40",
+      "component_gap": "gap-12 md:gap-16 lg:gap-24"
+    },
+    "grid_bento": "grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8",
+    "asymmetry": "Use grid columns spanning irregularly (e.g., col-span-5 and col-span-6 with an empty col-span-1 between) to create tension and editorial flow."
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-white px-8 py-4 rounded-none font-medium tracking-wide hover:bg-accent_dark transition-colors duration-500",
+      "secondary": "bg-transparent text-text_primary px-8 py-4 border border-border hover:border-text_primary transition-colors duration-500",
+      "donate_cta": "fixed bottom-6 right-6 z-50 bg-primary text-white px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+    },
+    "cards": {
+      "standard": "bg-surface p-8 md:p-12 border border-border shadow-sm hover:shadow-md transition-shadow duration-500",
+      "image_treatment": "overflow-hidden aspect-[4/5] object-cover filter contrast-[1.05] brightness-[0.95]"
+    },
+    "forms": {
+      "input": "w-full bg-transparent border-b border-border py-4 text-text_primary placeholder:text-text_secondary/50 focus:outline-none focus:border-primary transition-colors duration-300 rounded-none",
+      "label": "block text-sm uppercase tracking-widest text-text_secondary mb-2"
+    },
+    "navigation": {
+      "style": "fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border/50",
+      "links": "text-sm font-medium tracking-wide hover:text-primary transition-colors"
+    }
+  },
+  "motion": {
+    "libraries_required": ["framer-motion", "lucide-react", "react-fast-marquee"],
+    "hero_reveal": "Masked line-by-line. Use Framer Motion 'initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], staggerChildren: 0.1 }}' wrapping text lines in 'overflow-hidden'.",
+    "scroll_reveal": "Framer Motion 'whileInView={{ y: 0, opacity: 1 }} initial={{ y: 40, opacity: 0 }} viewport={{ once: true, margin: \"-100px\" }} transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}'.",
+    "parallax_image": "Subtle scale-down on scroll using useScroll and useTransform to go from scale 1.1 to 1.0 inside an overflow-hidden wrapper.",
+    "marquee": "Slow, purposeful editorial marquee. Use react-fast-marquee. Font: Cormorant Garamond italic. Speed: 30."
+  },
+  "media": {
+    "images": {
+      "hero_faith": {
+        "url": "https://images.unsplash.com/photo-1489568685157-ec3bcd451894",
+        "description": "Shallow focus photography of person raising hand in sunlight (Hope/Faith context)"
+      },
+      "parallax_abstract": {
+        "url": "https://images.unsplash.com/photo-1517373062-f3b2f3f98ada",
+        "description": "Stained glass sunlight hitting floor in a church. Perfect for 3D/Parallax section background."
+      },
+      "mentorship": {
+        "url": "https://images.unsplash.com/photo-1571260899304-425eee4c7efc",
+        "description": "Students with mentor"
+      },
+      "youth_studying": {
+        "url": "https://images.unsplash.com/photo-1514369118554-e20d93546b30",
+        "description": "Youth studying/writing brightly lit"
+      },
+      "youth_portrait": {
+        "url": "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6",
+        "description": "Smiling young man outside - confidence building"
+      },
+      "volunteering": {
+        "url": "https://images.unsplash.com/photo-1628717341663-0007b0ee2597",
+        "description": "Volunteers packing/serving community"
+      }
+    },
+    "treatment": "Images should never be bare. Use a subtle inner shadow or a thin 1px border. Utilize arched masks (rounded-t-full) for portraits to feel ecclesiastical/editorial."
+  },
+  "pages": {
+    "home": {
+      "sections": [
+        "Kinetic Hero: Split text/image with line-by-line reveal.",
+        "Mission Intro: Massive typography statement.",
+        "Programs Grid: Bento style linking to spiritual, educational, financial growth.",
+        "Impact & Trust: Minimalist stat counters and partner quotes.",
+        "Manifesto Marquee: Slow scrolling values.",
+        "Donate CTA: High contrast section."
+      ]
+    },
+    "about": {
+      "sections": [
+        "Parallax Hero: Stained glass light abstract background.",
+        "Numbered Manifesto Chapters: Sticky scrolling index (01. Faith, 02. Education) on left, content scrolling right.",
+        "501(c)(3) Trust details."
+      ]
+    },
+    "programs": {
+      "sections": [
+        "Editorial List: Alternating left/right image and text blocks with heavy scroll-driven entrance animations.",
+        "Covering: Spiritual growth, confidence, life skills, education, financial mentorship."
+      ]
+    },
+    "get_involved": {
+      "sections": [
+        "Clean Editorial Form: Inputs as underlined fields only.",
+        "Tabs/Select for Volunteer vs Mentor vs Partner."
+      ]
+    },
+    "donation": {
+      "sections": [
+        "Isolated Checkout Experience: Minimalist, distraction-free.",
+        "Toggle: One-time / Recurring.",
+        "Suggested Amounts: Pill shape buttons.",
+        "Tax Deductible Messaging prominently displayed."
+      ]
+    }
+  },
+  "instructions_to_main_agent": {
+    "setup": "Install necessary packages: yarn add framer-motion lucide-react react-fast-marquee.",
+    "css_setup": "Import fonts in index.css. Extend Tailwind config with custom colors (primary, secondary, text_primary, text_secondary, background, surface, border) and fonts (heading: Cormorant Garamond, body: Manrope).",
+    "structure": "Create purely functional Shadcn/HTML hybrids. DO NOT use pre-built Card components if they restrict the editorial whitespace. Build custom div structures.",
+    "testing": "All interactive elements, buttons, and form fields MUST include data-testid attributes."
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "NEVER use generic centered layouts. Prioritize left-aligned typography with strong grid asymmetry.",
+    "DO NOT use generic gradient backgrounds. Stick to the solid colors provided to maintain an elegant, high-end editorial feel.",
+    "Ensure all text over images or semi-transparent backgrounds meets APCA/WCAG contrast ratios. No totally transparent dropdowns/headers.",
+    "Apply framer-motion staggered reveals to text blocks and lists.",
+    "Add 'transition-colors duration-300' or similar to all hover states.",
+    "Use 2-3x more spacing (py-24 or py-32) than typical 'app' designs. Let the content breathe like a physical magazine.",
+    "Always use the provided image URLs. Do NOT use placeholder text or dummy image services."
+  ]
+}
