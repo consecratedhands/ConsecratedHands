@@ -37,3 +37,19 @@ accessible, easy to update, basic SEO.
 - P1: Activate PayPal once user provides Client ID + Secret.
 - P1: Admin view for inquiries + donation records.
 - P2: Impact stories / testimonials, newsletter signup, blog/updates.
+
+## Enhancement (2026-08-02) — Premium Redesign v2
+- Fonts switched to Playfair Display (headings) + Inter (body). Added Dancing Script (unused fallback).
+- Official logo added to header + footer (gold Bible/cross script).
+- Restructured to 8 pages: Home, About, Our Mission (/mission), Mentorship (/mentorship), Volunteer (/volunteer), Donate, Prayer (/prayer), Contact.
+- Replaced "6 ways" with THE 5 PILLARS: Faith, Family, Finance, Fitness, Future (content.js PILLARS).
+- Added the Truth message across Home/Mission/Mentorship: "We show them the lies (they aren't enough) and tell them the Truth — Jesus' truth."
+- Home additions: full-width sunlight hero w/ parallax + glass CTA, Truth section, 5 Pillars grid, animated impact counters (Youth Mentored 250+, Volunteer Hours 4800+, Families Served 120+, Community Events 36), testimonials, upcoming events, final CTA. Glassmorphism, rounded-3xl cards, light glows.
+- New backend endpoint: POST /api/prayer (saves to Mongo `prayers` + emails org). Contact interests extended with `mentee`.
+- New components: Counter.js (animated), ApplicationForm.js (reusable), updated Layout.js (logo/nav/social footer).
+- Testing: iteration_1.json — backend 15/15, frontend 100%, 0 console errors, no bugs.
+
+## Backlog (updated)
+- P1: Activate PayPal (needs user's PayPal Client ID + Secret).
+- P1: Admin dashboard for inquiries / donations / prayer requests.
+- P2: Public prayer wall (is_public prayers), real event calendar, blog/updates.
