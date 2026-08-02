@@ -87,11 +87,11 @@ function MissionStatement() {
 function TruthSection() {
   return (
     <section className="relative py-24 md:py-36 bg-charcoal text-cream overflow-hidden">
-      <div className="absolute inset-0 opacity-20">
-        <img src={PILLARS[0].image} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-charcoal/70" />
+      <div className="absolute inset-0">
+        <img src={PILLARS[0].image} alt="Faith cards handed out in backpacks" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-charcoal/30" />
       </div>
-      <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 text-center flex flex-col items-center">
+      <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 text-center flex flex-col items-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)]">
         <Reveal>
           <p className="text-xs uppercase tracking-[0.3em] text-gold mb-6">{TRUTH.eyebrow}</p>
           <h2 className="font-heading text-4xl md:text-6xl font-medium leading-[1.08] text-cream text-balance">
