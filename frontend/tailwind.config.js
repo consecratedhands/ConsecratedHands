@@ -13,6 +13,16 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)'
       },
       colors: {
+        ink: '#1A1814',
+        cream: '#FDFBF7',
+        surface: '#FFFFFF',
+        gold: '#E6B038',
+        'gold-soft': '#F4E3B8',
+        sky: '#9BB8D3',
+        'sky-soft': '#E4EDF5',
+        stone: '#6B665E',
+        line: '#EAE6DF',
+        charcoal: '#2C2A26',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -75,6 +85,11 @@ module.exports = {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out'
+      },
+      fontFamily: {
+        heading: ['"Cormorant Garamond"', 'serif'],
+        body: ['Manrope', 'sans-serif'],
+        script: ['"Dancing Script"', 'cursive'],
       }
     }
   },
