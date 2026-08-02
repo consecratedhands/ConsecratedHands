@@ -58,13 +58,13 @@ export default function Donate() {
       <section className="pt-40 pb-12 md:pt-48">
         <div className="max-w-4xl mx-auto px-6 md:px-12 text-center flex flex-col items-center">
           <p className="text-xs uppercase tracking-[0.3em] text-gold mb-6">Give with purpose</p>
-          <h1 className="font-heading text-5xl md:text-7xl font-light tracking-tight leading-[1.02] text-ink">
+          <h1 className="font-heading text-5xl md:text-7xl font-medium tracking-tight leading-[1.02] text-ink">
             <MaskedLines lines={["Plant hope in", <span key="2">a young <span className="italic text-gold">life.</span></span>]} className="inline-block" />
           </h1>
           <Reveal delay={0.4}>
             <p className="mt-8 text-lg font-light text-stone max-w-xl">
-              Your gift funds Christ-centered mentorship, guidance, and practical support for the youth
-              who need it most.
+              Your gift supports mentorship, educational resources, community outreach, and faith-based
+              programs — directly helping the youth and families who need it most.
             </p>
           </Reveal>
         </div>
@@ -73,7 +73,7 @@ export default function Donate() {
       <section className="pb-28">
         <div className="max-w-3xl mx-auto px-6 md:px-12">
           <Reveal>
-            <div className="bg-surface border border-line p-8 md:p-12" data-testid="donation-card">
+            <div className="bg-surface border border-line rounded-3xl shadow-sm p-8 md:p-12" data-testid="donation-card">
               {/* Frequency toggle */}
               <div className="flex bg-cream border border-line rounded-full p-1 w-full max-w-xs mx-auto mb-10">
                 {[
@@ -141,7 +141,7 @@ export default function Donate() {
                 onClick={donate}
                 disabled={loading}
                 data-testid="donate-submit"
-                className="w-full bg-gold text-white py-5 font-medium tracking-wide hover:bg-charcoal transition-colors duration-500 flex items-center justify-center gap-2 disabled:opacity-60"
+                className="w-full bg-gold text-white py-5 rounded-full font-semibold tracking-wide hover:bg-charcoal transition-colors duration-500 flex items-center justify-center gap-2 disabled:opacity-60"
               >
                 {loading ? <><Loader2 size={18} className="animate-spin" /> Redirecting to secure checkout…</> : <><Heart size={18} /> Give {chosenAmount ? `$${chosenAmount}` : ""} {frequency === "monthly" ? "monthly" : "now"}</>}
               </button>
@@ -154,7 +154,7 @@ export default function Donate() {
 
           {/* Tax messaging */}
           <Reveal delay={0.1}>
-            <div className="mt-8 bg-sky-soft border border-line p-8 flex gap-4">
+            <div className="mt-8 bg-sky-soft border border-line rounded-3xl p-8 flex gap-4">
               <ShieldCheck className="text-gold shrink-0 mt-1" size={24} />
               <p className="text-sm text-ink/80 leading-relaxed">
                 <strong className="text-ink">Tax-deductible.</strong> Consecrated Hands is a Christ-centered

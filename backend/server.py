@@ -51,8 +51,16 @@ class ContactRequest(BaseModel):
     name: str
     email: EmailStr
     phone: Optional[str] = ""
-    interest: Literal["volunteer", "mentor", "partner", "general"] = "general"
+    interest: Literal["volunteer", "mentor", "mentee", "partner", "general"] = "general"
     message: str
+
+
+class PrayerRequest(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    name: Optional[str] = ""
+    email: Optional[str] = ""
+    request: str
+    is_public: bool = False
 
 
 # ---------------- Email helper ----------------
@@ -215,7 +223,7 @@ async def submit_contact(req: ContactRequest):
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
     await db.inquiries.insert_one(doc)
-    labels = {"volunteer": "Volunteer", "mentor": "Mentor", "partner": "Partner", "general": "General Inquiry"}
+    labels = {"volunteer": "Volunteer", "mentor": "Mentor", "mentee": "Mentorship Applicant", "partner": "Partner", "general": "General Inquiry"}
     await send_email(
         ORG_EMAIL,
         f"New {labels[req.interest]} inquiry from {req.name}",
@@ -230,6 +238,31 @@ async def submit_contact(req: ContactRequest):
         reply_to=req.email,
     )
     return {"status": "success", "message": "Thank you — we'll be in touch soon."}
+
+
+@api_router.post("/prayer")
+async def submit_prayer(req: PrayerRequest):
+    doc = {
+        "id": str(uuid.uuid4()),
+        "name": req.name or "Anonymous",
+        "email": req.email,
+        "request": req.request,
+        "is_public": req.is_public,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+    }
+    await db.prayers.insert_one(doc)
+    await send_email(
+        ORG_EMAIL,
+        f"New prayer request from {doc['name']}",
+        f"""<table width="100%" cellpadding="0" cellspacing="0"><tr><td style="font-family:Arial,sans-serif;color:#1A1814;padding:24px">
+        <h3 style="color:#E6B038">A new prayer request has come in</h3>
+        <p><strong>From:</strong> {doc['name']}{f" ({req.email})" if req.email else ""}<br/>
+        <strong>Share publicly:</strong> {"Yes" if req.is_public else "No"}</p>
+        <p style="white-space:pre-wrap">{req.request}</p>
+        </td></tr></table>""",
+        reply_to=req.email or None,
+    )
+    return {"status": "success", "message": "Thank you — our team will be praying for you."}
 
 
 app.include_router(api_router)

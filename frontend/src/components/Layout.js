@@ -2,15 +2,20 @@ import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Lenis from "lenis";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Heart } from "lucide-react";
+import { Menu, X, Heart, Facebook, Instagram, Youtube } from "lucide-react";
 import { ORG } from "../lib/content";
 
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/programs", label: "Programs" },
-  { to: "/get-involved", label: "Get Involved" },
+  { to: "/mission", label: "Our Mission" },
+  { to: "/mentorship", label: "Mentorship" },
+  { to: "/volunteer", label: "Volunteer" },
+  { to: "/prayer", label: "Prayer" },
+  { to: "/contact", label: "Contact" },
 ];
+
+const SOCIAL_ICON = { facebook: Facebook, instagram: Instagram, youtube: Youtube };
 
 function useLenis() {
   useEffect(() => {
@@ -46,16 +51,15 @@ function Nav() {
     <header
       data-testid="site-header"
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        scrolled ? "bg-cream/85 backdrop-blur-md border-b border-line/60" : "bg-transparent"
+        scrolled ? "glass border-b border-line/50 shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
-        <Link to="/" data-testid="logo-link" className="flex items-center gap-3 group">
-          <span className="w-9 h-9 rounded-full bg-gold flex items-center justify-center text-white text-lg font-heading italic">C</span>
-          <span className="font-script text-3xl tracking-tight leading-none text-ink">{ORG.name}</span>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20 md:h-24">
+        <Link to="/" data-testid="logo-link" className="flex items-center group">
+          <img src={ORG.logo} alt={`${ORG.name} logo`} className="h-14 md:h-16 w-auto object-contain" />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-10">
+        <nav className="hidden lg:flex items-center gap-7">
           {NAV.map((n) => (
             <NavLink
               key={n.to}
@@ -73,7 +77,7 @@ function Nav() {
           <Link
             to="/donate"
             data-testid="nav-donate-btn"
-            className="bg-gold text-white text-sm font-medium tracking-wide px-6 py-3 hover:bg-charcoal transition-colors duration-500"
+            className="bg-gold text-white text-sm font-semibold tracking-wide px-6 py-3 rounded-full hover:bg-charcoal transition-colors duration-500 shadow-sm"
           >
             Donate
           </Link>
@@ -81,7 +85,7 @@ function Nav() {
 
         <button
           data-testid="mobile-menu-toggle"
-          className="md:hidden text-ink"
+          className="lg:hidden text-ink"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -96,16 +100,16 @@ function Nav() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden bg-cream border-b border-line overflow-hidden"
+            className="lg:hidden glass border-b border-line overflow-hidden"
             data-testid="mobile-menu"
           >
             <div className="px-6 py-6 flex flex-col gap-5">
               {NAV.map((n) => (
-                <NavLink key={n.to} to={n.to} className="text-lg font-heading">
+                <NavLink key={n.to} to={n.to} className="text-lg font-heading text-ink">
                   {n.label}
                 </NavLink>
               ))}
-              <Link to="/donate" data-testid="mobile-donate-btn" className="bg-gold text-white text-center py-3 mt-2 font-medium">
+              <Link to="/donate" data-testid="mobile-donate-btn" className="bg-gold text-white text-center py-3 mt-2 font-semibold rounded-full">
                 Donate
               </Link>
             </div>
@@ -122,18 +126,31 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           <div className="md:col-span-5">
-            <h3 className="font-heading text-3xl md:text-4xl font-light leading-tight text-cream">
-              Guiding young people toward a purposeful path.
+            <img src={ORG.logo} alt={ORG.name} className="h-16 w-auto object-contain mb-6 brightness-110" />
+            <h3 className="font-heading text-2xl md:text-3xl font-normal leading-tight text-cream max-w-sm">
+              Guiding young people toward a purposeful path in Christ.
             </h3>
             <Link
               to="/donate"
               data-testid="footer-donate-btn"
-              className="inline-flex items-center gap-2 mt-8 bg-gold text-white px-7 py-3.5 hover:bg-cream hover:text-charcoal transition-colors duration-500"
+              className="inline-flex items-center gap-2 mt-8 bg-gold text-white px-7 py-3.5 rounded-full hover:bg-cream hover:text-charcoal transition-colors duration-500"
             >
               <Heart size={16} /> Support the mission
             </Link>
+            <div className="flex items-center gap-4 mt-8">
+              {ORG.socials.map((s) => {
+                const Icon = SOCIAL_ICON[s.icon];
+                return (
+                  <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+                     aria-label={s.label} data-testid={`social-${s.icon}`}
+                     className="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center text-cream/80 hover:bg-gold hover:border-gold hover:text-white transition-colors duration-400">
+                    <Icon size={17} />
+                  </a>
+                );
+              })}
+            </div>
           </div>
-          <div className="md:col-span-3 md:col-start-8">
+          <div className="md:col-span-3 md:col-start-7">
             <p className="text-xs uppercase tracking-widest text-gold mb-5">Explore</p>
             <ul className="space-y-3">
               {NAV.concat({ to: "/donate", label: "Donate" }).map((n) => (
@@ -145,7 +162,7 @@ function Footer() {
               ))}
             </ul>
           </div>
-          <div className="md:col-span-2">
+          <div className="md:col-span-3">
             <p className="text-xs uppercase tracking-widest text-gold mb-5">Contact</p>
             <ul className="space-y-3 text-cream/70">
               {ORG.contacts.map((c) => (
@@ -182,7 +199,7 @@ function FloatingDonate() {
       <Link
         to="/donate"
         data-testid="floating-donate-btn"
-        className="flex items-center gap-2 bg-gold text-white px-7 py-4 rounded-full font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+        className="flex items-center gap-2 bg-gold text-white px-7 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
       >
         <Heart size={18} /> Donate
       </Link>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Dancing+Script:wght@500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -36,12 +36,12 @@
         margin: 0;
         background-color: #FDFBF7;
         color: #1A1814;
-        font-family: 'Manrope', sans-serif;
+        font-family: 'Inter', sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
     h1, h2, h3, h4 {
-        font-family: 'Cormorant Garamond', serif;
+        font-family: 'Playfair Display', serif;
     }
     ::selection {
         background: #E6B038;
@@ -57,9 +57,28 @@
 
 /* Marquee font */
 .marquee-item {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-weight: 300;
+    font-weight: 400;
+}
+
+/* Glassmorphism */
+.glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.glass-dark {
+    background: rgba(44, 42, 38, 0.35);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Soft radial light glows */
+.light-glow {
+    background: radial-gradient(circle at 50% 0%, rgba(230, 176, 56, 0.12), transparent 60%);
 }
 
 /* Arched image mask */

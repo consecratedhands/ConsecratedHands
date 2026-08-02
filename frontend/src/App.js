@@ -4,9 +4,12 @@ import { Toaster } from "@/components/ui/sonner";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Programs from "./pages/Programs";
-import GetInvolved from "./pages/GetInvolved";
+import Mission from "./pages/Mission";
+import Mentorship from "./pages/Mentorship";
+import Volunteer from "./pages/Volunteer";
 import Donate from "./pages/Donate";
+import Prayer from "./pages/Prayer";
+import Contact from "./pages/Contact";
 import DonationSuccess from "./pages/DonationSuccess";
 
 function App() {
@@ -16,8 +19,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/programs" element={<Programs />} />
-          <Route path="/get-involved" element={<GetInvolved />} />
+          <Route path="/mission" element={<Mission />} />
+          <Route path="/mentorship" element={<Mentorship />} />
+          <Route path="/volunteer" element={<Volunteer />} />
+          <Route path="/prayer" element={<Prayer />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/donation/success" element={<DonationSuccess />} />
         </Routes>
