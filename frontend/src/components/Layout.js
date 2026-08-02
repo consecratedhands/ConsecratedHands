@@ -66,7 +66,7 @@ function Nav() {
               to={n.to}
               data-testid={`nav-${n.label.toLowerCase().replace(/\s/g, "-")}`}
               className={({ isActive }) =>
-                `text-sm font-medium tracking-wide transition-colors duration-300 ${
+                `text-sm font-semibold tracking-wide transition-colors duration-300 ${
                   isActive ? "text-gold" : "text-ink hover:text-gold"
                 }`
               }
@@ -105,7 +105,7 @@ function Nav() {
           >
             <div className="px-6 py-6 flex flex-col gap-5">
               {NAV.map((n) => (
-                <NavLink key={n.to} to={n.to} className="text-lg font-heading text-ink">
+                <NavLink key={n.to} to={n.to} className="text-lg font-semibold text-ink">
                   {n.label}
                 </NavLink>
               ))}

@@ -87,7 +87,7 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out'
       },
       fontFamily: {
-        heading: ['"Playfair Display"', 'serif'],
+        heading: ['"Cormorant Garamond"', 'serif'],
         body: ['Inter', 'sans-serif'],
         script: ['"Dancing Script"', 'cursive'],
       }
