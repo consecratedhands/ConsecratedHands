@@ -97,10 +97,9 @@ export const TESTIMONIALS = [
 ];
 
 export const EVENTS = [
-  { date: "May 18", title: "Youth Worship & Testimony Night", location: "New Orleans, LA", tag: "Faith" },
-  { date: "Jun 07", title: "Financial Freedom Workshop for Teens", location: "Community Center", tag: "Finance" },
-  { date: "Jun 21", title: "Family Cookout & Mentor Meetup", location: "City Park", tag: "Family" },
-  { date: "Jul 12", title: "Summer Purpose Retreat", location: "Camp Living Water", tag: "Future" },
+  { date: "Aug 01", title: "Back to School Drive", location: "New Orleans, LA", tag: "Family" },
+  { date: "Nov 22", title: "Thanksgiving Drive", location: "Community Center", tag: "Family" },
+  { date: "Dec 20", title: "Christmas Giveaway", location: "New Orleans, LA", tag: "Future" },
 ];
 
 export const FAQ = [
@@ -145,4 +144,6 @@ export const IMAGES = {
   youthStudying: "https://images.unsplash.com/photo-1514369118554-e20d93546b30",
   youthPortrait: "https://images.unsplash.com/photo-1522529599102-193c0d76b5b6",
   volunteering: "https://images.unsplash.com/photo-1628717341663-0007b0ee2597",
+  kidsSun: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9",
+  sportsMentor: "https://images.unsplash.com/photo-1526232761682-d26e03ac148e",
 };

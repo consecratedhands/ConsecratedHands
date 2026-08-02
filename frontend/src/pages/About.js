@@ -14,8 +14,8 @@ function AboutHero() {
   return (
     <section ref={ref} className="relative h-[80vh] min-h-[560px] flex items-center overflow-hidden">
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        <img src={IMAGES.stainedGlass} alt="Sunlight through stained glass" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-charcoal/55" />
+        <img src={IMAGES.kidsSun} alt="A joyful child smiling in the sunlight" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-charcoal/50" />
       </motion.div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
         <p className="text-xs uppercase tracking-[0.3em] text-gold-soft mb-6">About Consecrated Hands</p>

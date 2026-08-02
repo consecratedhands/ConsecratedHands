@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Cross, Compass, Users } from "lucide-react";
 import Seo from "../components/Seo";
 import { Reveal, MaskedLines } from "../components/Reveal";
-import { ORG, TRUTH, PILLARS, STAINED_GLASS } from "../lib/content";
+import { ORG, TRUTH, PILLARS, IMAGES } from "../lib/content";
 
 function Hero() {
   const ref = useRef(null);
@@ -14,8 +14,8 @@ function Hero() {
   return (
     <section ref={ref} className="relative h-[75vh] min-h-[520px] flex items-center overflow-hidden">
       <motion.div style={{ y, scale }} className="absolute inset-0">
-        <img src={STAINED_GLASS} alt="Sunlight through stained glass" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-charcoal/55" />
+        <img src={IMAGES.sportsMentor} alt="A mentor playing sports with kids on a field" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-charcoal/50" />
       </motion.div>
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
         <p className="text-xs uppercase tracking-[0.3em] text-gold-soft mb-6">Our Mission</p>

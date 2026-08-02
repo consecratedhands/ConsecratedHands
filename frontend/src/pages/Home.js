@@ -2,11 +2,10 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Marquee from "react-fast-marquee";
-import { ArrowUpRight, ArrowRight, Quote, Calendar, HandHeart } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Calendar, HandHeart } from "lucide-react";
 import Seo from "../components/Seo";
-import Counter from "../components/Counter";
 import { Reveal, MaskedLines } from "../components/Reveal";
-import { ORG, PILLARS, IMPACT, TESTIMONIALS, EVENTS, TRUTH, MANIFESTO, HERO_BG } from "../lib/content";
+import { ORG, PILLARS, EVENTS, TRUTH, MANIFESTO, HERO_BG } from "../lib/content";
 
 function Hero() {
   const ref = useRef(null);
@@ -143,62 +142,6 @@ function PillarsPreview() {
   );
 }
 
-function ImpactCounters() {
-  return (
-    <section className="py-24 md:py-32 bg-sky-soft/60">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4 text-center">Our Impact</p>
-          <h2 className="font-heading text-4xl md:text-5xl font-medium text-ink text-center mb-16">
-            Lives changed, by God’s grace.
-          </h2>
-        </Reveal>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {IMPACT.map((s, i) => (
-            <Reveal key={s.label} delay={i * 0.1}>
-              <div className="glass rounded-3xl p-8 md:p-10 text-center border border-white/70 shadow-sm">
-                <p className="font-heading text-5xl md:text-6xl text-gold font-medium">
-                  <Counter value={s.value} suffix={s.suffix} />
-                </p>
-                <p className="text-sm md:text-base text-ink/70 mt-3 leading-snug">{s.label}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Testimonials() {
-  return (
-    <section className="py-24 md:py-32 bg-cream">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <Reveal>
-          <p className="text-xs uppercase tracking-[0.3em] text-gold mb-4">Testimonials</p>
-          <h2 className="font-heading text-4xl md:text-5xl font-medium text-ink mb-16 max-w-2xl">
-            Stories of hope and transformation.
-          </h2>
-        </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {TESTIMONIALS.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.1}>
-              <div className="bg-surface rounded-3xl p-8 md:p-10 border border-line h-full flex flex-col shadow-sm hover:shadow-md transition-shadow duration-500">
-                <Quote className="text-gold mb-6" size={32} />
-                <p className="text-ink/80 leading-relaxed text-lg font-light flex-1">“{t.quote}”</p>
-                <div className="mt-8 pt-6 border-t border-line">
-                  <p className="font-heading text-xl text-ink">{t.name}</p>
-                  <p className="text-sm text-stone">{t.role}</p>
-                </div>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function UpcomingEvents() {
   return (
     <section className="py-24 md:py-32 bg-surface border-y border-line">
@@ -285,8 +228,6 @@ export default function Home() {
       <MissionStatement />
       <TruthSection />
       <PillarsPreview />
-      <ImpactCounters />
-      <Testimonials />
       <UpcomingEvents />
       <ManifestoMarquee />
       <FinalCTA />
