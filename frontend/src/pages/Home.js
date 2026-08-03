@@ -19,10 +19,10 @@ function Hero() {
         <img
   src={ORG.logo}
   alt="Consecrated Hands logo"
-  className="w-full h-full object-contain bg-cream p-8 md:p-20 opacity-35 md:opacity-45"
+  className="w-full h-full object-contain p-8 md:p-20 opacity-80 md:opacity-90"
 />
-        <div className="absolute inset-0 bg-gradient-to-r from-cream via-cream/85 md:via-cream/60 to-cream/35 md:to-cream/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-cream/50 to-transparent" />
+       <div className="absolute inset-0 bg-cream/10" />
+        
       </motion.div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-24 md:pt-32">
