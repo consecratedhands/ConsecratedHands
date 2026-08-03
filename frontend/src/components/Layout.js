@@ -70,9 +70,9 @@ function Nav() {
         (scrolled || open) ? "glass border-b border-line/50 shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-24 md:h-32">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-[7.5rem] md:h-40">
         <Link to="/" data-testid="logo-link" className="flex items-center group">
-          <img src={ORG.logo} alt={`${ORG.name} logo`} className="h-20 md:h-28 w-auto object-contain" />
+          <img src={ORG.logo} alt={`${ORG.name} logo`} className="h-[6.25rem] md:h-[8.75rem] w-auto object-contain" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7">
@@ -119,7 +119,7 @@ function Nav() {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             id="mobile-menu"
-            className="lg:hidden fixed inset-x-0 top-24 bottom-0 z-[60] bg-[#FDFBF7] border-t border-line overflow-y-auto overscroll-contain shadow-xl"
+            className="lg:hidden fixed inset-x-0 top-[7.5rem] bottom-0 z-[60] bg-[#FDFBF7] border-t border-line overflow-y-auto overscroll-contain shadow-xl"
             data-testid="mobile-menu"
           >
             <div className="min-h-full px-6 py-6 flex flex-col gap-1">
