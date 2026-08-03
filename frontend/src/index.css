@@ -149,3 +149,86 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* Consecrated Hands mobile polish */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1023px), (pointer: coarse) {
+  /*
+   * Backdrop blur looks beautiful on desktop but can cause lag,
+   * flashing and delayed scrolling on phones.
+   */
+  .glass,
+  .glass-dark {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .glass {
+    background: rgba(253, 251, 247, 0.96) !important;
+  }
+
+  .glass-dark {
+    background: rgba(44, 42, 38, 0.97) !important;
+  }
+
+  /*
+   * Keep transitions smooth but fast enough for mobile.
+   */
+  .duration-500,
+  .duration-700,
+  .duration-1000 {
+    transition-duration: 250ms !important;
+  }
+
+  /*
+   * Prevent large shadows from slowing down mobile scrolling.
+   */
+  .shadow-xl,
+  .shadow-2xl {
+    box-shadow: 0 12px 30px rgba(20, 18, 14, 0.12) !important;
+  }
+
+  /*
+   * Helps iPhone scrolling inside the hamburger menu.
+   */
+  #mobile-menu {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
