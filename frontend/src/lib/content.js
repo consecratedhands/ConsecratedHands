@@ -11,7 +11,7 @@ export const ORG = {
   { name: "Justin Mata", title: "Co-Founder & Executive Director", phone: "504-539-1771" },
   { name: "Storm Leigh", title: "Co-Founder & Executive Director", phone: "504-657-6618" },
 ],
-  email: "ConsecratedHands@Gmail.com",
+  email: "OurConsecratedHands@Gmail.com",
   socials: [],
 };
 
