@@ -25,7 +25,7 @@ function Hero() {
       </motion.div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-24 md:pt-32">
-        <div className="max-w-3xl">
+        <div className="max-w-3xl mt-40 md:mt-56">
           <motion.p
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 1 }}
             className="text-xs md:text-sm uppercase tracking-[0.3em] text-stone mb-6 flex items-center gap-3"
@@ -40,7 +40,7 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.9 }}
             className="mt-8 text-lg md:text-xl font-light text-ink/70 max-w-xl leading-relaxed"
           >
-            Mentoring young people spiritually, educationally, financially, and personally —
+            Mentoring the youth spiritually, academically, financially, and personally —
             and leading them closer to Christ.
           </motion.p>
           <motion.div
