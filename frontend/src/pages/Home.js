@@ -19,9 +19,8 @@ function Hero() {
         <img
   src={ORG.logo}
   alt="Consecrated Hands logo"
-  className="w-full h-full object-contain p-8 md:p-20 opacity-80 md:opacity-90"
+  className="w-full h-full object-contain p-6 md:p-16 opacity-100 contrast-125 drop-shadow-[0_3px_4px_rgba(0,0,0,0.35)]"
 />
-       <div className="absolute inset-0 bg-cream/10" />
         
       </motion.div>
 
