@@ -18,10 +18,10 @@ function Hero() {
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0">
         <img
   src={ORG.logo}
-  alt="Consecrated Hands logo"
-  className="w-full h-full object-contain p-6 md:p-16 opacity-100 contrast-125 drop-shadow-[0_3px_4px_rgba(0,0,0,0.35)]"
+  alt=""
+  aria-hidden="true"
+  className="absolute right-2 top-[38%] w-[72%] max-w-[34rem] h-auto object-contain opacity-35 md:opacity-45 pointer-events-none"
 />
-        
       </motion.div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-24 md:pt-32">
