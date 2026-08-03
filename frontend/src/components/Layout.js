@@ -48,6 +48,21 @@ function Nav() {
 
   useEffect(() => setOpen(false), [loc.pathname]);
 
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const bodyOverflow = document.body.style.overflow;
+    const htmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = bodyOverflow;
+      document.documentElement.style.overflow = htmlOverflow;
+    };
+  }, [open]);
+
   return (
     <header
       data-testid="site-header"
@@ -104,16 +119,31 @@ function Nav() {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             id="mobile-menu"
-            className="lg:hidden fixed inset-x-0 top-24 bottom-0 bg-cream/98 backdrop-blur-xl border-t border-line overflow-y-auto shadow-xl"
+            className="lg:hidden fixed inset-x-0 top-24 bottom-0 z-[60] bg-[#FDFBF7] border-t border-line overflow-y-auto overscroll-contain shadow-xl"
             data-testid="mobile-menu"
           >
-            <div className="px-6 py-10 flex flex-col gap-6">
+            <div className="min-h-full px-6 py-6 flex flex-col gap-1">
               {NAV.map((n) => (
-                <NavLink key={n.to} to={n.to} className="text-lg font-semibold text-ink">
+                <NavLink
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className={({ isActive }) =>
+                    `block py-4 border-b border-line text-xl font-semibold ${
+                      isActive ? "text-gold" : "text-ink hover:text-gold"
+                    }`
+                  }
+                >
                   {n.label}
                 </NavLink>
               ))}
-              <Link to="/donate" data-testid="mobile-donate-btn" className="bg-gold text-white text-center py-3 mt-2 font-semibold rounded-full">
+
+              <Link
+                to="/donate"
+                onClick={() => setOpen(false)}
+                data-testid="mobile-donate-btn"
+                className="bg-gold text-white text-center py-4 mt-6 font-semibold rounded-full shadow-md"
+              >
                 Donate
               </Link>
             </div>
