@@ -20,9 +20,11 @@ function Hero() {
   src={ORG.logo}
   alt=""
   aria-hidden="true"
-  className="absolute right-2 top-[38%] w-[72%] max-w-[34rem] h-auto object-contain opacity-35 md:opacity-45 pointer-events-none"
+  className="w-full h-full object-contain p-8 md:p-20 opacity-[0.15] pointer-events-none"
 />
-      </motion.div>
+    </motion.div>
+    <div className="absolute inset-0 bg-cream/5" />
+      
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-24 md:pt-32">
         <div className="max-w-3xl mt-40 md:mt-56">
