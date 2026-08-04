@@ -25,7 +25,13 @@ function Hero() {
   </p>
 </div>
 
-<div className="flex justify-center mb-8 md:mb-12">
+<div className="relative z-10 flex justify-center mt-8 mb-10 md:mt-10 md:mb-14">
+  <img
+    src={ORG.logo}
+    alt="Consecrated Hands logo"
+    className="block w-[88%] md:w-[68%] max-w-4xl h-auto object-contain opacity-100"
+  />
+</div>
   <img
     src={ORG.logo}
     alt="Consecrated Hands logo"
