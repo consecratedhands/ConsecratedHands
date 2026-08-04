@@ -15,18 +15,9 @@ function Hero() {
 
   return (
     <section ref={ref} className="relative min-h-[100svh] flex items-center overflow-hidden">
-      <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0">
-        <img
-  src={ORG.logo}
-  alt=""
-  aria-hidden="true"
-  className="w-full h-full object-contain p-8 md:p-20 opacity-[0.15] pointer-events-none"
-/>
-    </motion.div>
-    <div className="absolute inset-0 bg-cream/5" />
-      
+     
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-24 md:pt-32">
+<div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-24 md:pt-32">
         <div className="flex items-center gap-4 mb-6 md:mb-8">
   <span className="w-12 md:w-14 h-px bg-gold" />
   <p className="text-xs md:text-sm uppercase tracking-[0.28em] text-stone">
