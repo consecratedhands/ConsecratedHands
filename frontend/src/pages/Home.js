@@ -34,7 +34,7 @@ function Hero() {
           >
             <span className="w-10 h-px bg-gold inline-block" /> Christ-centered youth mentorship
           </motion.p>
-          <h1 className="font-heading font-medium tracking-tight leading-[1.02] text-5xl md:text-7xl lg:text-[5rem] text-ink">
+          <h1 className="mt-28 md:mt-36 font-heading font-medium tracking-tight leading-[1.02] text-5xl md:text-7xl lg:text-[5rem] text-ink">
             <MaskedLines lines={["Consecrated to", "guide the ones"]} />
             <MaskedLines lines={[<span key="k">who need it <span className="italic text-gold">most.</span></span>]} delay={0.24} />
           </h1>
