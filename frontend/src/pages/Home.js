@@ -27,13 +27,20 @@ function Hero() {
       
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-24 md:pt-32">
-        <div className="max-w-3xl mt-40 md:mt-56">
-          <motion.p
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 1 }}
-            className="text-xs md:text-sm uppercase tracking-[0.3em] text-stone mb-6 flex items-center gap-3"
-          >
-            <span className="w-10 h-px bg-gold inline-block" /> Christ-centered youth mentorship
-          </motion.p>
+        <div className="flex items-center gap-4 mb-6 md:mb-8">
+  <span className="w-12 md:w-14 h-px bg-gold" />
+  <p className="text-xs md:text-sm uppercase tracking-[0.28em] text-stone">
+    Christ-Centered Youth Mentorship
+  </p>
+</div>
+
+<div className="flex justify-center mb-8 md:mb-12">
+  <img
+    src={ORG.logo}
+    alt="Consecrated Hands logo"
+    className="w-[90%] md:w-[72%] max-w-5xl h-auto object-contain opacity-100"
+  />
+</div>
           <h1 className="mt-28 md:mt-36 font-heading font-medium tracking-tight leading-[1.02] text-5xl md:text-7xl lg:text-[5rem] text-ink">
             <MaskedLines lines={["Consecrated to", "guide the ones"]} />
             <MaskedLines lines={[<span key="k">who need it <span className="italic text-gold">most.</span></span>]} delay={0.24} />
