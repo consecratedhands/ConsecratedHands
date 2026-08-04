@@ -9,57 +9,88 @@ import { ORG, PILLARS, EVENTS, TRUTH, MANIFESTO, HERO_BG } from "../lib/content"
 
 function Hero() {
   const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.08, 1.2]);
 
   return (
-    <section ref={ref} className="relative min-h-[100svh] flex items-center overflow-hidden">
-     
+    <section
+      ref={ref}
+      className="relative overflow-hidden bg-cream"
+    >
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-40 md:pt-48 pb-20 md:pb-28">
+        <div className="max-w-5xl">
 
-<div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full pt-24 md:pt-32">
-        <div className="flex items-center gap-4 mb-6 md:mb-8">
-  <span className="w-12 md:w-14 h-px bg-gold" />
-  <p className="text-xs md:text-sm uppercase tracking-[0.28em] text-stone">
-    Christ-Centered Youth Mentorship
-  </p>
-</div>
-
-<div className="relative z-10 flex justify-center mt-8 mb-10 md:mt-10 md:mb-14">
-  <img
-    src={ORG.logo}
-    alt="Consecrated Hands logo"
-    className="block w-[88%] md:w-[68%] max-w-4xl h-auto object-contain opacity-100"
-  />
-</div>
-  <img
-    src={ORG.logo}
-    alt="Consecrated Hands logo"
-    className="w-[90%] md:w-[72%] max-w-5xl h-auto object-contain opacity-100"
-  />
-</div>
-          <h1 className="mt-28 md:mt-36 font-heading font-medium tracking-tight leading-[1.02] text-5xl md:text-7xl lg:text-[5rem] text-ink">
-            <MaskedLines lines={["Consecrated to", "guide the ones"]} />
-            <MaskedLines lines={[<span key="k">who need it <span className="italic text-gold">most.</span></span>]} delay={0.24} />
-          </h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 0.9 }}
-            className="mt-8 text-lg md:text-xl font-light text-ink/70 max-w-xl leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-xs md:text-sm uppercase tracking-[0.3em] text-stone flex items-center gap-3"
           >
-            Mentoring the youth spiritually, academically, financially, and personally —
-            and leading them closer to Christ.
+            <span className="w-10 md:w-14 h-px bg-gold inline-block shrink-0" />
+            Christ-centered youth mentorship
           </motion.p>
+
           <motion.div
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.9 }}
-            className="mt-10 flex flex-wrap gap-4"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.8 }}
+            className="flex justify-center my-10 md:my-14"
           >
-            <Link to="/donate" data-testid="hero-donate-btn" className="group bg-gold text-white px-8 py-4 rounded-full font-semibold tracking-wide hover:bg-charcoal transition-colors duration-500 flex items-center gap-2 shadow-md">
-              Donate <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <img
+              src={ORG.logo}
+              alt="Consecrated Hands logo"
+              className="block w-[92%] sm:w-[82%] md:w-[72%] max-w-4xl h-auto object-contain"
+            />
+          </motion.div>
+
+          <h1 className="font-heading font-medium tracking-tight leading-[1.02] text-5xl md:text-7xl lg:text-[5rem] text-ink max-w-4xl">
+            <MaskedLines lines={["Consecrated to", "guide the ones"]} />
+            <MaskedLines
+              lines={[
+                <span key="hero-final-line">
+                  who need it{" "}
+                  <span className="italic text-gold">most.</span>
+                </span>,
+              ]}
+              delay={0.24}
+            />
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.9, duration: 0.8 }}
+            className="mt-8 text-lg md:text-xl font-light text-ink/70 max-w-2xl leading-relaxed"
+          >
+            Mentoring the youth spiritually, academically, financially, and
+            personally — and leading them closer to Christ.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.05, duration: 0.8 }}
+            className="mt-10 flex flex-col sm:flex-row items-start gap-4"
+          >
+            <Link
+              to="/donate"
+              data-testid="hero-donate-btn"
+              className="group bg-gold text-white px-8 py-4 rounded-full font-semibold tracking-wide hover:bg-charcoal transition-colors duration-300 flex items-center gap-2 shadow-md"
+            >
+              Donate
+              <ArrowRight
+                size={18}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </Link>
-            <Link to="/mentorship" data-testid="hero-apply-btn" className="px-8 py-4 rounded-full glass border border-white/70 text-ink hover:border-gold transition-colors duration-500 font-semibold tracking-wide">
+
+            <Link
+              to="/mentorship"
+              data-testid="hero-apply-btn"
+              className="px-8 py-4 rounded-full border border-line bg-white/60 text-ink hover:border-gold transition-colors duration-300 font-semibold tracking-wide"
+            >
               Explore Mentorship
             </Link>
           </motion.div>
+
         </div>
       </div>
     </section>
@@ -97,11 +128,7 @@ function TruthSection() {
   return (
     <section className="relative py-24 md:py-36 bg-charcoal text-cream overflow-hidden">
       <div className="absolute inset-0">
-        <img
-  src={HERO_BG}
-  alt="A smiling child holding his Bible at a Consecrated Hands event"
-  className="w-full h-full object-cover object-[50%_22%]"
-/>
+        <img src={PILLARS[0].image} alt="Faith cards handed out in backpacks" className="w-full h-full object-cover rotate-180" />
         <div className="absolute inset-0 bg-charcoal/30" />
       </div>
       <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12 text-center flex flex-col items-center drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)]">
