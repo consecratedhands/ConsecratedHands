@@ -3,7 +3,7 @@ import { ORG } from "../lib/content";
 
 const Section=({title,children})=><section className="mt-10"><h2 className="font-heading text-3xl md:text-4xl font-semibold text-[#25292C]">{title}</h2><div className="mt-4 space-y-4 text-[#59636A] leading-relaxed">{children}</div></section>;
 
-export default function Terms(){return <><Seo title="Terms of Use" description="Terms of Use for the Consecrated Hands website."/><main className="pt-40 pb-24 bg-white"><div className="max-w-4xl mx-auto px-6 md:px-12"><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">Website Terms</p><h1 className="mt-5 font-heading text-[2.65rem] sm:text-5xl md:text-7xl font-semibold text-[#25292C]">Terms of Use</h1><p className="mt-5 text-sm text-[#59636A]">Effective August 29, 2026</p><p className="mt-8 text-lg text-[#424B52] leading-relaxed">These Terms of Use apply to your use of ConsecratedHands.com and the online forms, information, and services made available through this website.</p>
+export default function Terms(){return <><Seo title="Terms of Use" description="Terms of Use for the Consecrated Hands website."/><div className="pt-40 pb-24 bg-white"><div className="max-w-4xl mx-auto px-6 md:px-12"><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">Website Terms</p><h1 className="mt-5 font-heading text-[2.65rem] sm:text-5xl md:text-7xl font-semibold text-[#25292C]">Terms of Use</h1><p className="mt-5 text-sm text-[#59636A]">Effective August 29, 2026</p><p className="mt-8 text-lg text-[#424B52] leading-relaxed">These Terms of Use apply to your use of ConsecratedHands.com and the online forms, information, and services made available through this website.</p>
 
 <Section title="Purpose of this website"><p>This website provides information about Consecrated Hands, our Christ-centered youth mentorship mission, ways to volunteer or partner, prayer requests, and charitable giving. Website content is general information and is not a substitute for professional medical, legal, mental-health, financial, emergency, or child-protection services.</p></Section>
 
@@ -28,4 +28,4 @@ export default function Terms(){return <><Seo title="Terms of Use" description="
 <Section title="Changes to these terms"><p>We may update these terms as our website and programs evolve. The effective date above will reflect material revisions.</p></Section>
 
 <Section title="Contact"><p>Questions about these terms may be sent to <a className="font-bold text-[#006DAA] hover:underline" href={`mailto:${ORG.email}`}>{ORG.email}</a>.</p></Section>
-</div></main></>}
+</div></div></>}

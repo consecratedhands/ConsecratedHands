@@ -108,7 +108,20 @@ Operational safeguarding practices must match the public commitments published o
 
 ## Testing
 
-Pull requests run the GitHub Actions production-build check in `.github/workflows/ci.yml`.
+Pull requests run route and asset validation, dependency security checks, mobile-navigation tests, the production frontend build, backend import checks, and focused backend unit tests in `.github/workflows/ci.yml`.
+
+Useful local checks:
+
+```bash
+cd frontend
+corepack yarn audit:site
+corepack yarn audit --level high
+CI=true corepack yarn test --watchAll=false
+corepack yarn build
+
+cd ..
+python -m pytest -q backend/tests/test_server.py
+```
 
 Before merging a major design or integration change, also verify manually on desktop and mobile:
 

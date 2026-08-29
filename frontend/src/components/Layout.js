@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Heart, Menu, X } from "lucide-react";
@@ -18,19 +18,66 @@ const LEGAL=[
 function Nav(){
   const [open,setOpen]=useState(false);
   const navigationId=useId();
+  const menuButtonRef=useRef(null);
+  const menuPanelRef=useRef(null);
+  const focusMainOnCloseRef=useRef(false);
   const loc=useLocation();
+  const closeForNavigation=()=>{
+    focusMainOnCloseRef.current=true;
+    setOpen(false);
+  };
   useEffect(()=>{
     setOpen(false);
   },[loc.pathname]);
   useEffect(()=>{
     document.body.style.overflow=open?"hidden":"";
-    return()=>{document.body.style.overflow=""};
+    const main=document.getElementById("main-content");
+    const footer=document.getElementById("site-footer");
+    if(main)main.inert=open;
+    if(footer)footer.inert=open;
+    return()=>{
+      document.body.style.overflow="";
+      if(main)main.inert=false;
+      if(footer)footer.inert=false;
+    };
   },[open]);
   useEffect(()=>{
-    const closeOnEscape=(event)=>{if(event.key==="Escape")setOpen(false)};
-    document.addEventListener("keydown",closeOnEscape);
-    return()=>document.removeEventListener("keydown",closeOnEscape);
+    if(!open&&focusMainOnCloseRef.current){
+      focusMainOnCloseRef.current=false;
+      document.getElementById("main-content")?.focus({preventScroll:true});
+    }
+  },[open]);
+  useEffect(()=>{
+    const desktop=window.matchMedia("(min-width: 1024px)");
+    const closeOnDesktop=event=>{if(event.matches)setOpen(false)};
+    desktop.addEventListener("change",closeOnDesktop);
+    return()=>desktop.removeEventListener("change",closeOnDesktop);
   },[]);
+  useEffect(()=>{
+    if(!open)return;
+    const panel=menuPanelRef.current;
+    const focusable=()=>Array.from(panel?.querySelectorAll('a[href],button:not([disabled])')||[]);
+    const first=focusable()[0];
+    first?.focus();
+
+    const handleKeyDown=event=>{
+      if(event.key==="Escape"){
+        setOpen(false);
+        requestAnimationFrame(()=>menuButtonRef.current?.focus());
+        return;
+      }
+      if(event.key!=="Tab")return;
+      const items=focusable();
+      if(!items.length)return;
+      const firstItem=items[0];
+      const lastItem=items[items.length-1];
+      if(event.shiftKey&&document.activeElement===firstItem){event.preventDefault();lastItem.focus()}
+      else if(!event.shiftKey&&document.activeElement===lastItem){event.preventDefault();firstItem.focus()}
+    };
+
+    document.addEventListener("keydown",handleKeyDown);
+    return()=>document.removeEventListener("keydown",handleKeyDown);
+  },[open]);
 
   return <>
     <header className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#D8EEF8] shadow-[0_8px_30px_rgba(37,41,44,.04)]">
@@ -43,6 +90,7 @@ function Nav(){
           <Link to="/donate" className="ml-2 rounded-full bg-[#FFD21F] text-[#25292C] px-6 py-3 text-sm font-extrabold shadow-[0_10px_24px_-14px_rgba(210,156,0,.75)] hover:bg-[#FFE066] hover:-translate-y-0.5 transition">Donate</Link>
         </nav>
         <button
+          ref={menuButtonRef}
           type="button"
           onClick={()=>setOpen(v=>!v)}
           className="lg:hidden ml-3 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#D8EEF8] bg-[#F4FBFF] text-[#25292C] shadow-sm"
@@ -55,6 +103,7 @@ function Nav(){
 
     <AnimatePresence>
       {open&&<motion.aside
+        ref={menuPanelRef}
         id={navigationId}
         initial={{opacity:0,y:-14}}
         animate={{opacity:1,y:0}}
@@ -62,6 +111,8 @@ function Nav(){
         transition={{duration:.22,ease:[.16,1,.3,1]}}
         className="lg:hidden fixed inset-x-0 top-24 z-40 h-[calc(100dvh-6rem)] overflow-y-auto overscroll-contain bg-white"
         aria-label="Mobile menu"
+        aria-modal="true"
+        role="dialog"
       >
         <nav className="mx-auto flex min-h-full max-w-xl flex-col px-5 pb-[max(2rem,env(safe-area-inset-bottom))] pt-5" aria-label="Mobile navigation">
           <p className="mb-3 text-xs font-extrabold uppercase tracking-[.22em] text-[#A66F00]">Explore Consecrated Hands</p>
@@ -70,14 +121,14 @@ function Nav(){
               key={n.to}
               to={n.to}
               end={n.to==="/"}
-              onClick={()=>setOpen(false)}
+              onClick={closeForNavigation}
               className={({isActive})=>`flex min-h-14 items-center border-b border-[#D8EEF8] px-2 py-3 text-lg font-bold last:border-b-0 ${isActive?"text-[#006DAA]":"text-[#25292C]"}`}
             >{n.label}</NavLink>)}
           </div>
-          <Link to="/donate" onClick={()=>setOpen(false)} className="mt-5 flex min-h-14 items-center justify-center rounded-full bg-[#FFD21F] px-6 py-4 text-center text-lg font-extrabold text-[#25292C] shadow-[0_14px_30px_-16px_rgba(210,156,0,.8)]">Donate Securely</Link>
+          <Link to="/donate" onClick={closeForNavigation} className="mt-5 flex min-h-14 items-center justify-center rounded-full bg-[#FFD21F] px-6 py-4 text-center text-lg font-extrabold text-[#25292C] shadow-[0_14px_30px_-16px_rgba(210,156,0,.8)]">Donate Securely</Link>
           <p className="mt-auto pt-8 text-center font-heading text-2xl font-semibold text-[#25292C]">Become Who God Set You Apart to Be.</p>
           <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-[#59636A]">
-            {LEGAL.map(item=><Link key={item.to} to={item.to} onClick={()=>setOpen(false)}>{item.label}</Link>)}
+            {LEGAL.map(item=><Link key={item.to} to={item.to} onClick={closeForNavigation}>{item.label}</Link>)}
           </div>
         </nav>
       </motion.aside>}
@@ -85,7 +136,7 @@ function Nav(){
   </>
 }
 
-function Footer(){return <footer className="bg-[#25292C] text-white">
+function Footer(){return <footer id="site-footer" className="bg-[#25292C] text-white">
   <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-20">
     <div className="grid md:grid-cols-[1.3fr_.7fr_.8fr] gap-12">
       <div><img src={ORG.logo} alt="Consecrated Hands" loading="lazy" className="h-28 w-auto max-w-full object-contain bg-white rounded-2xl p-2"/><h2 className="mt-5 font-heading text-3xl max-w-md">Become Who God Set You Apart to Be.</h2><p className="mt-4 text-white/80 max-w-lg leading-relaxed">Christ-centered youth mentorship built around faith, relationships, practical growth, opportunity, leadership, and service.</p><Link to="/donate" className="inline-flex items-center gap-2 mt-6 bg-[#FFD21F] text-[#25292C] px-6 py-3 rounded-full font-extrabold"><Heart size={17}/>Support the Mission</Link></div>
@@ -98,8 +149,13 @@ function Footer(){return <footer className="bg-[#25292C] text-white">
 
 export default function Layout({children}){
   const loc=useLocation();
+  const previousPath=useRef(loc.pathname);
   useEffect(()=>{
     window.scrollTo(0,0);
+    if(previousPath.current!==loc.pathname){
+      document.getElementById("main-content")?.focus({preventScroll:true});
+      previousPath.current=loc.pathname;
+    }
   },[loc.pathname]);
   return <div className="min-h-screen bg-white"><a href="#main-content" className="skip-link">Skip to main content</a><Nav/><main id="main-content" tabIndex="-1">{children}</main><Footer/></div>
 }

@@ -13,6 +13,7 @@ import time
 import secrets
 import string
 from collections import defaultdict, deque
+from contextlib import asynccontextmanager
 from pathlib import Path
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from typing import Optional, Literal
@@ -43,7 +44,13 @@ EMAIL_BASE_URL = "https://integrations.emergentagent.com"
 EMAIL_KEY = os.environ.get("EMERGENT_EMAIL_KEY", "")
 EMAIL_FROM_NAME = os.environ.get("EMAIL_FROM_NAME", "Consecrated Hands")
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    yield
+    client.close()
+
+
+app = FastAPI(lifespan=lifespan)
 api_router = APIRouter(prefix="/api")
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -83,7 +90,7 @@ def _safe(value: Optional[str]) -> str:
 # ---------------- Models ----------------
 class DonationRequest(BaseModel):
     model_config = ConfigDict(extra="ignore")
-    amount: float = Field(..., ge=1, le=100000)
+    amount: float = Field(..., ge=1, le=100000, allow_inf_nan=False)
     frequency: Literal["one_time", "monthly"] = "one_time"
     donor_name: str = Field(..., min_length=1, max_length=120)
     donor_email: EmailStr
@@ -313,7 +320,9 @@ async def get_status(session_id: str, request: Request):
     if record.get("payment_status") != "paid" and STRIPE_SECRET_KEY:
         try:
             s = stripe_client.v1.checkout.sessions.retrieve(session_id)
-            if s.payment_status == "paid" or s.status == "complete":
+            # A Checkout Session can be complete while an asynchronous payment
+            # is still unpaid. Only Stripe's payment status confirms the gift.
+            if s.payment_status == "paid":
                 await db.donations.update_one(
                     {"session_id": session_id, "payment_status": {"$ne": "paid"}},
                     {"$set": {
@@ -479,8 +488,3 @@ app.add_middleware(
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Content-Type", "Accept"],
 )
-
-
-@app.on_event("shutdown")
-async def shutdown_db_client():
-    client.close()
