@@ -12,8 +12,8 @@ Primary message: **Become Who God Set You Apart to Be.**
 
 - White background
 - Bright sky / baby-blue accents
-- Restrained gold accents
-- Deep navy text and dark sections
+- Bright, luminous polished-gold accents
+- Neutral charcoal text and dark sections (no navy)
 - Cormorant Garamond headings
 - Inter body text
 - Spacious, premium, minimal layout
@@ -23,6 +23,9 @@ Primary message: **Become Who God Set You Apart to Be.**
 Official master logo:
 
 `frontend/public/img/CONSECRATED HANDS LOGO.png`
+
+The master PNG remains untouched. The website serves the optimized copy at
+`frontend/public/img/consecrated-hands-logo.webp` for faster mobile loading.
 
 Do not revert to older logo assets without explicit approval.
 
@@ -77,7 +80,7 @@ Accessibility requirements:
 - Preserve skip navigation
 - Honor reduced-motion preferences
 - Do not use white text on the light sky-blue CTA background
-- Use contrast-safe gold/navy variants for small text
+- Use contrast-safe deeper gold or charcoal variants for small text
 - Associate form labels with fields
 - Preserve clear error/success messaging
 
