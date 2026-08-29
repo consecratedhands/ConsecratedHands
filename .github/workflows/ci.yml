@@ -29,6 +29,15 @@ jobs:
       - name: Install dependencies
         run: corepack yarn install --frozen-lockfile
 
+      - name: Audit routes and assets
+        run: corepack yarn audit:site
+
+      - name: Audit dependency security
+        run: corepack yarn audit --level high
+
+      - name: Test mobile navigation
+        run: CI=true corepack yarn test --watchAll=false
+
       - name: Build production frontend
         run: corepack yarn build
         env:
@@ -50,16 +59,7 @@ jobs:
         run: python -m compileall -q backend
 
       - name: Install backend runtime dependencies
-        run: >-
-          python -m pip install
-          fastapi==0.110.1
-          python-dotenv>=1.0.1
-          pymongo==4.6.3
-          motor==3.3.1
-          pydantic>=2.6.4
-          email-validator>=2.2.0
-          stripe==15.4.0
-          httpx>=0.27.0
+        run: python -m pip install -r backend/requirements.txt
 
       - name: Import FastAPI application
         env:
@@ -68,3 +68,11 @@ jobs:
           SITE_URL: https://consecratedhands.com
           CORS_ORIGINS: https://consecratedhands.com
         run: python -c "from backend.server import app; assert app is not None"
+
+      - name: Run backend tests
+        env:
+          MONGO_URL: mongodb://localhost:27017
+          DB_NAME: ci_check
+          SITE_URL: https://consecratedhands.com
+          CORS_ORIGINS: https://consecratedhands.com
+        run: python -m pytest -q backend/tests/test_server.py

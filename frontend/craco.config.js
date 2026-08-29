@@ -70,6 +70,13 @@ if (config.enableHealthCheck) {
 }
 
 let webpackConfig = {
+  jest: {
+    configure: {
+      moduleNameMapper: {
+        "^react-router/dom$": "<rootDir>/node_modules/react-router/dist/development/dom-export.js",
+      },
+    },
+  },
   eslint: {
     configure: {
       extends: ["plugin:react-hooks/recommended"],
