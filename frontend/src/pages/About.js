@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Cross, HandHeart, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, Check, Cross, HandHeart, ShieldCheck, Users } from "lucide-react";
 import Seo from "../components/Seo";
 import { Reveal } from "../components/Reveal";
 import { IMAGES, ORG, VALUES } from "../lib/content";
@@ -25,7 +25,7 @@ export default function About(){return <>
 
   <section className="py-16 sm:py-20 md:py-32 bg-white"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-[.8fr_1.2fr] gap-12">
     <Reveal><div><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">Our Foundation</p><h2 className="mt-4 font-heading text-[2.6rem] sm:text-5xl md:text-6xl font-semibold text-[#25292C]">Christ at the center. Relationships at the heart.</h2><p className="mt-6 text-lg text-[#59636A] leading-relaxed">These values shape how Consecrated Hands approaches mentorship, service, stewardship, partnership, and the responsibility of working around young people.</p></div></Reveal>
-    <div className="grid md:grid-cols-2 gap-5">{VALUES.map((v,i)=><Reveal key={v.n} delay={(i%2)*.04}><div className="h-full bg-[#F4FBFF] rounded-3xl border border-[#D8EEF8] p-7"><span className="text-sm font-extrabold text-[#A66F00]">{v.n}</span><h3 className="mt-3 font-heading text-3xl font-semibold text-[#25292C]">{v.title}</h3><p className="mt-3 text-[#59636A] leading-relaxed">{v.body}</p></div></Reveal>)}</div>
+    <div className="grid md:grid-cols-2 gap-5">{VALUES.map((v,i)=><Reveal key={v.n} delay={(i%2)*.04}><div className="h-full bg-[#F4FBFF] rounded-3xl border border-[#D8EEF8] p-7"><div className="w-10 h-10 rounded-full bg-[#EAF9FF] text-[#006DAA] flex items-center justify-center"><Check size={18}/></div><h3 className="mt-4 font-heading text-3xl font-semibold text-[#25292C]">{v.title}</h3><p className="mt-3 text-[#59636A] leading-relaxed">{v.body}</p></div></Reveal>)}</div>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-24 bg-[#25292C] text-white"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-10 items-center">
