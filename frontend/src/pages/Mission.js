@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Compass, Cross, HeartHandshake, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Check, Compass, Cross, HeartHandshake, Users } from "lucide-react";
 import Seo from "../components/Seo";
 import { Reveal } from "../components/Reveal";
-import { IMAGES, ORG, PILLARS } from "../lib/content";
+import { IMAGES, ORG } from "../lib/content";
 
 const focus=[
   {icon:Cross,title:"Faith that gives identity",body:"Young people need to know they are created intentionally, loved by God, and called toward a life with purpose—not defined by hardship, mistakes, or what others have said about them."},
@@ -16,6 +16,13 @@ const promises=[
   "Build trust through consistency instead of one-time inspiration.",
   "Connect young people to healthy adults, experiences, skills, and opportunity.",
   "Help growth move outward into service, leadership, and giving back.",
+];
+
+const commitments=[
+  {title:"Reach early",body:"Pay attention before a young person is known only by a crisis, a mistake, or a difficult season."},
+  {title:"Stay consistent",body:"Build trust through presence, follow-through, prayer, listening, correction, and encouragement over time."},
+  {title:"Keep support practical",body:"Let purpose become visible through habits, learning, life skills, opportunity, and real next steps."},
+  {title:"Keep Christ central",body:"Point young people toward identity, hope, forgiveness, wisdom, and calling in Jesus."},
 ];
 
 export default function Mission(){return <>
@@ -32,12 +39,12 @@ export default function Mission(){return <>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-white"><div className="max-w-7xl mx-auto px-6 md:px-12">
-    <Reveal><div className="grid lg:grid-cols-[.8fr_1.2fr] gap-12"><div><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">Whole-Life Mission</p><h2 className="mt-4 font-heading text-[2.6rem] sm:text-5xl md:text-6xl font-semibold text-[#25292C]">Purpose is connected to the whole web.</h2><p className="mt-6 text-lg text-[#59636A] leading-relaxed">The seven strands below are not separate programs competing for attention. They are connected parts of a young person’s life.</p></div><div className="grid md:grid-cols-2 gap-4">{PILLARS.map((p,i)=><Reveal key={p.n} delay={(i%2)*.03}><div className="h-full rounded-3xl border border-[#D8EEF8] bg-[#F4FBFF] p-6"><span className="text-sm font-extrabold text-[#A66F00]">{p.n}</span><h3 className="mt-2 font-heading text-2xl md:text-3xl font-semibold text-[#25292C]">{p.title}</h3><p className="mt-2 text-[#59636A] leading-relaxed">{p.desc}</p></div></Reveal>)}</div></div></Reveal>
+    <Reveal><div className="grid lg:grid-cols-[.8fr_1.2fr] gap-12"><div><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">How We Carry the Mission</p><h2 className="mt-4 font-heading text-[2.6rem] sm:text-5xl md:text-6xl font-semibold text-[#25292C]">Purpose needs both truth and follow-through.</h2><p className="mt-6 text-lg text-[#59636A] leading-relaxed">The mission becomes real through steady choices: reaching early, staying consistent, keeping support practical, and keeping Christ central.</p></div><div className="grid md:grid-cols-2 gap-4">{commitments.map((item,i)=><Reveal key={item.title} delay={(i%2)*.03}><div className="h-full rounded-3xl border border-[#D8EEF8] bg-[#F4FBFF] p-6"><Check className="text-[#006DAA]" size={26}/><h3 className="mt-4 font-heading text-2xl md:text-3xl font-semibold text-[#25292C]">{item.title}</h3><p className="mt-2 text-[#59636A] leading-relaxed">{item.body}</p></div></Reveal>)}</div></div></Reveal>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#25292C] text-white"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-[1fr_1fr] gap-12 items-center">
     <Reveal><div><p className="text-xs uppercase tracking-[.28em] text-[#FFE066] font-bold">What We Promise to Keep Central</p><h2 className="mt-4 font-heading text-[2.6rem] sm:text-5xl md:text-6xl font-semibold">Relationship first. Purpose always.</h2><p className="mt-6 text-lg text-white/75 leading-relaxed">Programs matter, but people remember who showed up. Consecrated Hands is designed around consistent presence and practical follow-through.</p></div></Reveal>
-    <Reveal delay={.05}><div className="space-y-4">{promises.map((p,i)=><div key={p} className="flex gap-4 rounded-2xl border border-white/15 bg-white/[.06] p-5"><div className="w-9 h-9 rounded-full bg-[#6FD3FF] text-[#25292C] flex items-center justify-center font-extrabold shrink-0">{i+1}</div><p className="text-white/85 leading-relaxed pt-1">{p}</p></div>)}</div></Reveal>
+    <Reveal delay={.05}><div className="space-y-4">{promises.map(p=><div key={p} className="flex gap-4 rounded-2xl border border-white/15 bg-white/[.06] p-5"><div className="w-9 h-9 rounded-full bg-[#6FD3FF] text-[#25292C] flex items-center justify-center shrink-0"><Check size={18}/></div><p className="text-white/85 leading-relaxed pt-1">{p}</p></div>)}</div></Reveal>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#F4FBFF]"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-12 items-center">

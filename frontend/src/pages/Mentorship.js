@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, BookOpen, Briefcase, HeartHandshake, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Briefcase, Check, HeartHandshake, ShieldCheck, Users } from "lucide-react";
 import Seo from "../components/Seo";
 import { Reveal } from "../components/Reveal";
 import { IMAGES, PILLARS } from "../lib/content";
@@ -38,7 +38,7 @@ export default function Mentorship(){return <>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#25292C] text-white"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-[1fr_1fr] gap-12 items-center">
     <Reveal><img src={IMAGES.youthPortrait} alt="Young person looking toward the future" loading="lazy" className="w-full aspect-[4/3] object-cover rounded-[2rem]"/></Reveal>
-    <Reveal delay={.05}><div><p className="text-xs uppercase tracking-[.28em] text-[#FFE066] font-bold">Who It Is For</p><h2 className="mt-4 font-heading text-[2.6rem] sm:text-5xl md:text-6xl font-semibold">A healthy strand before a breaking point.</h2><div className="mt-7 space-y-4">{fit.map((item,i)=><div key={item} className="flex gap-4"><div className="w-8 h-8 rounded-full bg-[#6FD3FF] text-[#25292C] flex items-center justify-center font-extrabold shrink-0">{i+1}</div><p className="text-white/80 leading-relaxed">{item}</p></div>)}</div></div></Reveal>
+    <Reveal delay={.05}><div><p className="text-xs uppercase tracking-[.28em] text-[#FFE066] font-bold">Who It Is For</p><h2 className="mt-4 font-heading text-[2.6rem] sm:text-5xl md:text-6xl font-semibold">A healthy strand before a breaking point.</h2><div className="mt-7 space-y-4">{fit.map(item=><div key={item} className="flex gap-4"><div className="w-8 h-8 rounded-full bg-[#6FD3FF] text-[#25292C] flex items-center justify-center shrink-0"><Check size={17}/></div><p className="text-white/80 leading-relaxed">{item}</p></div>)}</div></div></Reveal>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-24 bg-[#F4FBFF]"><div className="max-w-6xl mx-auto px-6 md:px-12"><Reveal><div className="rounded-[2rem] bg-white border border-[#D8EEF8] p-8 md:p-12 grid lg:grid-cols-[.75fr_1.25fr] gap-10 items-center shadow-[0_18px_55px_rgba(35,105,145,.06)]"><div><ShieldCheck className="text-[#A66F00]" size={36}/><h2 className="mt-5 font-heading text-4xl md:text-5xl font-semibold text-[#25292C]">Safeguarding is part of mentorship.</h2></div><div><p className="text-lg text-[#59636A] leading-relaxed">Mentor placement should include appropriate screening, role matching, training, boundaries, supervision, guardian communication, and a clear process for raising concerns. Youth safety is not separate from the mission—it is part of faithful stewardship.</p><Link to="/safeguarding" className="inline-flex items-center gap-2 mt-6 text-[#006DAA] font-extrabold">Read our Youth Safeguarding Commitment <ArrowRight size={17}/></Link></div></div></Reveal></div></section>
