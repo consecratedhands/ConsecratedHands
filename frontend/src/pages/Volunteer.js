@@ -1,89 +1,13 @@
 import { Link } from "react-router-dom";
-import { HandHeart, GraduationCap, Users, Clock } from "lucide-react";
+import { BookOpen, Briefcase, HandHeart, Users } from "lucide-react";
 import Seo from "../components/Seo";
-import ApplicationForm from "../components/ApplicationForm";
-import { Reveal, MaskedLines } from "../components/Reveal";
-import { ORG } from "../lib/content";
+import { Reveal } from "../components/Reveal";
 
-const REASONS = [
-  { icon: HandHeart, title: "Mentor a young person", body: "Walk with a youth one-on-one across the 5 Pillars and become a steady, godly presence in their life." },
-  { icon: GraduationCap, title: "Share a skill", body: "Teach a workshop on finances, fitness, study skills, or a trade you love — your expertise changes futures." },
-  { icon: Users, title: "Serve at events", body: "Help run worship nights, cookouts, retreats, and outreach that bring our community together." },
-  { icon: Clock, title: "Give your time", body: "Even a few hours a month makes a lasting difference. Every hand consecrated to this work matters." },
+const roles=[
+  {icon:HandHeart,title:"Mentor a young person",body:"Be a consistent, trustworthy adult who listens, encourages, prays, and walks with a young person over time."},
+  {icon:BookOpen,title:"Support learning",body:"Help with tutoring, reading, study habits, GED preparation, confidence, and educational development."},
+  {icon:Briefcase,title:"Open a door",body:"Share career knowledge, job-readiness support, workplace exposure, internships, or employment opportunities."},
+  {icon:Users,title:"Serve at events",body:"Help create safe, positive experiences through sports, outings, meals, activities, outreach, and community events."}
 ];
 
-export default function Volunteer() {
-  return (
-    <>
-      <Seo title="Volunteer" description="Volunteer or become a mentor with Consecrated Hands. Give your time and skills to guide young people toward Christ and a purposeful future." />
-      <section className="pt-40 pb-16 md:pt-48 light-glow">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <p className="text-xs uppercase tracking-[0.3em] text-gold mb-6 flex items-center gap-3">
-            <span className="w-10 h-px bg-gold inline-block" /> Volunteer
-          </p>
-          <h1 className="font-heading text-5xl md:text-7xl font-medium tracking-tight leading-[1.02] text-ink max-w-4xl">
-            <MaskedLines lines={["Lend your hands", <span key="2">to the <span className="italic text-gold">mission.</span></span>]} />
-          </h1>
-          <Reveal delay={0.4}>
-            <p className="mt-8 text-lg md:text-xl font-light text-stone max-w-2xl leading-relaxed">
-              You don’t have to have it all together to make a difference — you just have to show up.
-              God uses ordinary people to speak His Truth into young lives.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {REASONS.map((r, i) => (
-              <Reveal key={r.title} delay={i * 0.08}>
-                <div className="bg-surface rounded-3xl p-8 border border-line h-full hover:shadow-md hover:-translate-y-1 transition-all duration-500">
-                  <r.icon className="text-gold mb-6" size={30} />
-                  <h3 className="font-heading text-xl md:text-2xl text-ink mb-3">{r.title}</h3>
-                  <p className="text-stone leading-relaxed text-[15px]">{r.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="pb-28">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16">
-          <div className="lg:col-span-7">
-            <Reveal>
-              <h2 className="font-heading text-3xl md:text-4xl font-medium text-ink mb-8">Sign up to serve</h2>
-              <ApplicationForm
-                interests={["volunteer", "mentor", "partner"]}
-                defaultInterest="volunteer"
-                submitLabel="Send application"
-                messagePlaceholder="Tell us how you'd like to serve, your availability, and any skills you'd love to share…"
-                testidPrefix="volunteer"
-              />
-            </Reveal>
-          </div>
-          <div className="lg:col-span-4 lg:col-start-9">
-            <Reveal delay={0.1}>
-              <div className="glass rounded-3xl border border-white/70 p-10 shadow-sm">
-                <h3 className="font-heading text-2xl text-ink mb-6">Questions first?</h3>
-                <p className="text-stone leading-relaxed mb-6">Reach out anytime — we’d love to talk through how you can be part of the work.</p>
-                <div className="space-y-3">
-                  {ORG.contacts.map((c) => (
-                    <div key={c.name} className="text-ink">
-                    <p className="font-medium">{c.name}</p>
-                    <p className="text-stone text-sm">{c.title}</p>
-                    <a href={`tel:${c.phone.replace(/-/g, "")}`} className="text-gold hover:underline">{c.phone}</a>
-                  </div>
-                  ))}
-                  <a href={`mailto:${ORG.email}`} className="block text-gold hover:underline break-all">{ORG.email}</a>
-                </div>
-                <Link to="/mentorship" className="inline-block mt-8 text-ink hover:text-gold transition-colors font-medium">Prefer to be mentored? Apply here →</Link>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+export default function Volunteer(){return <><Seo title="Volunteer" description="Mentor, volunteer, or partner with Consecrated Hands."/><section className="pt-40 pb-20 bg-white"><div className="max-w-6xl mx-auto px-6 md:px-12"><Reveal><p className="text-xs uppercase tracking-[.28em] text-[#D6A62A] font-bold">Get Involved</p><h1 className="mt-5 font-heading text-5xl md:text-7xl lg:text-8xl font-semibold text-[#17364B] max-w-5xl">Be the person who <span className="italic text-[#63BDF3]">shows up.</span></h1><p className="mt-7 max-w-3xl text-xl text-[#657B89] leading-relaxed">Young people remember consistency. Whether you mentor, tutor, share a career, serve at an event, partner as a church or business, or help behind the scenes, your presence can strengthen the web around a young life.</p></Reveal></div></section><section className="py-24 bg-[#F8FCFF]"><div className="max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-5">{roles.map(({icon:Icon,title,body},i)=><Reveal key={title} delay={(i%2)*.05}><div className="h-full bg-white rounded-3xl border border-[#E4EEF4] p-8"><div className="w-12 h-12 rounded-2xl bg-[#EAF7FF] flex items-center justify-center"><Icon className="text-[#3A9FD9]"/></div><h2 className="mt-5 font-heading text-3xl font-semibold text-[#17364B]">{title}</h2><p className="mt-3 text-[#6A7F8D] leading-relaxed">{body}</p></div></Reveal>)}</div></section><section className="py-24 bg-white"><div className="max-w-4xl mx-auto px-6 text-center"><Reveal><h2 className="font-heading text-5xl md:text-6xl font-semibold text-[#17364B]">Ready to serve?</h2><p className="mt-5 text-lg text-[#687D8B] leading-relaxed">Volunteer and mentor placement should include appropriate screening, training, safeguarding, and role matching. Contact us to begin the conversation.</p><Link to="/contact" className="inline-flex mt-8 bg-[#73C8FF] text-white px-7 py-3.5 rounded-full font-bold">Contact Consecrated Hands</Link></Reveal></div></section></>}
