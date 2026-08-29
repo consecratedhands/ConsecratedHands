@@ -45,5 +45,5 @@ export const FAQ = [
 ];
 export const MANIFESTO = ["Faith & Identity","Education","Opportunity","Character","Leadership","Service","Become Who God Set You Apart to Be"];
 export const HERO_BG = "/img/hero.webp";
-export const STAINED_GLASS = "/img/faith.webp";
-export const IMAGES = { heroFaith:"/img/faith.webp", stainedGlass:"/img/faith.webp", mentorship:"/img/impact.webp", youthStudying:"/img/finance.webp", youthPortrait:"/img/future.webp", volunteering:"/img/serve.webp", kidsSun:"/img/about.webp", sportsMentor:"/img/mission.webp" };
+export const STAINED_GLASS = "/img/church-youth.webp";
+export const IMAGES = { heroFaith:"/img/church-youth.webp", stainedGlass:"/img/church-youth.webp", mentorship:"/img/impact.webp", youthStudying:"/img/education-kids.webp", youthPortrait:"/img/future.webp", volunteering:"/img/serve.webp", kidsSun:"/img/about.webp", sportsMentor:"/img/mission.webp" };
