@@ -1,234 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    :root {
-        --background: 40 43% 98%;
-        --foreground: 40 13% 9%;
-        --card: 0 0% 100%;
-        --card-foreground: 40 13% 9%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 40 13% 9%;
-        --primary: 44 100% 48%;
-        --primary-foreground: 0 0% 100%;
-        --secondary: 209 39% 72%;
-        --secondary-foreground: 40 13% 9%;
-        --muted: 40 20% 95%;
-        --muted-foreground: 40 6% 40%;
-        --accent: 209 45% 92%;
-        --accent-foreground: 40 13% 9%;
-        --destructive: 1 63% 58%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 40 20% 90%;
-        --input: 40 20% 90%;
-        --ring: 44 100% 48%;
-        --radius: 0.5rem;
-    }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 205 53% 19%;
+    --card: 0 0% 100%;
+    --card-foreground: 205 53% 19%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 205 53% 19%;
+    --primary: 203 100% 73%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 45 66% 50%;
+    --secondary-foreground: 205 53% 19%;
+    --muted: 203 70% 97%;
+    --muted-foreground: 204 15% 48%;
+    --accent: 203 86% 96%;
+    --accent-foreground: 205 53% 19%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 203 34% 92%;
+    --input: 203 34% 92%;
+    --ring: 203 100% 73%;
+    --radius: 1rem;
+  }
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: #FFFFFF;
+    color: #17364B;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  h1,h2,h3,h4 { font-family: 'Cormorant Garamond', serif; line-height: 1.05; }
+  ::selection { background: #BFE8FF; color: #17364B; }
 }
 
-@layer base {
-    * {
-        @apply border-border;
-    }
-    body {
-        margin: 0;
-        background-color: #FDFBF7;
-        color: #1A1814;
-        font-family: 'Inter', sans-serif;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-    }
-    h1, h2, h3, h4 {
-        font-family: 'Cormorant Garamond', serif;
-        line-height: 1.1;
-    }
-    ::selection {
-        background: #F6B300;
-        color: #fff;
-    }
-}
-
-/* Custom thin scrollbar */
-::-webkit-scrollbar { width: 9px; }
-::-webkit-scrollbar-track { background: #FDFBF7; }
-::-webkit-scrollbar-thumb { background: #EAE6DF; border-radius: 0; }
-::-webkit-scrollbar-thumb:hover { background: #F6B300; }
-
-/* Shiny "godly" gold — subtle metallic sheen + glow on gold accents/buttons.
-   Only sets background-image + shadow so hover:bg-* color changes still work. */
-.bg-gold {
-    background-image: linear-gradient(135deg, #FFD24D 0%, #F6B300 46%, #E39A00 100%);
-    box-shadow: 0 8px 22px -8px rgba(246, 179, 0, 0.6);
-    text-shadow: 0 1px 1px rgba(120, 80, 0, 0.28);
-}
-.bg-gold:hover {
-    background-image: none;
-    text-shadow: none;
-}
-
-/* Marquee font */
-.marquee-item {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-weight: 500;
-}
-
-/* Glassmorphism */
-.glass {
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-}
-.glass-dark {
-    background: rgba(44, 42, 38, 0.35);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-/* Soft radial light glows */
-.light-glow {
-    background: radial-gradient(circle at 50% 0%, rgba(246, 179, 0, 0.13), transparent 60%);
-}
-
-/* Arched image mask */
-.arch-top {
-    border-top-left-radius: 9999px;
-    border-top-right-radius: 9999px;
-}
-
+img { max-width: 100%; height: auto; }
+button,a,input,select,textarea { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #73C8FF; outline-offset: 3px; }
 .text-balance { text-wrap: balance; }
-
-
-/* Production accessibility improvements */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  overflow-x: hidden;
-}
-
-:focus-visible {
-  outline: 3px solid #F6B300;
-  outline-offset: 4px;
-}
-
-.skip-link {
-  position: fixed;
-  top: 0.75rem;
-  left: 0.75rem;
-  z-index: 9999;
-  transform: translateY(-160%);
-  background: #1A1814;
-  color: #FFFFFF;
-  padding: 0.75rem 1rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: transform 180ms ease;
-}
-
-.skip-link:focus {
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-
-/* Consecrated Hands mobile polish */
-html,
-body {
-  max-width: 100%;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-button,
-a,
-input,
-select,
-textarea {
-  touch-action: manipulation;
-  -webkit-tap-highlight-color: transparent;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-}
+.light-glow { background: radial-gradient(circle at 50% 0%, rgba(115,200,255,.18), transparent 58%), #fff; }
+.glass { background: rgba(255,255,255,.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+.bg-gold { background: linear-gradient(135deg,#F0D57B,#D6A62A 58%,#B88712); box-shadow: 0 10px 26px -14px rgba(182,132,17,.5); }
+.marquee-item { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; }
+.skip-link { position:fixed; left:1rem; top:1rem; z-index:9999; transform:translateY(-160%); background:#17364B; color:white; padding:.75rem 1rem; border-radius:9999px; }
+.skip-link:focus { transform:translateY(0); }
 
 @media (max-width: 1023px), (pointer: coarse) {
-  /*
-   * Backdrop blur looks beautiful on desktop but can cause lag,
-   * flashing and delayed scrolling on phones.
-   */
-  .glass,
-  .glass-dark {
-    -webkit-backdrop-filter: none !important;
-    backdrop-filter: none !important;
-  }
-
-  .glass {
-    background: rgba(253, 251, 247, 0.96) !important;
-  }
-
-  .glass-dark {
-    background: rgba(44, 42, 38, 0.97) !important;
-  }
-
-  /*
-   * Keep transitions smooth but fast enough for mobile.
-   */
-  .duration-500,
-  .duration-700,
-  .duration-1000 {
-    transition-duration: 250ms !important;
-  }
-
-  /*
-   * Prevent large shadows from slowing down mobile scrolling.
-   */
-  .shadow-xl,
-  .shadow-2xl {
-    box-shadow: 0 12px 30px rgba(20, 18, 14, 0.12) !important;
-  }
-
-  /*
-   * Helps iPhone scrolling inside the hamburger menu.
-   */
-  #mobile-menu {
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-  }
+  .glass { backdrop-filter:none!important; -webkit-backdrop-filter:none!important; background:rgba(255,255,255,.99)!important; }
 }
-
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto !important;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+  html { scroll-behavior:auto!important; }
+  *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
 }
