@@ -54,6 +54,18 @@ export default function Home(){return <>
     <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-5">{realLife.map(({icon:Icon,title,body},i)=><Reveal key={title} delay={i*.04}><div className="h-full rounded-3xl bg-white/[.07] border border-white/15 p-7"><Icon className="text-[#B8ECFF]" size={27}/><h3 className="mt-5 font-heading text-3xl font-semibold">{title}</h3><p className="mt-3 text-white/75 leading-relaxed">{body}</p></div></Reveal>)}</div>
   </div></section>
 
+  <section className="py-16 sm:py-20 md:py-28 bg-white"><div className="max-w-7xl mx-auto px-6 md:px-12">
+    <Reveal><div className="max-w-3xl"><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">Mentorship in Motion</p><h2 className="mt-4 font-heading text-[2.65rem] sm:text-5xl md:text-6xl font-semibold text-[#25292C]">Learning, creating, and serving together.</h2></div></Reveal>
+    <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+      <Reveal className="col-span-2"><img src={IMAGES.mentorshipReading} alt="Mentor helping young people read and study" loading="lazy" className="w-full aspect-[16/10] object-cover rounded-[1.5rem] md:rounded-[2rem]"/></Reveal>
+      <Reveal delay={.04} className="col-span-2"><img src={IMAGES.basketballMentoring} alt="Young people practicing basketball with mentors" loading="lazy" className="w-full aspect-[16/10] object-cover rounded-[1.5rem] md:rounded-[2rem]"/></Reveal>
+      <Reveal delay={.02}><img src={IMAGES.basketballReal} alt="Children at an outdoor basketball practice" loading="lazy" className="w-full aspect-square sm:aspect-[4/3] object-cover rounded-[1.25rem] md:rounded-[1.75rem]"/></Reveal>
+      <Reveal delay={.04}><img src={IMAGES.soccerReal} alt="A coach teaching children during soccer practice" loading="lazy" className="w-full aspect-square sm:aspect-[4/3] object-cover rounded-[1.25rem] md:rounded-[1.75rem]"/></Reveal>
+      <Reveal delay={.06}><img src={IMAGES.scienceClass} alt="Children taking part in a hands-on science lesson" loading="lazy" className="w-full aspect-square sm:aspect-[4/3] object-cover rounded-[1.25rem] md:rounded-[1.75rem]"/></Reveal>
+      <Reveal delay={.08}><img src={IMAGES.classroomReal} alt="Students participating in a classroom lesson" loading="lazy" className="w-full aspect-square sm:aspect-[4/3] object-cover rounded-[1.25rem] md:rounded-[1.75rem]"/></Reveal>
+    </div>
+  </div></section>
+
   <section className="relative overflow-hidden py-16 sm:py-20 md:py-32"><div className="absolute inset-0"><img src={IMAGES.heroFaith} alt="Faith-centered mentorship materials" loading="lazy" className="w-full h-full object-cover"/><div className="absolute inset-0 bg-[#25292C]/85"/></div><div className="relative max-w-5xl mx-auto px-6 md:px-12 text-center text-white"><Reveal><p className="text-xs uppercase tracking-[.28em] text-[#FFE066] font-bold">{TRUTH.eyebrow}</p><h2 className="mt-5 font-heading text-[2.65rem] sm:text-5xl md:text-7xl font-semibold">{TRUTH.headline}</h2><p className="mt-7 max-w-3xl mx-auto text-lg md:text-xl text-white/80 leading-relaxed">{TRUTH.body}</p><p className="mt-8 font-heading italic text-2xl md:text-3xl text-[#FFE066] max-w-3xl mx-auto">{TRUTH.verse}</p></Reveal></div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#F4FBFF]"><div className="max-w-7xl mx-auto px-6 md:px-12">
