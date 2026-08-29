@@ -1,119 +1,51 @@
-// Central content file — edit copy here to update the site easily.
+// Consecrated Hands 2.0 — central public-facing content.
 export const ORG = {
   name: "Consecrated Hands",
   logo: "/img/logo.png",
   ein: "33-4903145",
   taxStatus: "Federally recognized 501(c)(3) public charity",
   donationUrl: process.env.REACT_APP_STRIPE_PAYMENT_LINK || "",
-  mission:
-    "Consecrated Hands is a Christ-centered mentorship program that guides young people spiritually, educationally, and financially as they overcome life's hardships. We help them grow closer to Christ, build confidence, develop practical life skills, and discover a healthier, more purposeful path forward.",
-  contacts: [
-  { name: "Justin Mata", title: "Co-Founder & Executive Director", phone: "504-539-1771" },
-  { name: "Storm Leigh", title: "Co-Founder & Executive Director", phone: "504-657-6618" },
-],
+  mission: "Consecrated Hands is a Christ-centered youth mentorship nonprofit helping young people discover who God created them to become through connected support in faith, stability, education, life skills, opportunity, character, and service.",
+  contacts: [{ name: "Justin Mata", title: "Founder & Executive Director", phone: "504-539-1771" }],
   email: "OurConsecratedHands@Gmail.com",
   socials: [],
 };
 
-// The Truth message — core to the ministry's voice.
 export const TRUTH = {
-  eyebrow: "The Truth We Speak",
-  headline: "We show them the lies — and we tell them the Truth.",
-  body:
-    "The world tells our kids a lie: that they aren't enough. That they're too broken, too late, too far gone. We sit with them, name that lie for what it is, and speak the Truth over their lives — the Truth of Jesus. They are known. They are loved. They were made on purpose, for a purpose.",
+  eyebrow: "Created Intentionally",
+  headline: "Don't wait until someone is broken to try to rebuild them.",
+  body: "Every young person has God-given value before we ever meet them. We build relationships that help youth discover their identity in Christ, strengthen the areas of life around them, and move from needing support to becoming someone who can strengthen others.",
   verse: "\"For you formed my inmost being… I praise you, for I am fearfully and wonderfully made.\" — Psalm 139:13–14",
 };
 
-// THE 5 PILLARS
 export const PILLARS = [
-  {
-    n: "01",
-    title: "Faith",
-    desc: "Leading young hearts closer to Christ through discipleship, prayer, and scripture — the foundation everything else is built upon.",
-    image: "/img/faith.webp",
-  },
-  {
-    n: "02",
-    title: "Family",
-    desc: "Building healthy relationships and a sense of belonging, so no young person walks through hardship alone.",
-    image: "/img/family.webp",
-  },
-  {
-    n: "03",
-    title: "Finance",
-    desc: "Practical, biblical stewardship — budgeting, saving, and generosity that break cycles and build a stable future.",
-    image: "/img/finance.webp",
-  },
-  {
-    n: "04",
-    title: "Fitness",
-    desc: "Caring for the body and mind God gave them — discipline, health, and resilience for the whole person.",
-    image: "/img/fitness.webp",
-  },
-  {
-    n: "05",
-    title: "Future",
-    desc: "Casting vision for what's ahead — education, calling, and a life built on purpose rather than survival.",
-    image: "/img/future.webp",
-  },
+  { n:"01", title:"Faith & Identity", desc:"Knowing Christ, understanding God-given worth, and building a spiritual foundation for every other area of life.", image:"/img/faith.webp" },
+  { n:"02", title:"Stability & Essential Needs", desc:"Helping young people find safety, consistency, support, and the steady relationships required to grow.", image:"/img/family.webp" },
+  { n:"03", title:"Education & Development", desc:"Tutoring, academic encouragement, GED pathways, confidence, and habits that keep learning moving forward.", image:"/img/finance.webp" },
+  { n:"04", title:"Life & Financial Skills", desc:"Budgeting, saving, stewardship, decision-making, responsibility, and practical preparation for adulthood.", image:"/img/fitness.webp" },
+  { n:"05", title:"Career & Opportunity", desc:"Career exposure, job readiness, employment connections, and a vision for meaningful work and long-term opportunity.", image:"/img/future.webp" },
+  { n:"06", title:"Health, Relationships & Character", desc:"Strengthening wellness, healthy relationships, discipline, integrity, confidence, and resilience.", image:"/img/about.webp" },
+  { n:"07", title:"Service, Leadership & Giving Back", desc:"Turning growth outward so the young person once supported can lead, serve, encourage, and eventually mentor someone else.", image:"/img/serve.webp" },
 ];
 
 export const VALUES = [
-  { n: "01", title: "Christ at the Center", body: "Everything we do flows from the love of Jesus. We meet young people with grace, truth, and unwavering hope." },
-  { n: "02", title: "Every Person Matters", body: "We seek out the ones who need it most — believing each life carries immeasurable, God-given worth." },
-  { n: "03", title: "Whole-Life Mentorship", body: "Across all five pillars — Faith, Family, Finance, Fitness, and Future — we walk with youth in every part of their lives." },
-  { n: "04", title: "Faithful Stewardship", body: "As a nonprofit, we honor every gift with integrity, transparency, and a focus on lasting impact." },
+  { n:"01", title:"Christ at the Center", body:"Everything we do flows from the love of Jesus. Faith-centered does not mean unprofessional; it means our purpose has a foundation." },
+  { n:"02", title:"Relationship First", body:"Young people need someone who listens, shows up, stays consistent, and earns trust before lasting growth can happen." },
+  { n:"03", title:"Whole-Life Mentorship", body:"The Web of Consecration™ connects the areas of life that strengthen one another instead of treating each need in isolation." },
+  { n:"04", title:"From Help to Leadership", body:"The long-term goal is movement from “help me” to “now I can help somebody else.”" },
 ];
 
-// Animated impact counters
 export const IMPACT = [];
-
 export const TESTIMONIALS = [];
-
 export const EVENTS = [];
-
 export const FAQ = [
-  {
-    q: "Who does Consecrated Hands serve?",
-    a: "We mentor young people facing hardship — meeting them wherever they are and walking with them spiritually, educationally, financially, and personally toward a purposeful path in Christ.",
-  },
-  {
-    q: "Is my donation tax-deductible?",
-    a: "Consecrated Hands is a Christ-centered 501(c)(3) nonprofit. Contributions may be tax-deductible to the fullest extent allowed by law, and your payment processor will provide a receipt when online giving is enabled.",
-  },
-  {
-    q: "How do I become a mentor?",
-    a: "Visit our Mentorship or Volunteer pages and fill out the application. We'll reach out to talk through the next steps, training, and how you can best serve.",
-  },
-  {
-    q: "What are the 5 Pillars?",
-    a: "Faith, Family, Finance, Fitness, and Future — five connected areas of growth we build into every young person's life, all rooted in the love and Truth of Jesus.",
-  },
-  {
-    q: "How are donations used?",
-    a: "Your gifts fund mentorship, educational resources, community outreach, and faith-based programs that directly support the youth and families in our care.",
-  },
+  { q:"Who does Consecrated Hands serve?", a:"We focus on young people roughly ages 7–17, especially youth who are underserved, fatherless, at risk, exposed to substance abuse or instability, struggling behaviorally, or simply in need of positive mentorship and opportunity." },
+  { q:"Is Consecrated Hands Christian?", a:"Yes. Consecrated Hands is unapologetically Christ-centered while providing practical, professional whole-life mentorship that parents, schools, churches, community partners, donors, and funders can understand." },
+  { q:"What is The Web of Consecration™?", a:"It is our connected whole-life mentorship framework. Each strand strengthens another — from faith and stability through education, life skills, opportunity, character, leadership, and giving back." },
+  { q:"Is my donation tax-deductible?", a:"Consecrated Hands is a federally recognized 501(c)(3) public charity. Contributions may be tax-deductible to the fullest extent allowed by law." },
+  { q:"How do I become a mentor?", a:"Visit the Mentorship or Volunteer page and submit an application. Mentor and volunteer roles are designed around appropriate screening, training, safeguarding, and program needs." },
 ];
-
-export const MANIFESTO = [
-  "Faith",
-  "Family",
-  "Finance",
-  "Fitness",
-  "Future",
-  "You are enough in Christ",
-];
-
-// Hero background (full-width) — real event photo of a child holding his Bible
+export const MANIFESTO = ["Faith & Identity","Education & Development","Career & Opportunity","Leadership & Service","Become Who God Set You Apart to Be"];
 export const HERO_BG = "/img/hero.webp";
 export const STAINED_GLASS = "/img/faith.webp";
-export const IMAGES = {
-  heroFaith: "/img/faith.webp",
-  stainedGlass: "/img/faith.webp",
-  mentorship: "/img/impact.webp",
-  youthStudying: "/img/finance.webp",
-  youthPortrait: "/img/future.webp",
-  volunteering: "/img/serve.webp",
-  kidsSun: "/img/about.webp",
-  sportsMentor: "/img/mission.webp",
-};
+export const IMAGES = { heroFaith:"/img/faith.webp", stainedGlass:"/img/faith.webp", mentorship:"/img/impact.webp", youthStudying:"/img/finance.webp", youthPortrait:"/img/future.webp", volunteering:"/img/serve.webp", kidsSun:"/img/about.webp", sportsMentor:"/img/mission.webp" };
