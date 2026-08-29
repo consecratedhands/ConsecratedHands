@@ -5,8 +5,8 @@ module.exports={
   theme:{extend:{
     borderRadius:{lg:'var(--radius)',md:'calc(var(--radius) - 2px)',sm:'calc(var(--radius) - 4px)'},
     colors:{
-      ink:'#17364B',cream:'#FFFFFF',surface:'#FFFFFF',gold:'#D6A62A','gold-soft':'#F5E6A9',
-      sky:'#73C8FF','sky-soft':'#EAF7FF',stone:'#687E8D',line:'#E2EDF4',charcoal:'#16384F',
+      ink:'#25292C',cream:'#FFFFFF',surface:'#FFFFFF',gold:'#F6C945','gold-soft':'#FFEBA8',
+      sky:'#70CCFF','sky-soft':'#E8F7FF',stone:'#59636A',line:'#D9EBF4',charcoal:'#25292C',
       background:'hsl(var(--background))',foreground:'hsl(var(--foreground))',
       card:{DEFAULT:'hsl(var(--card))',foreground:'hsl(var(--card-foreground))'},
       popover:{DEFAULT:'hsl(var(--popover))',foreground:'hsl(var(--popover-foreground))'},

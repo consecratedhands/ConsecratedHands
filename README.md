@@ -33,8 +33,8 @@ The current V3 brand uses:
 
 - White base
 - Sky/baby blue accents
-- Gold accents
-- Deep navy text/backgrounds
+- Bright, luminous polished-gold accents
+- Neutral charcoal text/backgrounds — no navy
 - Cormorant Garamond headings
 - Inter body text
 
@@ -42,22 +42,24 @@ The official master logo is stored at:
 
 `frontend/public/img/CONSECRATED HANDS LOGO.png`
 
-Do not replace the official logo with older `logo.png` / `logo.webp` assets without explicit approval.
+The master PNG stays untouched. The production UI serves the optimized
+`frontend/public/img/consecrated-hands-logo.webp` copy for faster mobile loads.
+Do not replace either with older `logo.png` / `logo.webp` assets.
 
 ## Local frontend
 
 ```bash
 cd frontend
 cp .env.example .env
-yarn install
-yarn start
+corepack yarn install --frozen-lockfile
+corepack yarn start
 ```
 
 Production build:
 
 ```bash
 cd frontend
-yarn build
+corepack yarn build
 ```
 
 ## Local backend
@@ -85,7 +87,7 @@ Backend:
 
 - `MONGO_URL`
 - `DB_NAME`
-- `STRIPE_SECRET_KEY`
+- `STRIPE_SECRET_KEY` (prefer a least-privilege restricted key)
 - `STRIPE_WEBHOOK_SECRET`
 - `EMERGENT_EMAIL_KEY` if using the current email integration
 - `ORG_EMAIL`

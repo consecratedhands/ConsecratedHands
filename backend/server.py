@@ -7,8 +7,11 @@ import logging
 import uuid
 import httpx
 import stripe
+from stripe import StripeClient
 import html
 import time
+import secrets
+import string
 from collections import defaultdict, deque
 from pathlib import Path
 from pydantic import BaseModel, Field, EmailStr, ConfigDict
@@ -29,8 +32,11 @@ db = client[os.environ['DB_NAME']]
 
 # Stripe
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
-stripe.api_key = STRIPE_SECRET_KEY or None
+stripe_client = StripeClient(STRIPE_SECRET_KEY) if STRIPE_SECRET_KEY else None
 STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET", "")
+STRIPE_INTEGRATION_ID = "consecrated-hands-" + "".join(
+    secrets.choice(string.ascii_lowercase) for _ in range(8)
+)
 
 # Email (Emergent managed Resend)
 EMAIL_BASE_URL = "https://integrations.emergentagent.com"
@@ -173,12 +179,13 @@ async def create_donation_checkout(req: DonationRequest, request: Request):
             "donor_email": str(req.donor_email),
             "frequency": req.frequency,
         },
+        integration_identifier=STRIPE_INTEGRATION_ID,
     )
     if not recurring:
         kwargs["submit_type"] = "donate"
 
     try:
-        session = stripe.checkout.Session.create(**kwargs)
+        session = stripe_client.v1.checkout.sessions.create(kwargs)
     except stripe.error.StripeError as e:
         logger.error(f"Stripe error: {e}")
         raise HTTPException(502, "Payment provider error")
@@ -305,7 +312,7 @@ async def get_status(session_id: str, request: Request):
         raise HTTPException(404, "Transaction not found")
     if record.get("payment_status") != "paid" and STRIPE_SECRET_KEY:
         try:
-            s = stripe.checkout.Session.retrieve(session_id)
+            s = stripe_client.v1.checkout.sessions.retrieve(session_id)
             if s.payment_status == "paid" or s.status == "complete":
                 await db.donations.update_one(
                     {"session_id": session_id, "payment_status": {"$ne": "paid"}},
@@ -321,13 +328,11 @@ async def get_status(session_id: str, request: Request):
                     await _finalize_donation(record)
         except stripe.error.StripeError as e:
             logger.warning(f"Stripe status lookup failed for {session_id}: {e}")
+    # Keep the public confirmation response intentionally minimal. The Checkout
+    # Session ID is a reference, not authorization to expose donor details.
     return {
-        "session_id": record["session_id"],
         "status": record["status"],
         "payment_status": record["payment_status"],
-        "amount": record["amount"],
-        "frequency": record["frequency"],
-        "donor_name": record["donor_name"],
     }
 
 
@@ -342,7 +347,10 @@ async def stripe_webhook(request: Request):
     except Exception:
         raise HTTPException(400, "Invalid signature")
 
-    obj, event_type = event["data"]["object"], event["type"]
+    # Stripe SDK v15 models are typed objects rather than dict subclasses.
+    # Convert the verified event before using the existing dictionary helpers.
+    event_data = event.to_dict() if hasattr(event, "to_dict") else event
+    obj, event_type = event_data["data"]["object"], event_data["type"]
 
     if event_type == "checkout.session.completed":
         await db.donations.update_one(

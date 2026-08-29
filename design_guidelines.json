@@ -2,7 +2,7 @@
   "theme": "light",
   "design_concept": {
     "direction": "Awwwards Site-of-the-Day level quality, elegant, faith-centered minimalist direction",
-    "emotion": "Hopeful, trustworthy, premium, editorial grace",
+    "emotion": "Hopeful, trustworthy, premium, bright editorial grace",
     "core_principles": [
       "Typographic hierarchy over graphic decoration",
       "Massive, deliberate whitespace (generous pacing)",
@@ -12,14 +12,14 @@
     ]
   },
   "colors": {
-    "background": "#FDFBF7",
+    "background": "#FFFFFF",
     "surface": "#FFFFFF",
-    "primary": "#E6B038",
-    "secondary": "#9BB8D3",
-    "text_primary": "#1A1814",
-    "text_secondary": "#6B665E",
-    "border": "#EAE6DF",
-    "accent_dark": "#2C2A26",
+    "primary": "#F6C945",
+    "secondary": "#70CCFF",
+    "text_primary": "#25292C",
+    "text_secondary": "#59636A",
+    "border": "#D9EBF4",
+    "accent_dark": "#25292C",
     "error": "#D9534F",
     "success": "#4CAF50"
   },
@@ -47,9 +47,9 @@
   },
   "components": {
     "buttons": {
-      "primary": "bg-primary text-white px-8 py-4 rounded-none font-medium tracking-wide hover:bg-accent_dark transition-colors duration-500",
+      "primary": "bg-primary text-text_primary px-8 py-4 rounded-full font-extrabold tracking-wide hover:bg-[#FFD968] transition-colors duration-300",
       "secondary": "bg-transparent text-text_primary px-8 py-4 border border-border hover:border-text_primary transition-colors duration-500",
-      "donate_cta": "fixed bottom-6 right-6 z-50 bg-primary text-white px-8 py-4 rounded-full font-medium shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+      "donate_cta": "bg-primary text-text_primary px-8 py-4 rounded-full font-extrabold shadow-lg hover:bg-[#FFD968] hover:-translate-y-1 transition-all duration-300"
     },
     "cards": {
       "standard": "bg-surface p-8 md:p-12 border border-border shadow-sm hover:shadow-md transition-shadow duration-500",
@@ -143,11 +143,12 @@
     "setup": "Install necessary packages: yarn add framer-motion lucide-react react-fast-marquee.",
     "css_setup": "Import fonts in index.css. Extend Tailwind config with custom colors (primary, secondary, text_primary, text_secondary, background, surface, border) and fonts (heading: Cormorant Garamond, body: Manrope).",
     "structure": "Create purely functional Shadcn/HTML hybrids. DO NOT use pre-built Card components if they restrict the editorial whitespace. Build custom div structures.",
-    "testing": "All interactive elements, buttons, and form fields MUST include data-testid attributes."
+    "testing": "All interactive elements, buttons, and form fields MUST include data-testid attributes. Preserve the approved official logo. Use luminous bright gold, sky blue, white, and neutral charcoal; never introduce navy."
   },
   "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
     "NEVER use generic centered layouts. Prioritize left-aligned typography with strong grid asymmetry.",
-    "DO NOT use generic gradient backgrounds. Stick to the solid colors provided to maintain an elegant, high-end editorial feel.",
+    "Keep gradients subtle and limited to the approved bright-gold button treatment or image overlays.",
+    "NEVER introduce navy or muddy/dull gold. Dark sections use neutral charcoal; small gold text may use a deeper accessible gold for contrast.",
     "Ensure all text over images or semi-transparent backgrounds meets APCA/WCAG contrast ratios. No totally transparent dropdowns/headers.",
     "Apply framer-motion staggered reveals to text blocks and lists.",
     "Add 'transition-colors duration-300' or similar to all hover states.",
