@@ -19,7 +19,9 @@ function Nav(){
   const [open,setOpen]=useState(false);
   const navigationId=useId();
   const loc=useLocation();
-  useEffect(()=>setOpen(false),[loc.pathname]);
+  useEffect(()=>{
+    setOpen(false);
+  },[loc.pathname]);
   useEffect(()=>{
     document.body.style.overflow=open?"hidden":"";
     return()=>{document.body.style.overflow=""};
@@ -96,6 +98,8 @@ function Footer(){return <footer className="bg-[#25292C] text-white">
 
 export default function Layout({children}){
   const loc=useLocation();
-  useEffect(()=>window.scrollTo(0,0),[loc.pathname]);
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[loc.pathname]);
   return <div className="min-h-screen bg-white"><a href="#main-content" className="skip-link">Skip to main content</a><Nav/><main id="main-content" tabIndex="-1">{children}</main><Footer/></div>
 }
