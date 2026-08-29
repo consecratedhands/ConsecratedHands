@@ -23,7 +23,7 @@ export default function Mentorship(){return <>
 
   <section className="pt-24 md:pt-28 bg-white"><div className="max-w-7xl mx-auto px-6 md:px-12 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
     <Reveal><div><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">Whole-Life Mentorship</p><h1 className="mt-5 font-heading text-[2.65rem] sm:text-5xl md:text-7xl lg:text-[5.3rem] font-semibold text-[#25292C]">The Web of Consecration™</h1><p className="mt-7 max-w-3xl text-xl text-[#424B52] leading-relaxed">A young person’s life is connected. Faith affects identity. Stability affects learning. Education affects opportunity. Relationships affect character. Character affects leadership. We strengthen the whole web instead of treating one need in isolation.</p><div className="mt-8 flex flex-wrap gap-3"><Link to="/contact" className="inline-flex items-center gap-2 bg-[#6FD3FF] text-[#25292C] px-7 py-3.5 rounded-full font-extrabold">Ask About Mentorship <ArrowRight size={17}/></Link><Link to="/volunteer" className="inline-flex items-center gap-2 bg-white border border-[#D8EEF8] text-[#25292C] px-7 py-3.5 rounded-full font-bold">Become a Mentor <ArrowRight size={17}/></Link></div></div></Reveal>
-    <Reveal delay={.08}><img src={IMAGES.mentorship} alt="Mentorship and positive youth development" className="w-full aspect-[4/4.6] object-cover rounded-[2.25rem] shadow-[0_28px_70px_rgba(35,105,145,.14)]"/></Reveal>
+    <Reveal delay={.08}><div className="relative pb-12 sm:pb-16 pr-5 sm:pr-12"><img src={IMAGES.mentorship} alt="Mentorship and positive youth development" className="w-full aspect-[4/4.6] object-cover rounded-[2.25rem] shadow-[0_28px_70px_rgba(35,105,145,.14)]"/><img src={IMAGES.mentorshipReading} alt="A mentor helping young people with reading and homework" loading="lazy" className="absolute bottom-0 right-0 w-[60%] aspect-[4/3] object-cover rounded-[1.5rem] border-4 border-white shadow-xl"/></div></Reveal>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#F4FBFF]"><div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -37,7 +37,7 @@ export default function Mentorship(){return <>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#25292C] text-white"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-[1fr_1fr] gap-12 items-center">
-    <Reveal><img src={IMAGES.youthPortrait} alt="Young person looking toward the future" loading="lazy" className="w-full aspect-[4/3] object-cover rounded-[2rem]"/></Reveal>
+    <Reveal><div className="grid gap-4"><img src={IMAGES.basketballReal} alt="Children taking part in an outdoor basketball practice" loading="lazy" className="w-full aspect-[4/3] object-cover rounded-[2rem]"/><img src={IMAGES.youthPortrait} alt="Young person looking toward the future" loading="lazy" className="w-full aspect-[16/8] object-cover rounded-[2rem]"/></div></Reveal>
     <Reveal delay={.05}><div><p className="text-xs uppercase tracking-[.28em] text-[#FFE066] font-bold">Who It Is For</p><h2 className="mt-4 font-heading text-[2.6rem] sm:text-5xl md:text-6xl font-semibold">A healthy strand before a breaking point.</h2><div className="mt-7 space-y-4">{fit.map(item=><div key={item} className="flex gap-4"><div className="w-8 h-8 rounded-full bg-[#6FD3FF] text-[#25292C] flex items-center justify-center shrink-0"><Check size={17}/></div><p className="text-white/80 leading-relaxed">{item}</p></div>)}</div></div></Reveal>
   </div></section>
 

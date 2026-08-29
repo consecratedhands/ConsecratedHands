@@ -30,7 +30,7 @@ export default function Mission(){return <>
 
   <section className="pt-24 md:pt-28 bg-white"><div className="max-w-7xl mx-auto px-6 md:px-12 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
     <Reveal><div><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">Our Mission</p><h1 className="mt-5 font-heading text-[2.65rem] sm:text-5xl md:text-7xl lg:text-[5.2rem] font-semibold text-[#25292C]">Reach them early. Walk with them fully. Point them toward <span className="italic text-[#007BC2]">purpose in Christ.</span></h1><p className="mt-7 max-w-3xl text-xl text-[#424B52] leading-relaxed">{ORG.mission}</p></div></Reveal>
-    <Reveal delay={.08}><img src={IMAGES.sportsMentor} alt="Mentorship relationship and community activity" className="w-full aspect-[4/4.6] object-cover rounded-[2.25rem] shadow-[0_28px_70px_rgba(35,105,145,.14)]"/></Reveal>
+    <Reveal delay={.08}><div className="relative pb-12 sm:pb-16 pl-5 sm:pl-12"><img src={IMAGES.sportsMentor} alt="Mentorship relationship and community activity" className="w-full aspect-[4/4.6] object-cover rounded-[2.25rem] shadow-[0_28px_70px_rgba(35,105,145,.14)]"/><img src={IMAGES.basketballReal} alt="Children taking part in an outdoor basketball practice" loading="lazy" className="absolute bottom-0 left-0 w-[58%] aspect-[4/3] object-cover rounded-[1.5rem] border-4 border-white shadow-xl"/></div></Reveal>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#F4FBFF]"><div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -48,7 +48,7 @@ export default function Mission(){return <>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#F4FBFF]"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-12 items-center">
-    <Reveal><img src={IMAGES.youthStudying} alt="Education and practical development" loading="lazy" className="w-full aspect-[4/3] object-cover rounded-[2rem] shadow-[0_24px_60px_rgba(35,105,145,.12)]"/></Reveal>
+    <Reveal><div className="grid gap-4"><img src={IMAGES.youthStudying} alt="Children learning together through a hands-on activity" loading="lazy" className="w-full aspect-[4/3] object-cover rounded-[2rem] shadow-[0_24px_60px_rgba(35,105,145,.12)]"/><img src={IMAGES.classroomReal} alt="Students participating in an active classroom lesson" loading="lazy" className="w-full aspect-[16/8] object-cover rounded-[2rem] shadow-[0_24px_60px_rgba(35,105,145,.1)]"/></div></Reveal>
     <Reveal delay={.06}><div><BookOpen className="text-[#A66F00]" size={34}/><p className="mt-5 text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">The Long-Term Goal</p><h2 className="mt-4 font-heading text-[2.6rem] sm:text-5xl md:text-6xl font-semibold text-[#25292C]">From “help me” to <span className="italic text-[#007BC2]">“now I can help somebody else.”</span></h2><p className="mt-6 text-lg text-[#59636A] leading-relaxed">We want young people to grow into stable, capable, Christ-centered adults who lead, serve, give back, build healthy families and communities, and strengthen the next person.</p><div className="mt-8 flex flex-wrap gap-3"><Link to="/mentorship" className="inline-flex items-center gap-2 bg-[#6FD3FF] text-[#25292C] px-7 py-3.5 rounded-full font-extrabold">See The Web of Consecration™ <ArrowRight size={17}/></Link><Link to="/volunteer" className="inline-flex items-center gap-2 border border-[#D8EEF8] bg-white text-[#25292C] px-7 py-3.5 rounded-full font-bold">Get Involved <ArrowRight size={17}/></Link></div></div></Reveal>
   </div></section>
 
