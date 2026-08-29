@@ -241,6 +241,62 @@ async def _finalize_donation(record):
             )
 
 
+async def _record_recurring_invoice(invoice):
+    """Record and acknowledge successful monthly renewal invoices once."""
+    if invoice.get("billing_reason") != "subscription_cycle":
+        return
+    subscription_id = invoice.get("subscription")
+    invoice_id = invoice.get("id")
+    if not subscription_id or not invoice_id:
+        return
+
+    parent = await db.donations.find_one({"subscription_id": subscription_id}, {"_id": 0})
+    if not parent:
+        logger.warning(f"Recurring invoice {invoice_id} has no matching donation subscription")
+        return
+
+    existing = await db.donation_payments.find_one({"invoice_id": invoice_id}, {"_id": 0, "id": 1})
+    if existing:
+        return
+
+    amount = (invoice.get("amount_paid") or 0) / 100
+    now = datetime.now(timezone.utc).isoformat()
+    await db.donation_payments.insert_one({
+        "id": str(uuid.uuid4()),
+        "invoice_id": invoice_id,
+        "subscription_id": subscription_id,
+        "session_id": parent.get("session_id"),
+        "donor_name": parent.get("donor_name"),
+        "donor_email": parent.get("donor_email"),
+        "amount": amount,
+        "currency": invoice.get("currency", "usd"),
+        "frequency": "monthly",
+        "payment_status": "paid",
+        "created_at": now,
+    })
+    await db.donations.update_one(
+        {"subscription_id": subscription_id},
+        {"$set": {"status": "active", "payment_status": "paid", "updated_at": now}},
+    )
+
+    safe_name = _safe(parent.get("donor_name"))
+    safe_email = _safe(parent.get("donor_email"))
+    amt = f"${amount:,.2f}"
+    await send_email(
+        parent["donor_email"],
+        "Thank you for your monthly gift to Consecrated Hands",
+        f"""<p>Thank you, {safe_name}. Your monthly gift of <strong>{amt}</strong> was received.</p>
+        <p>Consecrated Hands is a federally recognized 501(c)(3) public charity. No goods or services were provided in exchange for this contribution.</p>""",
+        reply_to=ORG_EMAIL,
+    )
+    await send_email(
+        ORG_EMAIL,
+        f"Monthly donation received: {amt}",
+        f"<p><strong>{safe_name}</strong> ({safe_email}) gave a recurring monthly gift of <strong>{amt}</strong>.</p>",
+        reply_to=parent["donor_email"],
+    )
+
+
 @api_router.get("/payments/status/{session_id}")
 async def get_status(session_id: str, request: Request):
     _rate_limit(request, "payment-status", limit=40, window_seconds=600)
@@ -301,6 +357,9 @@ async def stripe_webhook(request: Request):
         rec = await db.donations.find_one({"session_id": obj["id"]}, {"_id": 0})
         if rec and rec.get("payment_status") == "paid":
             await _finalize_donation(rec)
+
+    elif event_type == "invoice.paid":
+        await _record_recurring_invoice(obj)
 
     elif event_type == "invoice.payment_failed":
         subscription_id = obj.get("subscription")
