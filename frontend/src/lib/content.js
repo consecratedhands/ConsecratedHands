@@ -63,4 +63,7 @@ export const IMAGES = {
   soccerReal:"/img/youth-soccer-real.webp",
   scienceClass:"/img/science-class-real.webp",
   classroomReal:"/img/classroom-real.webp",
+  educationMentorship:"/img/education-mentorship-library.webp",
+  sportsMission:"/img/sports-community-basketball-practice.webp",
+  faithPrayer:"/img/faith-church-youth-prayer.webp",
 };

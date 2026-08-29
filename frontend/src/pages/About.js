@@ -15,7 +15,7 @@ export default function About(){return <>
 
   <section className="pt-24 md:pt-28 bg-white overflow-hidden"><div className="max-w-7xl mx-auto px-6 md:px-12 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
     <Reveal><div><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">About Consecrated Hands</p><h1 className="mt-5 font-heading text-[2.65rem] sm:text-5xl md:text-7xl lg:text-[5.2rem] font-semibold text-[#25292C]">Built to reach young people <span className="italic text-[#007BC2]">before crisis defines them.</span></h1><p className="mt-7 max-w-3xl text-xl text-[#424B52] leading-relaxed">Consecrated Hands exists to help young people discover who God created them to become and give them the relationships, guidance, skills, opportunities, and spiritual foundation to move toward that purpose.</p><div className="mt-8 flex flex-wrap gap-3"><Link to="/mission" className="inline-flex items-center gap-2 rounded-full bg-[#6FD3FF] text-[#25292C] px-7 py-3.5 font-extrabold">Our Mission <ArrowRight size={17}/></Link><Link to="/mentorship" className="inline-flex items-center gap-2 rounded-full border border-[#D8EEF8] px-7 py-3.5 font-bold text-[#25292C]">How We Mentor <ArrowRight size={17}/></Link></div></div></Reveal>
-    <Reveal delay={.08}><div className="relative pb-12 sm:pb-16 pr-5 sm:pr-12"><img src={IMAGES.kidsSun} alt="Young people together in community" className="w-full aspect-[4/4.6] object-cover rounded-[2.25rem] shadow-[0_28px_70px_rgba(35,105,145,.14)]"/><img src={IMAGES.mentorshipReading} alt="A mentor helping young people read and study" loading="lazy" className="absolute bottom-0 right-0 w-[58%] aspect-[4/3] object-cover rounded-[1.5rem] border-4 border-white shadow-xl"/></div></Reveal>
+    <Reveal delay={.08}><img src={IMAGES.kidsSun} alt="Young people together in community" className="w-full aspect-[4/4.6] object-cover rounded-[2.25rem] shadow-[0_28px_70px_rgba(35,105,145,.14)]"/></Reveal>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#F4FBFF]"><div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -28,9 +28,8 @@ export default function About(){return <>
     <div className="grid md:grid-cols-2 gap-5">{VALUES.map((v,i)=><Reveal key={v.n} delay={(i%2)*.04}><div className="h-full bg-[#F4FBFF] rounded-3xl border border-[#D8EEF8] p-7"><div className="w-10 h-10 rounded-full bg-[#EAF9FF] text-[#006DAA] flex items-center justify-center"><Check size={18}/></div><h3 className="mt-4 font-heading text-3xl font-semibold text-[#25292C]">{v.title}</h3><p className="mt-3 text-[#59636A] leading-relaxed">{v.body}</p></div></Reveal>)}</div>
   </div></section>
 
-  <section className="pb-16 sm:pb-20 md:pb-32 bg-white"><div className="max-w-7xl mx-auto px-6 md:px-12 grid sm:grid-cols-2 gap-4">
-    <Reveal><img src={IMAGES.classroomReal} alt="Students participating in a classroom lesson" loading="lazy" className="w-full aspect-[4/3] object-cover rounded-[2rem]"/></Reveal>
-    <Reveal delay={.05}><img src={IMAGES.volunteerSupplies} alt="Volunteers preparing school supplies for young people" loading="lazy" className="w-full aspect-[4/3] object-cover rounded-[2rem]"/></Reveal>
+  <section className="pb-16 sm:pb-20 md:pb-32 bg-white"><div className="max-w-7xl mx-auto px-6 md:px-12">
+    <Reveal><img src={IMAGES.classroomReal} alt="Students participating in a classroom lesson" loading="lazy" className="w-full aspect-[16/7] min-h-[18rem] object-cover rounded-[2rem]"/></Reveal>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-24 bg-[#25292C] text-white"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-10 items-center">
