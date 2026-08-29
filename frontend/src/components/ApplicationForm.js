@@ -1,129 +1,65 @@
-import { useState } from "react";
+import { useId, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "sonner";
 import { ArrowRight, Loader2 } from "lucide-react";
 import { ORG } from "../lib/content";
 
-const API_BASE = (process.env.REACT_APP_BACKEND_URL || "").replace(/\/$/, "");
-const API = API_BASE ? `${API_BASE}/api` : "";
+const API_BASE=(process.env.REACT_APP_BACKEND_URL||"").replace(/\/$/,"");
+const API=API_BASE?`${API_BASE}/api`:"";
 
-const ALL_INTERESTS = [
-  { key: "volunteer", label: "Volunteer" },
-  { key: "mentor", label: "Mentor" },
-  { key: "mentee", label: "Apply for Mentorship" },
-  { key: "partner", label: "Partner" },
-  { key: "general", label: "General" },
+const ALL_INTERESTS=[
+  {key:"volunteer",label:"Volunteer"},
+  {key:"mentor",label:"Mentor"},
+  {key:"mentee",label:"Apply for Mentorship"},
+  {key:"partner",label:"Partner"},
+  {key:"general",label:"General"},
 ];
 
-const inputCls =
-  "w-full bg-transparent border-b border-line py-4 text-ink placeholder:text-stone/50 focus:outline-none focus:border-gold transition-colors duration-300";
-const labelCls = "block text-xs uppercase tracking-widest text-stone mb-2";
+const inputCls="w-full bg-transparent border-b border-[#C9D9E2] py-4 text-[#17364B] placeholder:text-[#708795] focus:outline-none focus:border-[#176F9F] transition-colors duration-300";
+const labelCls="block text-xs uppercase tracking-widest text-[#405E70] font-bold mb-2";
 
-export default function ApplicationForm({
-  interests = ["volunteer", "mentor", "mentee", "partner", "general"],
-  defaultInterest = "volunteer",
-  submitLabel = "Send message",
-  messagePlaceholder = "Tell us how you'd like to help, or ask us anything…",
-  testidPrefix = "form",
-}) {
-  const options = ALL_INTERESTS.filter((i) => interests.includes(i.key));
-  const [form, setForm] = useState({ name: "", email: "", phone: "", interest: defaultInterest, message: "" });
-  const [loading, setLoading] = useState(false);
+export default function ApplicationForm({interests=["volunteer","mentor","mentee","partner","general"],defaultInterest="volunteer",submitLabel="Send message",messagePlaceholder="Tell us how you'd like to help, or ask us anything…",testidPrefix="form"}){
+  const uid=useId().replace(/:/g,"");
+  const options=ALL_INTERESTS.filter(i=>interests.includes(i.key));
+  const [form,setForm]=useState({name:"",email:"",phone:"",interest:defaultInterest,message:"",website:""});
+  const [loading,setLoading]=useState(false);
+  const update=k=>e=>setForm(f=>({...f,[k]:e.target.value}));
+  const ids={name:`${uid}-name`,email:`${uid}-email`,phone:`${uid}-phone`,message:`${uid}-message`,website:`${uid}-website`};
 
-  const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
-
-  const submit = async (e) => {
+  const submit=async e=>{
     e.preventDefault();
-    if (!form.name || !form.email || !form.message) {
-      toast.error("Please fill in your name, email, and message.");
-      return;
-    }
-    if (!API) {
-      const selectedInterest =
-        ALL_INTERESTS.find((item) => item.key === form.interest)?.label || form.interest;
-
-      const subject = `${selectedInterest} inquiry from ${form.name}`;
-      const body = [
-        `Name: ${form.name}`,
-        `Email: ${form.email}`,
-        `Phone: ${form.phone || "Not provided"}`,
-        `Interest: ${selectedInterest}`,
-        "",
-        form.message,
-      ].join("\n");
-
+    if(!form.name.trim()||!form.email.trim()||!form.message.trim()){toast.error("Please fill in your name, email, and message.");return;}
+    if(!API){
+      const selectedInterest=ALL_INTERESTS.find(item=>item.key===form.interest)?.label||form.interest;
+      const subject=`${selectedInterest} inquiry from ${form.name.trim()}`;
+      const body=[`Name: ${form.name.trim()}`,`Email: ${form.email.trim()}`,`Phone: ${form.phone.trim()||"Not provided"}`,`Interest: ${selectedInterest}`,"",form.message.trim()].join("\n");
       toast.success("Your email app is opening so you can send your message.");
-      window.location.href =
-        `mailto:${ORG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href=`mailto:${ORG.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       return;
     }
-
     setLoading(true);
-    try {
-      const { data } = await axios.post(`${API}/contact`, form);
-      toast.success(data.message || "Thank you — we'll be in touch soon.");
-      setForm({ name: "", email: "", phone: "", interest: defaultInterest, message: "" });
-    } catch (err) {
-      toast.error("Something went wrong. Please try again or email us directly.");
-    } finally {
-      setLoading(false);
-    }
+    try{
+      const {data}=await axios.post(`${API}/contact`,{...form,name:form.name.trim(),email:form.email.trim(),phone:form.phone.trim(),message:form.message.trim()});
+      toast.success(data.message||"Thank you — we'll be in touch soon.");
+      setForm({name:"",email:"",phone:"",interest:defaultInterest,message:"",website:""});
+    }catch(err){
+      if(err?.response?.status===429)toast.error("Too many submissions. Please try again shortly.");
+      else toast.error("Something went wrong. Please try again or email us directly.");
+    }finally{setLoading(false)}
   };
 
-  return (
-    <form onSubmit={submit} data-testid={`${testidPrefix}-form`} className="space-y-10">
-      {options.length > 1 && (
-        <div>
-          <label className={labelCls}>I’m interested in</label>
-          <div className="flex flex-wrap gap-3 mt-3">
-            {options.map((it) => (
-              <button
-                key={it.key}
-                type="button"
-                data-testid={`interest-${it.key}`}
-                onClick={() => setForm((f) => ({ ...f, interest: it.key }))}
-                className={`px-6 py-3 rounded-full border text-sm font-medium transition-all duration-300 ${
-                  form.interest === it.key
-                    ? "bg-gold text-white border-gold"
-                    : "bg-transparent text-ink border-line hover:border-gold"
-                }`}
-              >
-                {it.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+  return <form onSubmit={submit} data-testid={`${testidPrefix}-form`} className="space-y-10">
+    {options.length>1&&<fieldset><legend className={labelCls}>I’m interested in</legend><div className="flex flex-wrap gap-3 mt-3">{options.map(it=><button key={it.key} type="button" aria-pressed={form.interest===it.key} data-testid={`interest-${it.key}`} onClick={()=>setForm(f=>({...f,interest:it.key}))} className={`px-6 py-3 rounded-full border text-sm font-semibold transition-all duration-300 ${form.interest===it.key?"bg-[#73C8FF] text-[#17364B] border-[#2F8FC7]":"bg-transparent text-[#17364B] border-[#C9D9E2] hover:border-[#176F9F]"}`}>{it.label}</button>)}</div></fieldset>}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div>
-          <label className={labelCls}>Full name</label>
-          <input data-testid={`${testidPrefix}-name`} className={inputCls} value={form.name} onChange={update("name")} placeholder="Your name" />
-        </div>
-        <div>
-          <label className={labelCls}>Email</label>
-          <input data-testid={`${testidPrefix}-email`} type="email" className={inputCls} value={form.email} onChange={update("email")} placeholder="you@email.com" />
-        </div>
-      </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8"><div><label htmlFor={ids.name} className={labelCls}>Full name</label><input id={ids.name} autoComplete="name" required maxLength={120} data-testid={`${testidPrefix}-name`} className={inputCls} value={form.name} onChange={update("name")} placeholder="Your name"/></div><div><label htmlFor={ids.email} className={labelCls}>Email</label><input id={ids.email} autoComplete="email" required data-testid={`${testidPrefix}-email`} type="email" className={inputCls} value={form.email} onChange={update("email")} placeholder="you@email.com"/></div></div>
 
-      <div>
-        <label className={labelCls}>Phone (optional)</label>
-        <input data-testid={`${testidPrefix}-phone`} className={inputCls} value={form.phone} onChange={update("phone")} placeholder="(504) 000-0000" />
-      </div>
+    <div><label htmlFor={ids.phone} className={labelCls}>Phone (optional)</label><input id={ids.phone} autoComplete="tel" maxLength={40} data-testid={`${testidPrefix}-phone`} className={inputCls} value={form.phone} onChange={update("phone")} placeholder="(504) 000-0000"/></div>
 
-      <div>
-        <label className={labelCls}>Your message</label>
-        <textarea data-testid={`${testidPrefix}-message`} rows={4} className={`${inputCls} resize-none`} value={form.message} onChange={update("message")} placeholder={messagePlaceholder} />
-      </div>
+    <div><label htmlFor={ids.message} className={labelCls}>Your message</label><textarea id={ids.message} required maxLength={5000} data-testid={`${testidPrefix}-message`} rows={5} className={`${inputCls} resize-none`} value={form.message} onChange={update("message")} placeholder={messagePlaceholder}/><p className="mt-2 text-xs text-[#526B7A]">Please do not include Social Security numbers, passwords, medical records, financial-account credentials, or other highly sensitive records.</p></div>
 
-      <button
-        type="submit"
-        data-testid={`${testidPrefix}-submit`}
-        disabled={loading}
-        className="group bg-gold text-white px-9 py-4 rounded-full font-semibold tracking-wide hover:bg-charcoal transition-colors duration-500 flex items-center gap-2 disabled:opacity-60"
-      >
-        {loading ? <><Loader2 size={18} className="animate-spin" /> Sending…</> : <>{submitLabel} <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></>}
-      </button>
-    </form>
-  );
+    <div className="absolute -left-[9999px]" aria-hidden="true"><label htmlFor={ids.website}>Website</label><input id={ids.website} tabIndex={-1} autoComplete="off" value={form.website} onChange={update("website")}/></div>
+
+    <div><button type="submit" data-testid={`${testidPrefix}-submit`} disabled={loading} className="group bg-[#73C8FF] text-[#17364B] px-9 py-4 rounded-full font-extrabold tracking-wide hover:bg-[#9AD8FF] transition-colors duration-300 flex items-center gap-2 disabled:opacity-60">{loading?<><Loader2 size={18} className="animate-spin"/>Sending…</>:<>{submitLabel}<ArrowRight size={18} className="group-hover:translate-x-1 transition-transform"/></>}</button><p className="mt-4 text-xs text-[#526B7A]">Information submitted here is handled according to our <Link to="/privacy" className="font-bold text-[#176F9F] hover:underline">Privacy Policy</Link>.</p></div>
+  </form>
 }

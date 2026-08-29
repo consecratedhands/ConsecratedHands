@@ -1,55 +1,177 @@
-# Consecrated Hands — PRD
+# Consecrated Hands — Current Website PRD
 
-## Problem Statement
-Responsive website for Consecrated Hands, a Christ-centered 501(c)(3) youth mentorship
-program guiding young people spiritually, educationally, and financially. Elegant,
-faith-centered, minimalist (white base, warm yellow, baby-blue). Pages: Home, About,
-Programs, Contact/Get Involved, Donation (one-time + recurring). Mobile-friendly,
-accessible, easy to update, basic SEO.
+_Last updated: August 29, 2026_
 
-## Stack & Architecture
-- Frontend: React 19, react-router, framer-motion, lenis (smooth scroll), react-fast-marquee, Tailwind, shadcn/ui, sonner.
-- Backend: FastAPI + MongoDB (motor). All routes /api prefixed.
-- Content centralized in /app/frontend/src/lib/content.js (edit copy here).
-- Design tokens in tailwind.config.js (ink/cream/gold/sky/stone) + index.css.
+## Purpose
 
-## Integrations
-- Stripe (Emergent claimable sandbox) — donation checkout, one-time (mode=payment) + monthly (subscription), custom/suggested amounts. No Stripe Tax applied (charitable gifts are non-taxable). Onboarding URL to claim account provided to user.
-- Resend (Emergent-managed) — email on donation (donor thank-you receipt + org notification) and contact form (org notification). Sends to ConsecratedHands@Gmail.com.
-- PayPal — NOT active. Requires user's PayPal Client ID + Secret. Deferred.
+Consecrated Hands is a federally recognized 501(c)(3) Christ-centered youth mentorship nonprofit. The website should communicate credibility, warmth, faith, responsible stewardship, youth safety, and a clear path to mentorship, volunteering, prayer, partnership, and giving.
 
-## Backend Endpoints
-- GET /api/config
-- POST /api/donations/checkout
-- GET /api/payments/status/{session_id}
-- POST /api/stripe/webhook
-- POST /api/contact
+Primary message: **Become Who God Set You Apart to Be.**
 
-## Implemented (2026-08-02)
-- Home: kinetic hero (masked line reveal + parallax), mission statement, 6-program grid, impact stats, editorial marquee, donate CTA.
-- About: parallax stained-glass hero, mission, numbered value chapters (sticky), 501(c)(3) trust block.
-- Programs: 6 alternating editorial image/text blocks + CTA.
-- Get Involved: contact form (volunteer/mentor/partner/general) + direct contact card. Saves to Mongo (inquiries) + emails org.
-- Donate: one-time/monthly toggle, suggested + custom amounts, donor fields, tax-deductible messaging, Stripe checkout redirect, success page with status polling.
-- SEO: per-page title/meta, og tags, semantic structure.
+## Current brand system
 
-## Backlog
-- P1: Activate PayPal once user provides Client ID + Secret.
-- P1: Admin view for inquiries + donation records.
-- P2: Impact stories / testimonials, newsletter signup, blog/updates.
+- White background
+- Bright sky / baby-blue accents
+- Restrained gold accents
+- Deep navy text and dark sections
+- Cormorant Garamond headings
+- Inter body text
+- Spacious, premium, minimal layout
+- Rounded cards and subtle shadows
+- Accessible contrast variants for small text/buttons
 
-## Enhancement (2026-08-02) — Premium Redesign v2
-- Fonts switched to Playfair Display (headings) + Inter (body). Added Dancing Script (unused fallback).
-- Official logo added to header + footer (gold Bible/cross script).
-- Restructured to 8 pages: Home, About, Our Mission (/mission), Mentorship (/mentorship), Volunteer (/volunteer), Donate, Prayer (/prayer), Contact.
-- Replaced "6 ways" with THE 5 PILLARS: Faith, Family, Finance, Fitness, Future (content.js PILLARS).
-- Added the Truth message across Home/Mission/Mentorship: "We show them the lies (they aren't enough) and tell them the Truth — Jesus' truth."
-- Home additions: full-width sunlight hero w/ parallax + glass CTA, Truth section, 5 Pillars grid, animated impact counters (Youth Mentored 250+, Volunteer Hours 4800+, Families Served 120+, Community Events 36), testimonials, upcoming events, final CTA. Glassmorphism, rounded-3xl cards, light glows.
-- New backend endpoint: POST /api/prayer (saves to Mongo `prayers` + emails org). Contact interests extended with `mentee`.
-- New components: Counter.js (animated), ApplicationForm.js (reusable), updated Layout.js (logo/nav/social footer).
-- Testing: iteration_1.json — backend 15/15, frontend 100%, 0 console errors, no bugs.
+Official master logo:
 
-## Backlog (updated)
-- P1: Activate PayPal (needs user's PayPal Client ID + Secret).
-- P1: Admin dashboard for inquiries / donations / prayer requests.
-- P2: Public prayer wall (is_public prayers), real event calendar, blog/updates.
+`frontend/public/img/CONSECRATED HANDS LOGO.png`
+
+Do not revert to older logo assets without explicit approval.
+
+## Mission
+
+Consecrated Hands is a Christ-centered youth mentorship nonprofit helping young people discover who God created them to become through faith, stability, education, life skills, opportunity, healthy relationships, character, leadership, and service.
+
+## The Web of Consecration™
+
+The current seven-strand framework is:
+
+1. Faith & Identity
+2. Stability & Essential Needs
+3. Education & Development
+4. Life & Financial Skills
+5. Career & Opportunity
+6. Health, Relationships & Character
+7. Service, Leadership & Giving Back
+
+The goal is whole-life mentorship rather than treating one need in isolation.
+
+## Current routes
+
+- `/` Home
+- `/about` About
+- `/mission` Our Mission
+- `/mentorship` The Web of Consecration™
+- `/volunteer` Volunteer / Mentor
+- `/prayer` Prayer Requests
+- `/contact` Contact
+- `/donate` Donate
+- `/donation/success` Stripe confirmation
+- `/privacy` Privacy Policy
+- `/terms` Terms of Use
+- `/safeguarding` Youth Safeguarding Commitment
+
+## Frontend architecture
+
+- React 19
+- React Router
+- Tailwind CSS
+- Framer Motion
+- shadcn/ui components where useful
+- Sonner notifications
+- Central organization/program content in `frontend/src/lib/content.js`
+- Shared shell in `frontend/src/components/Layout.js`
+- SEO metadata/JSON-LD in `frontend/src/components/Seo.js`
+
+Accessibility requirements:
+
+- Keep visible keyboard focus
+- Preserve skip navigation
+- Honor reduced-motion preferences
+- Do not use white text on the light sky-blue CTA background
+- Use contrast-safe gold/navy variants for small text
+- Associate form labels with fields
+- Preserve clear error/success messaging
+
+## Backend architecture
+
+- FastAPI
+- MongoDB / Motor
+- Stripe Checkout
+- Email notifications through deployment-configured provider
+
+Core API routes:
+
+- `GET /api/`
+- `GET /api/config`
+- `POST /api/donations/checkout`
+- `GET /api/payments/status/{session_id}`
+- `POST /api/stripe/webhook`
+- `POST /api/contact`
+- `POST /api/prayer`
+
+Production requirements:
+
+- Never use a hardcoded test Stripe key fallback
+- Server controls trusted success/cancel URLs
+- Restrict CORS to approved origins
+- Preserve form field-size limits, HTML escaping, honeypot handling, and rate limiting
+- Keep secret values in deployment environment variables only
+- Organization email is `OurConsecratedHands@Gmail.com` unless explicitly changed
+
+## Donation experience
+
+Primary mode:
+
+- User chooses one-time or monthly
+- User selects suggested/custom amount
+- User enters name/email
+- Frontend requests a Stripe Checkout Session from FastAPI
+- Backend creates Stripe session with trusted site URL
+- Stripe redirects back to `/donation/success`
+- Backend verifies status and handles organization/donor notifications
+
+Fallback mode:
+
+- A generic Stripe Payment Link may be used only when no backend URL is configured
+- In fallback mode do not show custom controls that cannot actually be transmitted
+
+## Privacy and safeguarding
+
+The site collects contact information, volunteer/mentorship interest, prayer requests, and donation information. Public trust pages must remain linked in the footer.
+
+Sensitive form contents should not be intentionally recorded by analytics/session-recording tools.
+
+Operational youth practices should match the public Youth Safeguarding Commitment.
+
+## SEO
+
+Maintain:
+
+- Canonical URLs
+- Per-page title/description
+- Open Graph/Twitter metadata
+- Organization JSON-LD with `Nonprofit501c3`
+- `robots.txt`
+- `sitemap.xml`
+- `noindex` for 404 pages
+
+Never publish fake impact statistics, testimonials, events, or grant claims. `IMPACT`, `TESTIMONIALS`, and `EVENTS` should remain empty until verified information is available.
+
+## Current priorities after Phase 1 hardening
+
+### P1
+
+- Verify production environment variables and Stripe webhook configuration
+- Perform real one-time and monthly Stripe test transactions in the intended production/staging environment
+- Confirm deep-link routing is configured correctly on the production host
+- Produce an optimized web copy of the official logo while keeping the master PNG untouched
+
+### P2
+
+- Add verified impact figures when available
+- Add real testimonials with permission
+- Add authentic program/event photography with appropriate releases
+- Add board/leadership and governance transparency information
+- Add annual reports / Form 990 / determination-letter transparency when appropriate
+- Add newsletter/news updates if there is a real publishing process
+
+### P3
+
+- Admin dashboard for authorized review of inquiries, donations, and prayer requests
+- Public event/calendar capability
+- Carefully moderated public prayer-wall capability only if operational privacy/safeguarding processes support it
+
+## Testing policy
+
+Significant work should happen on a feature branch and merge through a pull request. CI must pass before merge.
+
+Manual release smoke test should cover desktop and mobile navigation, direct nested routes, Contact, Prayer, one-time donation, monthly donation, donation cancellation, donation success confirmation, keyboard focus, and responsive layout.

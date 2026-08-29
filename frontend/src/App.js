@@ -11,29 +11,25 @@ import Donate from "./pages/Donate";
 import Prayer from "./pages/Prayer";
 import Contact from "./pages/Contact";
 import DonationSuccess from "./pages/DonationSuccess";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
+import Safeguarding from "./pages/Safeguarding";
 import NotFound from "./pages/NotFound";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/mission" element={<Mission />} />
-          <Route path="/mentorship" element={<Mentorship />} />
-          <Route path="/volunteer" element={<Volunteer />} />
-          <Route path="/prayer" element={<Prayer />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/donate" element={<Donate />} />
-          <Route path="/donation/success" element={<DonationSuccess />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
-
-      <Toaster position="top-center" richColors />
-    </BrowserRouter>
-  );
-}
+function App(){return <BrowserRouter><Layout><Routes>
+  <Route path="/" element={<Home/>}/>
+  <Route path="/about" element={<About/>}/>
+  <Route path="/mission" element={<Mission/>}/>
+  <Route path="/mentorship" element={<Mentorship/>}/>
+  <Route path="/volunteer" element={<Volunteer/>}/>
+  <Route path="/prayer" element={<Prayer/>}/>
+  <Route path="/contact" element={<Contact/>}/>
+  <Route path="/donate" element={<Donate/>}/>
+  <Route path="/donation/success" element={<DonationSuccess/>}/>
+  <Route path="/privacy" element={<Privacy/>}/>
+  <Route path="/terms" element={<Terms/>}/>
+  <Route path="/safeguarding" element={<Safeguarding/>}/>
+  <Route path="*" element={<NotFound/>}/>
+</Routes></Layout><Toaster position="top-center" richColors/></BrowserRouter>}
 
 export default App;
