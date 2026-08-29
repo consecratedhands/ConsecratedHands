@@ -14,11 +14,11 @@
   "colors": {
     "background": "#FFFFFF",
     "surface": "#FFFFFF",
-    "primary": "#F6C945",
-    "secondary": "#70CCFF",
+    "primary": "#FFD21F",
+    "secondary": "#6FD3FF",
     "text_primary": "#25292C",
     "text_secondary": "#59636A",
-    "border": "#D9EBF4",
+    "border": "#D8EEF8",
     "accent_dark": "#25292C",
     "error": "#D9534F",
     "success": "#4CAF50"
@@ -47,9 +47,9 @@
   },
   "components": {
     "buttons": {
-      "primary": "bg-primary text-text_primary px-8 py-4 rounded-full font-extrabold tracking-wide hover:bg-[#FFD968] transition-colors duration-300",
+      "primary": "bg-primary text-text_primary px-8 py-4 rounded-full font-extrabold tracking-wide hover:bg-[#FFE066] transition-colors duration-300",
       "secondary": "bg-transparent text-text_primary px-8 py-4 border border-border hover:border-text_primary transition-colors duration-500",
-      "donate_cta": "bg-primary text-text_primary px-8 py-4 rounded-full font-extrabold shadow-lg hover:bg-[#FFD968] hover:-translate-y-1 transition-all duration-300"
+      "donate_cta": "bg-primary text-text_primary px-8 py-4 rounded-full font-extrabold shadow-lg hover:bg-[#FFE066] hover:-translate-y-1 transition-all duration-300"
     },
     "cards": {
       "standard": "bg-surface p-8 md:p-12 border border-border shadow-sm hover:shadow-md transition-shadow duration-500",
