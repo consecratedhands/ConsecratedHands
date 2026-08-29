@@ -12,18 +12,18 @@
     --popover: 0 0% 100%;
     --popover-foreground: 205 53% 19%;
     --primary: 203 100% 73%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 45 66% 50%;
-    --secondary-foreground: 205 53% 19%;
+    --primary-foreground: 205 53% 19%;
+    --secondary: 43 83% 30%;
+    --secondary-foreground: 0 0% 100%;
     --muted: 203 70% 97%;
-    --muted-foreground: 204 15% 48%;
+    --muted-foreground: 204 20% 40%;
     --accent: 203 86% 96%;
     --accent-foreground: 205 53% 19%;
-    --destructive: 0 72% 51%;
+    --destructive: 0 72% 45%;
     --destructive-foreground: 0 0% 98%;
-    --border: 203 34% 92%;
-    --input: 203 34% 92%;
-    --ring: 203 100% 73%;
+    --border: 203 34% 89%;
+    --input: 203 34% 89%;
+    --ring: 201 75% 36%;
     --radius: 1rem;
   }
   * { @apply border-border; }
@@ -43,13 +43,14 @@
 
 img { max-width: 100%; height: auto; }
 button,a,input,select,textarea { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
-:focus-visible { outline: 3px solid #73C8FF; outline-offset: 3px; }
+:focus-visible { outline: 3px solid #176F9F; outline-offset: 3px; }
+main:focus { outline: none; }
 .text-balance { text-wrap: balance; }
 .light-glow { background: radial-gradient(circle at 50% 0%, rgba(115,200,255,.18), transparent 58%), #fff; }
 .glass { background: rgba(255,255,255,.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
-.bg-gold { background: linear-gradient(135deg,#F0D57B,#D6A62A 58%,#B88712); box-shadow: 0 10px 26px -14px rgba(182,132,17,.5); }
+.bg-gold { background: linear-gradient(135deg,#F0D57B,#D6A62A 58%,#B88712); box-shadow: 0 10px 26px -14px rgba(182,132,17,.5); color:#17364B; }
 .marquee-item { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:600; }
-.skip-link { position:fixed; left:1rem; top:1rem; z-index:9999; transform:translateY(-160%); background:#17364B; color:white; padding:.75rem 1rem; border-radius:9999px; }
+.skip-link { position:fixed; left:1rem; top:1rem; z-index:9999; transform:translateY(-160%); background:#17364B; color:white; padding:.75rem 1rem; border-radius:9999px; font-weight:700; }
 .skip-link:focus { transform:translateY(0); }
 
 @media (max-width: 1023px), (pointer: coarse) {
@@ -57,5 +58,5 @@ button,a,input,select,textarea { touch-action: manipulation; -webkit-tap-highlig
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior:auto!important; }
-  *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
+  *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; scroll-behavior:auto!important; }
 }
