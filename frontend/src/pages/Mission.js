@@ -30,7 +30,7 @@ export default function Mission(){return <>
 
   <section className="pt-24 md:pt-28 bg-white"><div className="max-w-7xl mx-auto px-6 md:px-12 py-12 sm:py-16 md:py-24 grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
     <Reveal><div><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">Our Mission</p><h1 className="mt-5 font-heading text-[2.65rem] sm:text-5xl md:text-7xl lg:text-[5.2rem] font-semibold text-[#25292C]">Reach them early. Walk with them fully. Point them toward <span className="italic text-[#007BC2]">purpose in Christ.</span></h1><p className="mt-7 max-w-3xl text-xl text-[#424B52] leading-relaxed">{ORG.mission}</p></div></Reveal>
-    <Reveal delay={.08}><div className="relative pb-12 sm:pb-16 pl-5 sm:pl-12"><img src={IMAGES.sportsMentor} alt="Mentorship relationship and community activity" className="w-full aspect-[4/4.6] object-cover rounded-[2.25rem] shadow-[0_28px_70px_rgba(35,105,145,.14)]"/><img src={IMAGES.sportsMission} alt="Young people practicing basketball while two mentors coach" loading="lazy" className="absolute bottom-0 left-0 w-[58%] aspect-[4/3] object-cover rounded-[1.5rem] border-4 border-white shadow-xl"/></div></Reveal>
+    <Reveal delay={.08}><div className="relative"><img src={IMAGES.sportsMentor} alt="Mentorship relationship and community activity" className="w-full aspect-[4/4.6] object-cover rounded-[2.25rem] shadow-[0_28px_70px_rgba(35,105,145,.14)]"/></div></Reveal>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#F4FBFF]"><div className="max-w-7xl mx-auto px-6 md:px-12">
