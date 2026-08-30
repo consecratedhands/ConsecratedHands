@@ -42,6 +42,10 @@
 }
 
 img { max-width: 100%; height: auto; }
+/* Soften the site's generated WebP photography without touching the official logo or real uploaded JPEG photos. */
+img[src$=".webp"]:not([src*="logo"]) {
+  filter: blur(.5px) contrast(.98);
+}
 button,a,input,select,textarea { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 3px solid #006DAA; outline-offset: 3px; }
 main:focus { outline: none; }
