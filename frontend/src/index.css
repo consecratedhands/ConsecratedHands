@@ -42,9 +42,9 @@
 }
 
 img { max-width: 100%; height: auto; }
-/* Lightly soften/darken generated WebP photography only. Keep logos and the van image untouched. */
+/* Keep generated WebP photography close to the original: no blur, only a subtle reduction in harsh digital contrast/brightness. Logos, the van, and real uploaded JPEG photos remain untouched. */
 img[src$=".webp"]:not([src*="logo"]):not([src*="consecrated-hands-park-van"]) {
-  filter: blur(.22px) brightness(.94) contrast(.985) saturate(.98);
+  filter: brightness(.95) contrast(.975) saturate(.985);
 }
 button,a,input,select,textarea { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 3px solid #006DAA; outline-offset: 3px; }
