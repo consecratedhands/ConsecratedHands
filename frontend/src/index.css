@@ -42,10 +42,64 @@
 }
 
 img { max-width: 100%; height: auto; }
-/* Keep generated WebP photography close to the original: no blur, only a subtle reduction in harsh digital contrast/brightness. Logos, the van, and real uploaded JPEG photos remain untouched. */
-img[src$=".webp"]:not([src*="logo"]):not([src*="consecrated-hands-park-van"]) {
-  filter: brightness(.95) contrast(.975) saturate(.985);
+
+/*
+  Generated-photo finishing pass.
+  These are intentionally targeted ONE ASSET AT A TIME after reviewing each page.
+  There is no blanket WebP filter. Real uploaded JPEGs, the official logo, and the van remain untouched.
+*/
+
+/* Home / About / Contact — community image. Very light softening because it is used large. */
+img[src="/img/about.webp"] {
+  filter: brightness(.95) contrast(.975) saturate(.99) blur(.05px);
 }
+
+/* Home / Mission / Volunteer — mentorship image. */
+img[src="/img/mission.webp"] {
+  filter: brightness(.94) contrast(.97) saturate(.985) blur(.06px);
+}
+
+/* Home — outdoor basketball image. Slightly stronger reduction because the original reads the most digitally sharp. */
+img[src="/img/youth-basketball-real.webp"] {
+  filter: brightness(.93) contrast(.965) saturate(.98) blur(.08px);
+}
+
+/* Home faith section / Prayer page — church-youth image. */
+img[src="/img/church-youth.webp"] {
+  filter: brightness(.95) contrast(.975) saturate(.985) blur(.05px);
+}
+
+/* Mission — basketball coaching inset. */
+img[src="/img/sports-community-basketball-practice.webp"] {
+  filter: brightness(.94) contrast(.97) saturate(.985) blur(.07px);
+}
+
+/* Mentorship hero — positive youth-development image. */
+img[src="/img/impact.webp"] {
+  filter: brightness(.94) contrast(.97) saturate(.985) blur(.06px);
+}
+
+/* Mentorship hero inset — library/study image. */
+img[src="/img/education-mentorship-library.webp"] {
+  filter: brightness(.94) contrast(.97) saturate(.985) blur(.06px);
+}
+
+/* Mentorship lower section — reading/mentor image. */
+img[src="/img/mentorship-reading.webp"] {
+  filter: brightness(.93) contrast(.965) saturate(.98) blur(.08px);
+}
+
+/* Contact — volunteer school-supplies image. */
+img[src="/img/volunteer-school-supplies.webp"] {
+  filter: brightness(.94) contrast(.97) saturate(.985) blur(.06px);
+}
+
+/* Explicit safeguards: do not alter the approved van or official logo. */
+img[src="/img/consecrated-hands-park-van.webp"],
+img[src="/img/consecrated-hands-logo.webp"] {
+  filter: none;
+}
+
 button,a,input,select,textarea { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
 :focus-visible { outline: 3px solid #006DAA; outline-offset: 3px; }
 main:focus { outline: none; }
