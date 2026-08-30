@@ -51,22 +51,22 @@ img { max-width: 100%; height: auto; }
 
 /* Home faith section / Prayer page — AI-generated church scene. */
 img[src="/img/church-youth.webp"] {
-  filter: brightness(.92) contrast(.94) saturate(.96) blur(.12px);
+  filter: brightness(.92) contrast(.94) saturate(.96) blur(.05px);
 }
 
 /* Mentorship hero inset — AI-generated library scene. */
 img[src="/img/education-mentorship-library.webp"] {
-  filter: brightness(.93) contrast(.95) saturate(.97) blur(.10px);
+  filter: brightness(.93) contrast(.95) saturate(.97) blur(.05px);
 }
 
 /* Mentorship lower section — AI-generated reading scene. */
 img[src="/img/mentorship-reading.webp"] {
-  filter: brightness(.93) contrast(.95) saturate(.97) blur(.10px);
+  filter: brightness(.93) contrast(.95) saturate(.97) blur(.05px);
 }
 
 /* Contact — AI-generated school-supplies scene. */
 img[src="/img/volunteer-school-supplies.webp"] {
-  filter: brightness(.92) contrast(.94) saturate(.96) blur(.12px);
+  filter: brightness(.92) contrast(.94) saturate(.96) blur(.05px);
 }
 
 /* Confirmed AI-generated assets currently kept for possible page reuse. */
@@ -75,7 +75,7 @@ img[src="/img/education-kids.webp"],
 img[src="/img/faith-church-youth-prayer.webp"],
 img[src="/img/sports-community-basketball-practice.webp"],
 img[src="/img/youth-prayer.webp"] {
-  filter: brightness(.93) contrast(.95) saturate(.97) blur(.10px);
+  filter: brightness(.93) contrast(.95) saturate(.97) blur(.05px);
 }
 
 /*
