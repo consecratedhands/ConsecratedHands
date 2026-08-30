@@ -1,6 +1,6 @@
 export const ORG = {
   name: "Consecrated Hands",
-  logo: "/img/consecrated-hands-logo.webp",
+  logo: "/img/consecrated-hands-approved-logo.webp",
   ein: "33-4903145",
   taxStatus: "Federally recognized 501(c)(3) public charity",
   donationUrl: process.env.REACT_APP_STRIPE_PAYMENT_LINK || "",
