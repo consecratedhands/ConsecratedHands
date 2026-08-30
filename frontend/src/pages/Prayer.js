@@ -65,8 +65,6 @@ export default function Prayer(){
       </form>}</div></Reveal>
     </div></section>
 
-    <section className="px-6 md:px-12 bg-white"><Reveal><img src={IMAGES.heroFaith} alt="Young people gathered in church" loading="lazy" className="max-w-7xl mx-auto w-full aspect-[16/6] min-h-[17rem] object-cover rounded-[2rem]"/></Reveal></section>
-
     <section className="py-16 sm:py-20 md:py-24 bg-[#F4FBFF]"><div className="max-w-5xl mx-auto px-6 text-center"><Reveal><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">After You Submit</p><h2 className="mt-4 font-heading text-[2.65rem] sm:text-5xl md:text-7xl font-semibold text-[#25292C]">We receive it. We pray. We protect your privacy.</h2><p className="mt-6 text-lg text-[#59636A] max-w-2xl mx-auto leading-relaxed">If you include your email, someone may follow up when appropriate. If you leave your name blank, your request can still be received as anonymous.</p><Link to="/privacy" className="inline-flex items-center gap-2 mt-8 bg-[#6FD3FF] text-[#25292C] px-7 py-3.5 rounded-full font-extrabold">Read Privacy Policy</Link></Reveal></div></section>
   </>
 }

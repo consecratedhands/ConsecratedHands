@@ -25,8 +25,8 @@ function SecondaryButton({to,children}){return <Link to={to} className="inline-f
 export default function Home(){return <>
   <Seo title="Home" description={ORG.mission}/>
 
-  <section className="relative overflow-hidden bg-white pt-24 md:pt-28">
-    <div className="absolute inset-0"><img src={IMAGES.kidsSun} alt="Young people spending time together" className="w-full h-full object-cover object-center"/><div className="absolute inset-0 bg-white/90 lg:bg-gradient-to-r lg:from-white lg:via-white/95 lg:to-white/55"/></div>
+  <section className="relative overflow-hidden light-glow pt-24 md:pt-28">
+    <div className="absolute inset-0 bg-gradient-to-br from-white via-white/90 to-[#EAF9FF]/70"/>
     <div className="relative max-w-7xl mx-auto px-6 md:px-12 py-20 md:py-28 grid lg:grid-cols-[1.08fr_.92fr] gap-12 items-center">
       <Reveal><div className="max-w-3xl">
         <div className="inline-flex items-center gap-2 rounded-full bg-white/90 border border-[#D8EEF8] px-4 py-2 text-xs font-bold tracking-[.18em] uppercase text-[#006DAA]"><Sparkles size={14} className="text-[#A66F00]"/> Christ-centered youth mentorship</div>
@@ -37,8 +37,8 @@ export default function Home(){return <>
       <Reveal delay={.1}><div className="relative lg:justify-self-end"><div className="absolute inset-8 rounded-full bg-[#EAF9FF] blur-3xl opacity-80"/><div className="relative rounded-[2.5rem] border border-white bg-white/95 shadow-[0_30px_90px_rgba(35,105,145,.18)] p-5 md:p-8"><img src={ORG.logo} alt="Consecrated Hands official logo" className="w-full max-h-[31rem] object-contain"/></div></div></Reveal>
     </div>
   </section>
-  <section className="py-16 sm:py-20 md:py-32 bg-[#F4FBFF]"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-[.85fr_1.15fr] gap-12 md:gap-16 items-center">
-    <Reveal><div className="relative"><img src={IMAGES.sportsMentor} alt="Mentorship and community activity" loading="lazy" className="w-full aspect-[4/5] object-cover rounded-[2rem] shadow-[0_24px_60px_rgba(35,105,145,.12)]"/><div className="absolute -bottom-5 -right-5 hidden md:block bg-white border border-[#D8EEF8] rounded-3xl p-6 max-w-[15rem] shadow-xl"><p className="font-heading text-2xl text-[#25292C]">Relationship first.</p><p className="mt-2 text-sm text-[#59636A]">The activity opens the door. Consistency changes the trajectory.</p></div></div></Reveal>
+  <section className="py-16 sm:py-20 md:py-32 bg-[#F4FBFF]"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-[.65fr_1.35fr] gap-12 md:gap-16 items-center">
+    <Reveal><div className="rounded-[2rem] bg-white border border-[#D8EEF8] p-8 md:p-10 shadow-[0_20px_55px_rgba(35,105,145,.08)]"><HeartHandshake className="text-[#006DAA]" size={34}/><p className="mt-5 font-heading text-4xl text-[#25292C]">Relationship first.</p><p className="mt-4 text-lg leading-relaxed text-[#59636A]">The activity opens the door. Consistency changes the trajectory.</p></div></Reveal>
     <Reveal delay={.06}><div><p className="text-xs uppercase tracking-[.28em] text-[#A66F00] font-bold">Why We Exist</p><h2 className="mt-4 font-heading text-[2.6rem] sm:text-5xl md:text-6xl font-semibold text-[#25292C]">Reach them early. Walk with them fully.</h2><p className="mt-6 text-xl leading-relaxed text-[#424B52]">A young person is more than the problem happening around them. We help them see their God-given worth and surround that identity with practical support that makes purpose possible.</p><p className="mt-5 text-lg leading-relaxed text-[#59636A]">That can mean prayer and Scripture one day, tutoring the next, a conversation about money or work, a meal, an outing, a hard truth, a ride toward opportunity, or simply keeping a promise to show up.</p><div className="mt-8"><SecondaryButton to="/mission">Read Our Mission</SecondaryButton></div></div></Reveal>
   </div></section>
 
