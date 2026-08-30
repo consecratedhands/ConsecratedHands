@@ -45,7 +45,6 @@ export default function Volunteer(){return <>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#25292C] text-white"><div className="max-w-7xl mx-auto px-6 md:px-12">
     <Reveal><div className="max-w-4xl"><p className="text-xs uppercase tracking-[.28em] text-[#FFE066] font-bold">Partner With Us</p><h2 className="mt-4 font-heading text-[2.65rem] sm:text-5xl md:text-7xl font-semibold">A community can offer what one mentor cannot.</h2><p className="mt-6 text-lg text-white/75 leading-relaxed max-w-3xl">Businesses, churches, schools, civic groups, tradespeople, professionals, and community organizations can create access to places, people, knowledge, and opportunities that change what a young person sees as possible.</p></div></Reveal>
-    <Reveal><img src={IMAGES.soccerReal} alt="A volunteer coach teaching children during soccer practice" loading="lazy" className="mt-10 w-full aspect-[16/7] min-h-[18rem] object-cover rounded-[2rem] border border-white/15"/></Reveal>
     <div className="mt-12 grid md:grid-cols-3 gap-5">{partners.map(({icon:Icon,title,body},i)=><Reveal key={title} delay={i*.04}><div className="h-full rounded-3xl border border-white/15 bg-white/[.07] p-7"><Icon className="text-[#B8ECFF]"/><h3 className="mt-5 font-heading text-3xl font-semibold">{title}</h3><p className="mt-3 text-white/75 leading-relaxed">{body}</p></div></Reveal>)}</div>
   </div></section>
 
