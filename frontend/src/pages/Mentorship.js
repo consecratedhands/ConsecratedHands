@@ -37,7 +37,7 @@ export default function Mentorship(){return <>
   </div></section>
 
   <section className="py-16 sm:py-20 md:py-32 bg-[#25292C] text-white"><div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-[1fr_1fr] gap-12 items-center">
-    <Reveal><img src={IMAGES.youthPortrait} alt="Young person looking toward the future" loading="lazy" className="w-full aspect-[4/3] object-cover rounded-[2rem]"/></Reveal>
+    <Reveal><img src={IMAGES.mentorshipReading} alt="Mentorship and learning in a supportive setting" loading="lazy" className="w-full aspect-[4/3] object-cover rounded-[2rem]"/></Reveal>
     <Reveal delay={.05}><div><p className="text-xs uppercase tracking-[.28em] text-[#FFE066] font-bold">Who It Is For</p><h2 className="mt-4 font-heading text-[2.6rem] sm:text-5xl md:text-6xl font-semibold">A healthy strand before a breaking point.</h2><div className="mt-7 space-y-4">{fit.map(item=><div key={item} className="flex gap-4"><div className="w-8 h-8 rounded-full bg-[#6FD3FF] text-[#25292C] flex items-center justify-center shrink-0"><Check size={17}/></div><p className="text-white/80 leading-relaxed">{item}</p></div>)}</div></div></Reveal>
   </div></section>
 
