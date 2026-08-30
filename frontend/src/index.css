@@ -45,56 +45,57 @@ img { max-width: 100%; height: auto; }
 
 /*
   Generated-photo finishing pass.
-  These are intentionally targeted ONE ASSET AT A TIME after reviewing each page.
-  There is no blanket WebP filter. Real uploaded JPEGs, the official logo, and the van remain untouched.
+  IMPORTANT: no blur is used anywhere. Blur was making the images visibly fuzzy on mobile.
+  Each generated asset is adjusted individually by brightness/contrast/saturation only so detail stays sharp.
+  Real uploaded JPEGs, the official logo, and the approved van remain untouched.
 */
 
-/* Home / About / Contact — community image. Very light softening because it is used large. */
+/* Home / About / Contact — community image. */
 img[src="/img/about.webp"] {
-  filter: brightness(.95) contrast(.975) saturate(.99) blur(.05px);
+  filter: brightness(.95) contrast(.965) saturate(.985);
 }
 
 /* Home / Mission / Volunteer — mentorship image. */
 img[src="/img/mission.webp"] {
-  filter: brightness(.94) contrast(.97) saturate(.985) blur(.06px);
+  filter: brightness(.94) contrast(.955) saturate(.98);
 }
 
-/* Home — outdoor basketball image. Slightly stronger reduction because the original reads the most digitally sharp. */
+/* Home — outdoor basketball image. */
 img[src="/img/youth-basketball-real.webp"] {
-  filter: brightness(.93) contrast(.965) saturate(.98) blur(.08px);
+  filter: brightness(.93) contrast(.95) saturate(.975);
 }
 
 /* Home faith section / Prayer page — church-youth image. */
 img[src="/img/church-youth.webp"] {
-  filter: brightness(.95) contrast(.975) saturate(.985) blur(.05px);
+  filter: brightness(.95) contrast(.965) saturate(.98);
 }
 
 /* Mission — basketball coaching inset. */
 img[src="/img/sports-community-basketball-practice.webp"] {
-  filter: brightness(.94) contrast(.97) saturate(.985) blur(.07px);
+  filter: brightness(.94) contrast(.955) saturate(.98);
 }
 
 /* Mentorship hero — positive youth-development image. */
 img[src="/img/impact.webp"] {
-  filter: brightness(.94) contrast(.97) saturate(.985) blur(.06px);
+  filter: brightness(.94) contrast(.955) saturate(.98);
 }
 
 /* Mentorship hero inset — library/study image. */
 img[src="/img/education-mentorship-library.webp"] {
-  filter: brightness(.94) contrast(.97) saturate(.985) blur(.06px);
+  filter: brightness(.94) contrast(.955) saturate(.98);
 }
 
 /* Mentorship lower section — reading/mentor image. */
 img[src="/img/mentorship-reading.webp"] {
-  filter: brightness(.93) contrast(.965) saturate(.98) blur(.08px);
+  filter: brightness(.93) contrast(.95) saturate(.975);
 }
 
 /* Contact — volunteer school-supplies image. */
 img[src="/img/volunteer-school-supplies.webp"] {
-  filter: brightness(.94) contrast(.97) saturate(.985) blur(.06px);
+  filter: brightness(.94) contrast(.955) saturate(.98);
 }
 
-/* Explicit safeguards: do not alter the approved van or official logo. */
+/* Explicit safeguards: never alter the approved van or official logo. */
 img[src="/img/consecrated-hands-park-van.webp"],
 img[src="/img/consecrated-hands-logo.webp"] {
   filter: none;
