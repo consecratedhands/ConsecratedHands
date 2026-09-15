@@ -83,7 +83,7 @@ function Nav(){
     <header className="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-b border-[#D8EEF8] shadow-[0_8px_30px_rgba(37,41,44,.04)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 h-24 flex items-center justify-between">
         <Link to="/" className="flex min-w-0 items-center" aria-label="Consecrated Hands home">
-          <img src={ORG.logo} alt="Consecrated Hands" className="h-[4.4rem] sm:h-[5.1rem] w-auto max-w-[calc(100vw-5.5rem)] sm:max-w-[16.5rem] object-contain"/>
+          <img src={ORG.logo} alt="Consecrated Hands" className="h-[5.15rem] sm:h-[5.35rem] w-auto max-w-[calc(100vw-5.5rem)] sm:max-w-[17rem] object-contain"/>
         </Link>
         <nav className="hidden lg:flex items-center gap-6" aria-label="Primary navigation">
           {NAV.map(n=><NavLink key={n.to} to={n.to} end={n.to==="/"} className={({isActive})=>`text-sm font-semibold transition-colors ${isActive?"text-[#006DAA]":"text-[#424B52] hover:text-[#006DAA]"}`}>{n.label}</NavLink>)}
