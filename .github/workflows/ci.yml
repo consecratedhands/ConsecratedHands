@@ -33,7 +33,18 @@ jobs:
         run: corepack yarn audit:site
 
       - name: Audit dependency security
-        run: corepack yarn audit --level high
+        shell: bash
+        run: |
+          set +e
+          corepack yarn audit --level high
+          code=$?
+          set -e
+          # Yarn 1 encodes severities as a bitmask: moderate=4, high=8, critical=16.
+          # Report moderate findings, but block production for high or critical findings.
+          if (( (code & 8) != 0 || (code & 16) != 0 )); then
+            exit "$code"
+          fi
+          exit 0
 
       - name: Test mobile navigation
         run: CI=true corepack yarn test --watchAll=false
