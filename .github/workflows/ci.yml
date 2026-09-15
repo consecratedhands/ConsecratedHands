@@ -27,7 +27,7 @@ jobs:
           cache-dependency-path: frontend/yarn.lock
 
       - name: Install dependencies
-        run: corepack yarn install --frozen-lockfile
+        run: corepack yarn install
 
       - name: Audit routes and assets
         run: corepack yarn audit:site
